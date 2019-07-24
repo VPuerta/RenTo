@@ -28,21 +28,31 @@ class Login extends Component {
   }
     
   render(){
+    
     return(
-      <div>
+      <div className="form">
         <form onSubmit={this.handleFormSubmit}>
+
+        <div className="form-group">
           <label>Username:</label>
-          <input type="text" name="username" value={this.state.username} onChange={ e => this.handleChange(e)}/>
+          <input type="text" name="username" placeholder="Name" value={this.state.username} onChange={ e => this.handleChange(e)}/>
+          </div>
+
+          <div className="form-group">
           <label>Password:</label>
-          <textarea name="password" value={this.state.password} onChange={ e => this.handleChange(e)} />
-          
-          <input type="submit" value="Login" />
+          <input type="password" name="password" placeholder="Password" value={this.state.password} onChange={ e => this.handleChange(e)} />
+          </div>
+
+          <input  className="btn btn-primary btn-lg" type="submit" value="Login" />
         </form>
+
         <p>Don't have account? 
             <Link to={"/signup"}> Signup</Link>
         </p>
       </div>
+      
     )
+    
   }
 }
 export default Login;

@@ -1,0 +1,23 @@
+.form{
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    align-content: center;
+    margin-top: 10%;
+    margin-left: 30%;
+    border: .2px solid grey;
+    width: 32%;
+
+}
+.form p{
+margin-top: 20px;
+}
+.form input{
+margin-left: 15px;
+padding: .5px;
+}
+
+
