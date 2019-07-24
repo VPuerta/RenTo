@@ -3,15 +3,15 @@ const Schema   = mongoose.Schema;
 
 const productSchema = new Schema({
   name: String,
-  owner:[{ type: Schema.Types.ObjectId, ref: "User" }],
+  owner:{ type: Schema.Types.ObjectId, ref: "User" },
   category: {
     type: String,
-    enum: ['Sport', 'Other']
+    enum: ['Sport', 'Other'],
   },
   description: String,
   price: Number,
   days:Number,
-  picture: [{
+  pictures: [{
     imgName: String,
     imgPath: String,
   }],

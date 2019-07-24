@@ -27,6 +27,7 @@ mongoose
       _id: idVane,
       username: "Vanesa",
       password: bcrypt.hashSync("alice", bcrypt.genSaltSync(bcryptSalt)),
+      email: "vanesa.p@hotmail.com",
       products:[],
       city: "Madrid",
       rating:[7,6]
@@ -39,6 +40,7 @@ mongoose
       _id: idChema,
       username: "Chema",
       password: bcrypt.hashSync("bob", bcrypt.genSaltSync(bcryptSalt)),
+      email: "chema.p@hotmail.com",
       products:[],
       city: "Sevilla",
       rating:[5,8]
@@ -56,7 +58,7 @@ mongoose
     description: "nuevasss",
     price: 20,
     days:1,
-    picture: [{
+    pictures: [{
       imgName: "https://www.runnea.com/archivos/201609/runnea-news-runtastic-miszapatillas-1-840xXx80.jpg?0",
       imgPath: "zapas",
     }],
@@ -69,7 +71,7 @@ mongoose
   description: "nuevasss",
   price: 15,
   days:1,
-  picture: [{
+  pictures: [{
     imgName: "https://www.runnea.com/archivos/201609/runnea-news-runtastic-miszapatillas-1-840xXx80.jpg?0",
     imgPath: "zapas",
   }]

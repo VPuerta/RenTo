@@ -5,6 +5,7 @@ const userSchema = new Schema({
   username: String,
   password: String,
   // location: { type: { type: String }, coordinates: [Number] },
+  email: String,
   city: String,
   rating: [Number],
 }, 
