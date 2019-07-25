@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
-import AuthServices from '../Services/Services'
-import '../Componets/Signup.css'
+import AuthServices from '../../Services/Services'
+import './Signup.css'
 
 export default class Signup extends Component {
 
@@ -10,8 +10,8 @@ export default class Signup extends Component {
     this.state = { 
       username: '', 
       password: '',
+      city:'',
       email: '',
-      city:''
     };
     this.service = new AuthServices();
   }
@@ -21,16 +21,16 @@ export default class Signup extends Component {
   event.preventDefault();
   const username = this.state.username;
   const password = this.state.password;
-  const email = this.state.email;
   const city = this.state.city
+  const email = this.state.email;
 
-  this.service.signup(username, password,email,city)
+  this.service.signup(username, password,city,email)
   .then( response => {
       this.setState({
           username: "", 
           password: "",
+          city:"",
           email: "",
-          city:''
       });
       this.props.getUser(response)
   })
@@ -64,7 +64,7 @@ render(){
 
         <div className="form-group">
         <label>Email:</label>
-        <input type="email" name="email" placeholder="Email" value={this.state.mail} onChange={ e => this.handleChange(e)}/>
+        <input type="email" name="email" placeholder="Email" value={this.state.email} onChange={ e => this.handleChange(e)}/>
         </div>
 
         <input className="btn btn-primary btn-lg" type="submit" value="Signup" />

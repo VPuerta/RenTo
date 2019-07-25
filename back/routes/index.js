@@ -67,36 +67,8 @@ router.get('/products/:city', (req, res, next) => {
 router.get('/user/:id/products', (req, res, next) => {
   Product
     .find({owner: req.params.id})
-    .populate("products")
-    .populate("owner")
     .then(productsOwner => res.json(productsOwner))
     .catch(e => console.log(e))
 });
-
-
-//preguntar
-// router.post('/user/:id/products', (req, res, next) => {
-//   Product
-//     .find({owner: req.params.id})
-//     .then(
-//       Product
-//       .create({
-//         name: req.body.name,
-//         owner:req.params.id,
-//         category:req.body.category,
-//         description: req.body.description,
-//         price:req.body.price,
-//         picture:{
-//           imgName:req.body.imgName,
-//         },
-//         // location:
-//       }).then(newProduct => res.json(newProduct))
-//     )
-//     .catch(e => console.log(e))
-// }
-
-// );
-
-
 
 module.exports = router;

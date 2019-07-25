@@ -30,7 +30,7 @@ mongoose
       email: "vanesa.p@hotmail.com",
       products:[],
       city: "Madrid",
-      rating:[7,6]
+      rating:[7,6],
       // location:{
       //   lat: 40.416775,
       //   lng: -3.703790
@@ -62,8 +62,7 @@ mongoose
       imgName: "https://www.runnea.com/archivos/201609/runnea-news-runtastic-miszapatillas-1-840xXx80.jpg?0",
       imgPath: "zapas",
     }],
-  //   location: { type: { type: String }, coordinates: [Number] },
-  // }, {
+    location:{lat: 41.3977381, lng: -0.3 },
   },  
   {
     name: "Barbacoa",
@@ -75,7 +74,11 @@ mongoose
     pictures: [{
       imgName:"https://images.vibbo.com/635x476/094/09403867981.jpg",
       imgPath: "barbacoa",
-    }]
+    }],
+    position:{
+      lat: 40.3977381, 
+      lng: -0.3 
+    },
   },
   {
   name: "zapatillas",
@@ -87,7 +90,10 @@ mongoose
   pictures: [{
     imgName: "https://www.runnea.com/archivos/201609/runnea-news-runtastic-miszapatillas-1-840xXx80.jpg?0",
     imgPath: "zapas",
-  }]
+  }],position:{
+    lat: 41.3977381, 
+    lng: -0.4 
+  },
   },
 ]
   

@@ -1,0 +1,15 @@
+.search{
+width: 50%;
+
+}
+.nav-left-item{
+    display: flex;
+   justify-items: center;
+
+
+}
+.nav-left-item p{
+    margin-left: 1.5rem;
+    vertical-align: middle;
+    text-align: center;
+} 

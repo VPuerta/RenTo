@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import SimpleMap from './SimpleMap';
+import SimpleMap from '../Map/SimpleMap';
 
 
 export default class ProductDetail extends Component {
@@ -38,14 +38,13 @@ export default class ProductDetail extends Component {
     render() {
         return (
 
-            <div className="carousel slide" data-ride="carousel"style={{ width: "55%" , padding:"1.5rem"}}>
+            <div className="carousel slide" data-ride="carousel" style={{ width: "55%" , padding:"1.5rem"}}>
                     <div>
                     <Link to={"/user/" + this.state.product.owner._id + "/products"}>
                     <p>{this.state.product.owner.username}</p>
                     </Link>
+                    <button className="btn btn-warning" style={{ marginBottom:"1.5rem", color:"white"}}>Chat</button>
                      </div>
-                    <div>Chat</div>
-
                 <ol className="carousel-indicators">
 
                     <li data-target="#carouselExampleIndicators" data-slide-to="0" className="active"></li>
@@ -82,7 +81,7 @@ export default class ProductDetail extends Component {
                 <div className="card mb-3">
                         <div className="card-body">
                             <h5 className="card-title">{this.state.product.name}</h5>
-                            <p className="card-text">{this.state.product.price}</p>
+                            <p className="card-text">{this.state.product.price} €</p>
                             <p className="card-text">{this.state.product.description}</p>
                         </div>
                         

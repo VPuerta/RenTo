@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export default class AuthServices {
+export default class AuthServices {  
   constructor(){
     this.service = axios.create({
       baseURL: 'http://localhost:5000/auth',
@@ -28,8 +28,4 @@ export default class AuthServices {
     return this.service.get('/logout')
   .then(response => response.data)
   }
-
-
-
-
 }
