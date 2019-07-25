@@ -64,7 +64,20 @@ mongoose
     }],
   //   location: { type: { type: String }, coordinates: [Number] },
   // }, {
-  },{
+  },  
+  {
+    name: "Barbacoa",
+    owner: idVane,
+    category: 'Other',
+    description: "Como me gusta la barbacoa",
+    price: 39,
+    days:1,
+    pictures: [{
+      imgName:"https://images.vibbo.com/635x476/094/09403867981.jpg",
+      imgPath: "barbacoa",
+    }]
+  },
+  {
   name: "zapatillas",
   owner: idChema,
   category: 'Sport',
@@ -75,7 +88,8 @@ mongoose
     imgName: "https://www.runnea.com/archivos/201609/runnea-news-runtastic-miszapatillas-1-840xXx80.jpg?0",
     imgPath: "zapas",
   }]
-  }]
+  },
+]
   
   
   User

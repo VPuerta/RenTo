@@ -28,9 +28,9 @@ export default class Listproducts extends Component {
 
     render() {
         return (
-            <div>
+            <div style={{ width: "18rem",padding:"2rem"}}>
                 <div>
-                    <div className="card" style={{ width: "18rem" }} >
+                    <div className="card" >
                         {
                             this.state.products.map(product => {
                                 return (
@@ -38,10 +38,10 @@ export default class Listproducts extends Component {
                                         <div className="card" style={{width: "18rem"}}>
                                             <img src={product.pictures[0].imgName} className="card-img-top" alt={product.name} />
                                             <div className="card-body">
-                                                <Link to={`/product/:` + product._id}>
+                                                <Link to={"/product/" + product._id}>
                                                     <h3>{product.name}</h3>
                                                 </Link>
-                                                <p className="card-text">{product.description}</p>
+                                                <h3>{product.price} €</h3>
                                             </div>
                                         </div>
                                     </div>

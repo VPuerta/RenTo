@@ -44,6 +44,7 @@ router.get('/products', (req, res, next) => {
 router.get('/product/:id', (req, res, next) => {
   Product
     .findById(req.params.id)
+    .populate("owner")
     .then(product => res.json(product))
     .catch(e => console.log(e))
 });
@@ -66,6 +67,8 @@ router.get('/products/:city', (req, res, next) => {
 router.get('/user/:id/products', (req, res, next) => {
   Product
     .find({owner: req.params.id})
+    .populate("products")
+    .populate("owner")
     .then(productsOwner => res.json(productsOwner))
     .catch(e => console.log(e))
 });
