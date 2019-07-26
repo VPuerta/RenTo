@@ -11,12 +11,28 @@
     width: 8rem;  
 }
 .btn-edit{
-   
-    display: flex;
-    justify-content: center;
-   
+   display: flex;
+}
+.btn-warning{
+margin-top: 1.5rem;
+margin-left: 1.5rem;
+height: 2.5rem;
+
 }
 
 .card-tittle{
     width: .3rem;
+}
+.tittle{
+    text-align: center;
+    padding-top: 1rem;
+    color: grey;
+}
+.add-new-product{
+    display: flex;
+    margin: 2rem;
+    padding: 1rem;
+    text-align: center;
+    border: dotted grey 2px;
+    background-color: whitesmoke;
 }
