@@ -1,0 +1,22 @@
+.myproducts{
+    display: flex;
+    margin: 2rem;
+    padding: 1rem;
+    text-align: center;
+    border: dotted grey 2px;
+    background-color: whitesmoke;
+   
+}
+.image{
+    width: 8rem;  
+}
+.btn-edit{
+   
+    display: flex;
+    justify-content: center;
+   
+}
+
+.card-tittle{
+    width: .3rem;
+}

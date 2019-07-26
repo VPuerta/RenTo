@@ -44,9 +44,7 @@ class App extends Component {
 
   componentDidMount() {
     this.getAllProducts();
-  }
 
-  componentDidMount() {
     this.service.loggedin().then(useData => {
       if (useData) {
         this.setState({
@@ -145,7 +143,7 @@ class App extends Component {
           }} />
           <Route exact path='/user/:id/products' component={ProductsOwner} />
           }} />
-          <Route exact path='/user/:id/products' component={MyProducts}/>
+          <Route exact path='/myproducts' render={()=> <MyProducts {...this.state.loggedInUser} />} />
           }} />
         </Switch>
       </React.Fragment>

@@ -8,6 +8,7 @@ class Navbar extends Component {
     super(props);
     console.log(props)
     this.state = {
+      products: [],
       loggedInUser: null
     };
   }
@@ -44,7 +45,7 @@ class Navbar extends Component {
           </Link>
 
           <form className="form-inline">
-            <input className="form-control mr-sm-2 search" type="search" placeholder="Search" aria-label="Search" value={this.props.filterQuery} />
+            <input className="form-control mr-sm-2 search" type="search" placeholder="Search" aria-label="Search" defaultValue={this.props.filterQuery} />
             <button className="btn btn-outline-primary" type="submit" onClick={e => this.props.filterProductHandler(e)}>Search</button>
           </form>
 
@@ -57,9 +58,10 @@ class Navbar extends Component {
               <p>My Profile</p>
             </Link>
 
-            <Link to={"/user/:id/myproducts"}>
+            <Link to="/myproducts">
               <p>My Products</p>
             </Link>
+           
             
             <Link to={"/user/:id"}>
               <p>Messages</p>
