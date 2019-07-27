@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 
 export default class FilterProducts extends Component {
     constructor(props) {
-        super(props)
-        console.log(props)
+        super(props);
+        console.log(props);
         this.state = {
             products: [],
 
@@ -20,7 +19,7 @@ export default class FilterProducts extends Component {
         return (
             <div>
                 <div >
-                    <select name="category" form="category" value={this.state.category} onChange={ e => this.handleChange(e)}>
+                    <select name="category" form="category" value={this.state.category} onChange={ e => this.handleChange(e) }>
                         <option value="error">All Categories</option>
                         <option value="Sport">Sport</option>
                         <option value="Other">Other</option>

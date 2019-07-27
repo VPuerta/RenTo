@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import AuthServices from '../../Services/Services'
 
 export default class UploadProduct extends Component {

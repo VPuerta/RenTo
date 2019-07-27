@@ -5,25 +5,47 @@ import './Listproducts.css'
 import FilterProducts from '../Filter/FilterProducts';
 
 export default class Listproducts extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
+
         this.state = {
-            products: []
+            products: [],
+            getFilterQuery: props.getFilterQuery
         }
     }
 
     getAllProducts = () => {
         axios.get(`http://localhost:5000/products`)
-            .then(allProducts => {
-                console.log(allProducts.data);
+            .then(response => {
                 this.setState({
-                    products: allProducts.data
+                    products: this.filterProducts(response.data)
                 })
-            }).catch(err => console.log(err))
+            })
+            .catch(err => {
+                console.log(err)
+            })
     };
 
     componentDidMount() {
         this.getAllProducts();
+    }
+
+    componentWillReceiveProps() {
+        this.getAllProducts();
+    }
+
+    filterProducts = (products) => {
+        let query = this.state.getFilterQuery().toLowerCase();
+        if (query.length === 0) {
+            return products;
+        }
+
+        let filteredProducts = products.filter(product => {
+            let name = product.name.toLowerCase();
+            return name.includes(query);
+        });
+
+        return filteredProducts
     };
 
     getImageName = (product) => {
@@ -38,7 +60,7 @@ export default class Listproducts extends Component {
 
     render() {
         return (
-            <div style={{ width: "18rem",padding:"2rem"}}>
+            <div style={{ width: "18rem", padding:"2rem"}}>
                 <FilterProducts {...this.state.product}/>
                 <div>
                     <div className="card" >
