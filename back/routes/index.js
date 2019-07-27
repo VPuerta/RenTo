@@ -106,4 +106,14 @@ router.post('/addProduct', (req, res, next) => {
   // })
 });
 
+router.post('/deleteProduct', (req, res, next) => {
+  console.log("body", req.body)
+  Product
+      .findByIdAndDelete(req.body.id)
+      .then(Products => res.json(Products))
+      .catch(e => console.log(e))
+});
+
+
+
 module.exports = router;

@@ -30,13 +30,12 @@ export default class AuthServices {
   }
 
   addProduct = (owner, name, category, price, description) => {
-    return this.service.post('/addProduct', {owner,name,category,price,description})
+    return this.service.put('/addProduct', {owner,name,category,price,description})
     .then(response => response.data)
   }
 
-  deleteProduct = (owner, name, category, price, description) => {
-    return this.service.post('/deleteProduct', {owner,name,category,price,description})
+  deleteProduct = (id) => {
+    return this.service.post('/deleteProduct', {id})
     .then(response => response.data)
   }
-
 }

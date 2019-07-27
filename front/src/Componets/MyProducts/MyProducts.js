@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import './MyProducts.css'
 import UploadProduct from '../UploadProduct/UploadProduct';
+import AuthServices from '../../Services/Services'
 
 export default class MyProducts extends Component {
     constructor(props) {
@@ -9,6 +10,7 @@ export default class MyProducts extends Component {
         this.state = {
             myProducts: []
         }
+        this.service = new AuthServices();
     }
 
     componentDidMount() {
@@ -25,17 +27,8 @@ export default class MyProducts extends Component {
             })
     };
 
-    deleteProduct = (idx) => {
-        console.log(idx)
-        let productSpreadOperator = [...this.state.myProducts];
-        productSpreadOperator.splice(idx,1);
-        this.setState({
-            myProducts: productSpreadOperator
-        });
-    };
-
     uploadProductDidAddProduct = (product) => {
-        console.log("Product added" ,product);
+        console.log("Product added", product);
         const myProducts = this.state.myProducts;
         myProducts.push(product);
         this.setState({
@@ -53,6 +46,18 @@ export default class MyProducts extends Component {
         return imgName;
     };
 
+    deleteProduct = (product, idx) => {
+        this.service.deleteProduct(product._id)
+            .then(response => {
+                let productSpreadOperator = [...this.state.myProducts];
+                productSpreadOperator.splice(idx, 1)
+                this.setState({
+                    myProducts: productSpreadOperator
+                });
+            }).catch((err) => { console.log(err) })
+    };
+
+
     render() {
         return (
             <div className="card mb-3">
@@ -60,12 +65,12 @@ export default class MyProducts extends Component {
                     <h3>Your Products {this.props.username}</h3>
                 </div>
                 {
-                    this.state.myProducts.map((myProduct,idx) => {
+                    this.state.myProducts.map((myProduct, idx) => {
                         return (
                             <div className="myproducts">
                                 <div key={idx} />
                                 <div className="col-md-4">
-                                    <img className="image" src={this.getImageName(myProduct)} alt={myProduct.name}/>
+                                    <img className="image" src={this.getImageName(myProduct)} alt={myProduct.name} />
                                 </div>
                                 <div className="card-body card-tittle">
                                     <h5 className="card-title">{myProduct.name}</h5>
@@ -79,7 +84,7 @@ export default class MyProducts extends Component {
                                 </div>
                                 <div className="btn-edit">
                                     <button className="btn btn-warning">Edit</button>
-                                    <button className="btn btn-warning" onClick={() => this.deleteProduct(idx)}>Delete</button>
+                                    <button className="btn btn-warning" onClick={() => this.deleteProduct(myProduct, idx)}>Delete</button>
                                 </div>
 
 
@@ -89,7 +94,7 @@ export default class MyProducts extends Component {
                 }
 
                 <div >
-                    <UploadProduct {...this.props} uploadProductDidAddProduct={ p => this.uploadProductDidAddProduct(p) }/>
+                    <UploadProduct {...this.props} uploadProductDidAddProduct={p => this.uploadProductDidAddProduct(p)} />
                 </div>
             </div>
         )
