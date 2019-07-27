@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css'
-import rento from "./rento.jpeg"
+import rento from '../Assets/logo-white.png';
 
 class Navbar extends Component {
   constructor(props) {

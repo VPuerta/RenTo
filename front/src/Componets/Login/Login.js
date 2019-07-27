@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import AuthServices from '../../Services/Services'
 import './Login.css'
 import { Link } from 'react-router-dom';
-import logo from './Assets/logo-white.png';
+import logo from '../Assets/logo-white.png';
 
 class Login extends Component {
     constructor(props){
