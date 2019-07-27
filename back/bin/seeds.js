@@ -31,6 +31,7 @@ mongoose
       products:[],
       city: "Madrid",
       rating:[7,6],
+      average: 6.5,
       // location:{
       //   lat: 40.416775,
       //   lng: -3.703790
@@ -43,7 +44,8 @@ mongoose
       email: "chema.p@hotmail.com",
       products:[],
       city: "Sevilla",
-      rating:[5,8]
+      rating:[6,8],
+      average: 7,
       // location:{
       //   lat: 40.416775,
       //   lng: -3.703790

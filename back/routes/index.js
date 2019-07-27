@@ -1,7 +1,9 @@
 const express = require('express');
+require('dotenv');
 const router = express.Router();
 const Product = require("../models/Product");
 const User = require("../models/User");
+const uploadCloud = require('../cloudinary.js');
 
 
 
@@ -67,8 +69,47 @@ router.get('/products/:city', (req, res, next) => {
 router.get('/user/:id/products', (req, res, next) => {
   Product
     .find({owner: req.params.id})
+    .populate("owner")
     .then(productsOwner => res.json(productsOwner))
     .catch(e => console.log(e))
+});
+
+//actual write to cloudinary via the middleware specified in ../config/cloudinary.js
+// router.post('/addProduct', uploadCloud.single('photo'), (req, res, next) => {
+  router.post('/addProduct', (req, res, next) => {
+  // const imgName = req.file.originalname;
+  // const newPhoto = new Photo({imgName})
+  // console.log(req.file.url);
+  const owner = req.params.owner;
+  const name = req.body.name;
+  const category = req.body.category;
+  const price = req.body.price;
+  const description = req.body.description;
+
+  console.log(description)
+  const newProduct = new Product({
+    owner,
+    name,
+    category,
+    price,
+    description
+  });
+  newProduct
+  .save()
+  .then(()=>{
+    console.log("Product saved!");
+      res.status(200).json(newProduct);
+  }).catch(err => {
+    console.log("Error saving the Product:" + err);
+    res.status(500).json({ message: 'Could not save Product' });
+  });
+  
+  // //actual write in mongo using mongoose
+  // newPhoto.save()
+  // .then(photo => {
+  //   res.json({url: req.file, photo: photo});
+  // }).catch(error => {console.log(error);
+  // })
 });
 
 module.exports = router;

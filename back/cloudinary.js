@@ -17,7 +17,7 @@ cloudinary.config({
 //cloudinaryStorage config. please see its API via https://www.npmjs.com/package/multer-storage-cloudinary
 var storage = cloudinaryStorage({
   cloudinary: cloudinary,
-  folder: 'folder-name', // The name of the folder in cloudinary
+  folder: 'Rento', // The name of the folder in cloudinary
   allowedFormats: ['jpg', 'png'],
   //remember you can create your custom filename pattern
   filename: function (req, file, cb) {
