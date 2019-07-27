@@ -7,22 +7,22 @@ class Navbar extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            search: props.filterQuery
+            filterQuery: props.filterQuery
         }
     }
 
     handleChange = (event) => {
         const { value } = event.target;
-        this.setState({search: value})
+        this.setState({filterQuery: value})
     };
 
     searchButtonClicked = (e) => {
-        this.props.filterProducts(this.state.search)
+        this.props.filterProducts(this.state.filterQuery)
     };
 
     homeButtonClicked = (e) => {
         this.props.filterProducts("");
-        this.setState({search: ""})
+        this.setState({filterQuery: ""})
     };
 
     render() {
@@ -34,7 +34,7 @@ class Navbar extends Component {
                 </Link>
 
                 <form className="form-inline">
-                    <input className="form-control mr-sm-2 search" type="search" name="search" placeholder="Search" aria-label="Search" onChange={ e => this.handleChange(e)} value={this.state.search} />
+                    <input className="form-control mr-sm-2 search" type="search" name="search" placeholder="Search" aria-label="Search" onChange={ e => this.handleChange(e)} value={this.state.filterQuery} />
                     <Link className="btn btn-outline-primary" onClick={ e => this.searchButtonClicked(e) } to={"/products"}>Search</Link>
                 </form>
 
