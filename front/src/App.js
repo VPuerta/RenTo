@@ -124,7 +124,7 @@ class App extends Component {
         </Navbar>
         <Switch>
           <Route exact path='/login' render={() => {
-            return <Redirect to="/profile" />
+            return <Redirect to="/products" />
           }} />
           <Route exact path='/profile' render={() => {
             return <Profile {...this.state.loggedInUser} logout={this.logout} />
@@ -140,6 +140,9 @@ class App extends Component {
           <Route exact path='/user/:id/products' component={ProductsOwner} />
           }} />
           <Route exact path='/myproducts' render={()=> <MyProducts {...this.state.loggedInUser} />} />
+          }} />
+          <Route exact path='/addProduct' render={()=> {
+            return <Redirect to="/myproducts" />
           }} />
         </Switch>
       </React.Fragment>

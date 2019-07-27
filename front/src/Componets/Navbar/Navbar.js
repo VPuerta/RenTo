@@ -39,7 +39,7 @@ class Navbar extends Component {
     } else {
       return (
         <nav className="navbar navbar-light bg-light">
-          <Link to={"/profile"} className="navbar-brand">
+          <Link to={"/products"} className="navbar-brand">
             <img src={rento} width="30" height="30" className="d-inline-block align-top" />
             RenTo
           </Link>
@@ -50,9 +50,9 @@ class Navbar extends Component {
           </form>
 
           <div className="nav-left-item">
-            <Link to={"/products"}>
+            {/* <Link to={"/products"}>
               <p>All Products</p>
-            </Link>
+            </Link> */}
 
             <Link to={"/profile"}>
               <p>My Profile</p>
@@ -63,7 +63,7 @@ class Navbar extends Component {
             </Link>
            
             
-            <Link to={"/user/:id"}>
+            <Link to={"/messages"}>
               <p>Messages</p>
             </Link>
           </div>

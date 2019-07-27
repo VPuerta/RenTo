@@ -33,7 +33,7 @@ export default class MyProducts extends Component {
 
             <div className="card mb-3">
                 <div className="tittle">
-                    <h3>Your Products</h3>
+                    <h3>Your Products {this.props.username}</h3>
                 </div>
                 {
                     this.state.myProducts.map(myProduct => {
@@ -66,7 +66,7 @@ export default class MyProducts extends Component {
                 }
 
                 <div >
-                    <UploadProduct></UploadProduct>
+                    <UploadProduct {...this.props} ></UploadProduct>
                 </div>
             </div>
         )

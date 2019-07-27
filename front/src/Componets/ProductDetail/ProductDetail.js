@@ -41,7 +41,7 @@ export default class ProductDetail extends Component {
             <div className="carousel slide" data-ride="carousel" style={{ width: "55%" , padding:"1.5rem"}}>
                     <div>
                     <Link to={"/user/" + this.state.product.owner._id + "/products"}>
-                    <p>{this.state.product.owner.username}</p>
+                    <p>Rent {this.state.product.owner.username}</p>
                     </Link>
                     <button className="btn btn-warning" style={{ marginBottom:"1.5rem", color:"white"}}>Chat</button>
                      </div>

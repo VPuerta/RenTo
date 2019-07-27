@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import './Listproducts.css'
+import FilterProducts from './Filter/FilterProducts';
 
 export default class Listproducts extends Component {
     constructor() {
@@ -29,6 +30,7 @@ export default class Listproducts extends Component {
     render() {
         return (
             <div style={{ width: "18rem",padding:"2rem"}}>
+                <FilterProducts {...this.state.product}></FilterProducts>
                 <div>
                     <div className="card" >
                         {

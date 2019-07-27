@@ -9,6 +9,7 @@ export default class ProductsOwner extends Component {
         console.log(props)
         this.state = {
             productsOwner: [],
+            
         }
     }
     componentDidMount() {
@@ -33,7 +34,7 @@ export default class ProductsOwner extends Component {
     render() {
         return (
             <div style={{ width: "18rem",padding:"2rem"}}>
-                <p>All Products  </p>
+                <p>All Products </p>
                 <div>
                     <div className="card">
                         {
