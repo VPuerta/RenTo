@@ -25,9 +25,10 @@ export default class MyProducts extends Component {
             })
     };
 
-    deleteProduct = () => {
+    deleteProduct = (idx) => {
+        console.log(idx)
         let productSpreadOperator = [...this.state.myProducts];
-        productSpreadOperator.splice();
+        productSpreadOperator.splice(idx,1);
         this.setState({
             myProducts: productSpreadOperator
         });
@@ -59,10 +60,10 @@ export default class MyProducts extends Component {
                     <h3>Your Products {this.props.username}</h3>
                 </div>
                 {
-                    this.state.myProducts.map(myProduct => {
+                    this.state.myProducts.map((myProduct,idx) => {
                         return (
                             <div className="myproducts">
-                                <div key={myProduct._id} />
+                                <div key={idx} />
                                 <div className="col-md-4">
                                     <img className="image" src={this.getImageName(myProduct)} alt={myProduct.name}/>
                                 </div>
@@ -78,7 +79,7 @@ export default class MyProducts extends Component {
                                 </div>
                                 <div className="btn-edit">
                                     <button className="btn btn-warning">Edit</button>
-                                    <button className="btn btn-warning" clickDelete={() => this.deleteProduct()}>Delete</button>
+                                    <button className="btn btn-warning" onClick={() => this.deleteProduct(idx)}>Delete</button>
                                 </div>
 
 

@@ -30,11 +30,20 @@ export default class ProductsOwner extends Component {
                 console.log(err)
             })
     }
+    getImageName = (product) => {
+        let imgName;
+        if (product.pictures.length !== 0) {
+            imgName = product.pictures[0].imgName
+        } else {
+            imgName = ""
+        }
+        return imgName;
+    };
 
     render() {
         return (
             <div style={{ width: "18rem",padding:"2rem"}}>
-                <p>All Products </p>
+                <p>All Products {this.productsOwner.length}</p>
                 <div>
                     <div className="card">
                         {
@@ -42,7 +51,7 @@ export default class ProductsOwner extends Component {
                                 return (
                                     <div key={productOwner._id}>
                                         <div className="card" style={{width: "18rem"}}>
-                                            <img src={productOwner.pictures[0].imgName} className="card-img-top" alt={productOwner.name} />
+                                            <img src={this.getImageName(productOwner)} className="card-img-top" alt={productOwner.name} />
                                             <div className="card-body">
                                                 <Link to={"/product/" + productOwner._id}>
                                                     <h3>{productOwner.name}</h3>

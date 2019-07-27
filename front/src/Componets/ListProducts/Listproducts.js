@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import './Listproducts.css'
-import FilterProducts from './Filter/FilterProducts';
+import FilterProducts from '../Filter/FilterProducts';
 
 export default class Listproducts extends Component {
     constructor() {
