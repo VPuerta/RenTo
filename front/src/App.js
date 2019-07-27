@@ -102,10 +102,6 @@ class App extends Component {
     if (!this.state.loggedInUser) {
       return (
         <React.Fragment>
-          <Navbar
-            filterProducts={(e) => this.filterProducts(e)}
-            filterQuery={this.state.filterQuery}>
-          </Navbar>
           <Switch>
             <Route exact path='/login' render={() => {
               return <Login {...this.state.loggedInUser} getUser={this.getTheUser} />
