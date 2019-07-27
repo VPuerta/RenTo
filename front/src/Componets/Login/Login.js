@@ -7,7 +7,10 @@ import logo from './Assets/logo-white.png';
 class Login extends Component {
     constructor(props){
         super(props);
-        this.state = { username: '', password: '' };
+        this.state = { 
+          username: '', 
+          password: '' 
+        };
         this.service = new AuthServices();
     }
 

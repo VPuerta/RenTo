@@ -25,6 +25,14 @@ export default class MyProducts extends Component {
             })
     };
 
+    deleteProduct = () => {
+        let productSpreadOperator = [...this.state.myProducts];
+        productSpreadOperator.splice();
+        this.setState({
+            myProducts: productSpreadOperator
+        });
+    };
+
     uploadProductDidAddProduct = (product) => {
         console.log("Product added" ,product);
         const myProducts = this.state.myProducts;
@@ -70,7 +78,7 @@ export default class MyProducts extends Component {
                                 </div>
                                 <div className="btn-edit">
                                     <button className="btn btn-warning">Edit</button>
-                                    <button className="btn btn-warning">Delete</button>
+                                    <button className="btn btn-warning" clickDelete={() => this.deleteProduct()}>Delete</button>
                                 </div>
 
 

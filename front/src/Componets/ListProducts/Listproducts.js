@@ -6,7 +6,7 @@ import FilterProducts from './Filter/FilterProducts';
 
 export default class Listproducts extends Component {
     constructor() {
-        super()
+        super();
         this.state = {
             products: []
         }
@@ -15,16 +15,16 @@ export default class Listproducts extends Component {
     getAllProducts = () => {
         axios.get(`http://localhost:5000/products`)
             .then(allProducts => {
-                console.log(allProducts.data)
+                console.log(allProducts.data);
                 this.setState({
                     products: allProducts.data
                 })
             }).catch(err => console.log(err))
-    }
+    };
 
     componentDidMount() {
         this.getAllProducts();
-    }
+    };
 
     getImageName = (product) => {
         let imgName;

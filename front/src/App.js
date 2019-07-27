@@ -19,7 +19,7 @@ class App extends Component {
     super(props)
     this.state = {
       user:"",
-      prodcuts: [],
+      products: [],
       filterQuery: "",
       filteredProducts: [],
       loggedInUser: null,
@@ -129,11 +129,13 @@ class App extends Component {
           <Route exact path='/profile' render={() => {
             return <Profile {...this.state.loggedInUser} logout={this.logout} />
           }} />
-          <Route exact path='/signup' render={() => {
+          {/* <Route exact path='/signup' render={() => {
             return <Redirect to="/login" />
-          }} />
+          }} /> */}
           <Route exact path='/products' render={() => {
-            return <Listproducts products={this.props.products} />
+            return <Listproducts products={this.props.products} 
+            filteredProducts ={this.props.filteredProducts}
+             />
           }} />
           <Route exact path='/product/:id' component={ProductDetail} />
           }} />

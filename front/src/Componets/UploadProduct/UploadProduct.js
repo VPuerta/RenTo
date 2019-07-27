@@ -45,7 +45,6 @@ export default class UploadProduct extends Component {
 
     handleChange = (event) => {
         const { name, value } = event.target;
-        console.log(this.state);
         this.setState({[name]: value});
     };
 
