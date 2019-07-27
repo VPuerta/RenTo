@@ -25,6 +25,13 @@ export default class MyProducts extends Component {
                 console.log(err)
             })
     }
+      deleteProduct = () => {
+        let productSpreadOperator = [...this.state.myProducts];
+        productSpreadOperator.splice();
+        this.setState({
+            myProducts: productSpreadOperator
+        });
+      };
 
 
     render() {
@@ -56,7 +63,7 @@ export default class MyProducts extends Component {
                                 </div>
                                 <div className="btn-edit">
                                     <button className="btn btn-warning">Edit</button>
-                                    <button className="btn btn-warning">Delete</button>
+                                    <button className="btn btn-warning" clickDelete={() => this.deleteProduct()}>Delete</button>
                                 </div>
 
 

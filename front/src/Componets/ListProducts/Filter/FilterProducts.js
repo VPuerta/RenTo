@@ -1,12 +1,21 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import axios from 'axios';
 
 export default class FilterProducts extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
+        console.log(props)
         this.state = {
-            products: []
+            products: [],
+
         }
     }
+
+    handleChange = (event) => {
+        const {name, value} = event.target;
+        this.setState({[name]: value});
+    };
+
     render() {
         return (
             <div>

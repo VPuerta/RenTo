@@ -26,9 +26,6 @@ router.get('/user/:id', (req, res, next) => {
     .catch(e => console.log(e))
 });
 
-
-
-
 router.get('/products', (req, res, next) => {
   let promise = null
 
@@ -80,12 +77,13 @@ router.get('/user/:id/products', (req, res, next) => {
   // const imgName = req.file.originalname;
   // const newPhoto = new Photo({imgName})
   // console.log(req.file.url);
+  console.log("hiw2")
   const owner = req.params.owner;
   const name = req.body.name;
   const category = req.body.category;
   const price = req.body.price;
   const description = req.body.description;
-
+  
   console.log(description)
   const newProduct = new Product({
     owner,
@@ -94,14 +92,15 @@ router.get('/user/:id/products', (req, res, next) => {
     price,
     description
   });
+
   newProduct
   .save()
   .then(()=>{
-    console.log("Product saved!");
+    console.log("Product created!");
       res.status(200).json(newProduct);
   }).catch(err => {
-    console.log("Error saving the Product:" + err);
-    res.status(500).json({ message: 'Could not save Product' });
+    console.log("Error creating the Product:" + err);
+    res.status(500).json({ message: 'Could not create Product' });
   });
   
   // //actual write in mongo using mongoose

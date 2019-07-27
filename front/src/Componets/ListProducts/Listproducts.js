@@ -26,6 +26,7 @@ export default class Listproducts extends Component {
         this.getAllProducts();
     }
 
+  
 
     render() {
         return (
