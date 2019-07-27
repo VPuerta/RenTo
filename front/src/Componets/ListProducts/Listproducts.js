@@ -26,11 +26,20 @@ export default class Listproducts extends Component {
         this.getAllProducts();
     }
 
+    getImageName = (product) => {
+        let imgName;
+        if (product.pictures.length !== 0) {
+            imgName = product.pictures[0].imgName
+        } else {
+            imgName = ""
+        }
+        return imgName;
+    };
 
     render() {
         return (
             <div style={{ width: "18rem",padding:"2rem"}}>
-                <FilterProducts {...this.state.product}></FilterProducts>
+                <FilterProducts {...this.state.product}/>
                 <div>
                     <div className="card" >
                         {
@@ -38,7 +47,7 @@ export default class Listproducts extends Component {
                                 return (
                                     <div key={product._id}>
                                         <div className="card" style={{width: "18rem"}}>
-                                            <img src={product.pictures[0].imgName} className="card-img-top" alt={product.name} />
+                                            <img src={this.getImageName(product)} className="card-img-top" alt={product.name} />
                                             <div className="card-body">
                                                 <Link to={"/product/" + product._id}>
                                                     <h3>{product.name}</h3>

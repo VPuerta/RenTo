@@ -139,7 +139,8 @@ class App extends Component {
           }} />
           <Route exact path='/user/:id/products' component={ProductsOwner} />
           }} />
-          <Route exact path='/myproducts' render={()=> <MyProducts {...this.state.loggedInUser} />} />
+          <Route exact path='/myproducts' render={()=> {
+            return <MyProducts {...this.state.loggedInUser} getUser={this.getTheUser} />
           }} />
           <Route exact path='/addProduct' render={()=> {
             return <Redirect to="/myproducts" />

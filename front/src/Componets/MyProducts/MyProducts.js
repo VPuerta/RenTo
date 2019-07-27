@@ -6,31 +6,46 @@ import UploadProduct from '../UploadProduct/UploadProduct';
 export default class MyProducts extends Component {
     constructor(props) {
         super(props);
-        console.log(props)
         this.state = {
             myProducts: []
         }
     }
+
     componentDidMount() {
-        // const params = this.props._id;
-        const params = "5d39ef4afe5e334603b4128e";
-        axios.get(`http://localhost:5000/user/${params}/products`)
+        axios.get(`http://localhost:5000/user/${this.props._id}/products`)
             .then(response => {
+                console.log("Get my products did success with response", response);
                 const myProducts = response.data;
                 this.setState({
                     myProducts: myProducts
                 });
             })
             .catch((err) => {
-                console.log(err)
+                console.log("Get my products did fail with error", err);
             })
-    }
+    };
 
+    uploadProductDidAddProduct = (product) => {
+        console.log("Product added" ,product);
+        const myProducts = this.state.myProducts;
+        myProducts.push(product);
+        this.setState({
+            myProducts: myProducts
+        });
+    };
+
+    getImageName = (product) => {
+        let imgName;
+        if (product.pictures.length !== 0) {
+            imgName = product.pictures[0].imgName
+        } else {
+            imgName = ""
+        }
+        return imgName;
+    };
 
     render() {
-
         return (
-
             <div className="card mb-3">
                 <div className="tittle">
                     <h3>Your Products {this.props.username}</h3>
@@ -41,9 +56,8 @@ export default class MyProducts extends Component {
                             <div className="myproducts">
                                 <div key={myProduct._id} />
                                 <div className="col-md-4">
-                                    <img className="image" src={myProduct.pictures[0].imgName} alt={myProduct.name} />
+                                    <img className="image" src={this.getImageName(myProduct)} alt={myProduct.name}/>
                                 </div>
-
                                 <div className="card-body card-tittle">
                                     <h5 className="card-title">{myProduct.name}</h5>
                                 </div>
@@ -66,7 +80,7 @@ export default class MyProducts extends Component {
                 }
 
                 <div >
-                    <UploadProduct {...this.props} ></UploadProduct>
+                    <UploadProduct {...this.props} uploadProductDidAddProduct={ p => this.uploadProductDidAddProduct(p) }/>
                 </div>
             </div>
         )

@@ -7,6 +7,7 @@ export default class FilterProducts extends Component {
             products: []
         }
     }
+
     render() {
         return (
             <div>
