@@ -8,11 +8,9 @@ import Signup from './Componets/Signup/Signup';
 import Profile from './Componets/Profile/Profile';
 import AuthServices from './Services/Services'
 import Listproducts from './Componets/ListProducts/Listproducts';
-import axios from 'axios';
 import ProductDetail from './Componets/ProductDetail/ProductDetail';
 import ProductsOwner from './Componets/ProducOwner/ProductsOwner';
 import MyProducts from './Componets/MyProducts/MyProducts';
-import FilterProducts from './Componets/Filter/FilterProducts';
 
 
 class App extends Component {
@@ -20,7 +18,6 @@ class App extends Component {
         super(props);
         this.state = {
             filterQuery: "",
-            filterCategory:"",
             loggedInUser: null,
         };
         this.service = new AuthServices();
@@ -67,16 +64,6 @@ class App extends Component {
         });
     }
 
-    filterCategory = () => {
-      this.service.productCategory()
-          .then(filterCategory => {
-              this.setState({
-                ...this.state,
-                filterCategory: filterCategory
-              })
-          })
-  };
-
     render() {
         // If the user is not logged, just allow him to go to login and sing up.
         if (!this.state.loggedInUser) {
@@ -109,7 +96,7 @@ class App extends Component {
                         return <Profile {...this.state.loggedInUser} logout={this.logout} />
                     }} />
                     <Route exact path='/products' render={() => {
-                        return <Listproducts getFilterQuery={() => { return this.state.filterQuery}} />
+                        return <Listproducts getFilterQuery={() => { return this.state.filterQuery }} />
                     }} />
                     <Route exact path='/product/:id' component={ProductDetail} />
                     }} />
@@ -120,10 +107,6 @@ class App extends Component {
                     }} />
                     <Route exact path='/addProduct' render={()=> {
                         return <Redirect to="/myproducts" />
-                    }} />
-
-                     <Route exact path='/category' render={()=> {
-                        return <FilterProducts filterCategory={this.filterCategory} />
                     }} />
                 </Switch>
             </React.Fragment>

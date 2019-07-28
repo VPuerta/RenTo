@@ -10,8 +10,7 @@ export default class Listproducts extends Component {
 
         this.state = {
             products: [],
-            getFilterQuery: props.getFilterQuery,
-            filterCategory: props.filterCategory
+            category: "All"
         }
         this.service = new AuthServices();
     }
@@ -28,6 +27,10 @@ export default class Listproducts extends Component {
             });
     }
 
+    filterCategoryDidUpdate = (c) => {
+        this.setState({...this.state, category: c})
+        this.getAllProducts()
+    }
 
     componentDidMount() {
         this.getAllProducts();
@@ -38,14 +41,26 @@ export default class Listproducts extends Component {
     }
 
     filterProducts = (products) => {
-        let query = this.state.getFilterQuery().toLowerCase();
-        if (query.length === 0) {
-            return products;
-        }
+        let query = this.props.getFilterQuery().toLowerCase();
+        let category = this.state.category
 
-        let filteredProducts = products.filter(product => {
-            let name = product.name.toLowerCase();
-            return name.includes(query);
+        console.log("Filtering get all products by query", query, "category", category)
+
+        let filteredProducts = products
+        .filter(product => {
+            if (query.length === 0) {
+                return true;
+            } else {
+                let name = product.name.toLowerCase();
+                return name.includes(query);
+            }
+        })
+        .filter(product => {
+            if (category === "All" || category === "") {
+                return true
+            } else {
+                return product.category === category;
+            }
         });
 
         return filteredProducts
@@ -64,7 +79,7 @@ export default class Listproducts extends Component {
     render() {
         return (
             <div className="container">
-                <FilterProducts {...this.state.product} filterProducts = {this.filterProducts} />
+                <FilterProducts {...this.state.product} filterProducts={ c => this.filterCategoryDidUpdate(c) } />
                 <div>
                     <div className="items" >
                         {
