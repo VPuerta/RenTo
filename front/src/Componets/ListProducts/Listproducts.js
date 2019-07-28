@@ -6,10 +6,12 @@ import FilterProducts from '../Filter/FilterProducts';
 import AuthServices from '../../Services/Services'
 
 export default class Listproducts extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
+
         this.state = {
-            products: []
+            products: [],
+            getFilterQuery: props.getFilterQuery
         }
         this.service = new AuthServices();
     }
@@ -26,8 +28,27 @@ export default class Listproducts extends Component {
     });
 }
 
+
     componentDidMount() {
         this.getAllProducts();
+    }
+
+    componentWillReceiveProps() {
+        this.getAllProducts();
+    }
+
+    filterProducts = (products) => {
+        let query = this.state.getFilterQuery().toLowerCase();
+        if (query.length === 0) {
+            return products;
+        }
+
+        let filteredProducts = products.filter(product => {
+            let name = product.name.toLowerCase();
+            return name.includes(query);
+        });
+
+        return filteredProducts
     };
 
     getImageName = (product) => {

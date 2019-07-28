@@ -15,107 +15,106 @@ import MyProducts from './Componets/MyProducts/MyProducts';
 
 
 class App extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      user:"",
-      products: [],
-      filterQuery: "",
-      filteredProducts: [],
-      loggedInUser: null,
+    constructor(props) {
+        super(props);
+        this.state = {
+            user: "",
+            filterQuery: "",
+            loggedInUser: null,
+        };
+        this.service = new AuthServices();
     }
-    this.service = new AuthServices();
-  }
 
-
-  getAllProducts = () => {
-    axios.get(`http://localhost:5000/products/`)
-      .then(allProducts => {
-        console.log(allProducts)
-        this.setState({
-          ...this.state,
-          prodcuts: allProducts,
-          filterQuery: "",
-          filteredProducts: allProducts,
-          loggedInUser: null,
+    componentDidMount() {
+        this.service.loggedin().then(useData => {
+            this.setState({
+                loggedInUser: useData
+            })
         })
-      })
-  }
+    };
 
-  componentDidMount() {
-    this.getAllProducts();
-
-    this.service.loggedin().then(useData => {
-      if (useData) {
+    getTheUser = (userObj) => {
         this.setState({
-          loggedInUser: useData
+            ...this.state,
+            loggedInUser: userObj,
         })
-      } else {
+    };
+
+    logout = (e) => {
+        e.preventDefault();
+        this.service.logout()
+            .then(() => {
+                this.setState({
+                    loggedInUser: null
+                })
+            })
+    };
+
+    fetchUser = () => {
+        this.service.loggedin()
+            .then(response => {
+                this.setState({
+                    loggedInUser: response
+                })
+            })
+    };
+
+    filterProducts(filterQuery) {
         this.setState({
-          loggedInUser: null
-        })
-      }
-    })
-  }
-
-  getTheUser = (userObj) => {
-    this.setState(
-      {
-        ...this.state,
-        loggedInUser: userObj,
-      })
-  }
-
-  logout = (e) => {
-    e.preventDefault()
-    this.service.logout()
-      .then(() => {
-        this.setState({
-          loggedInUser: null
-        })
-      })
-  }
-
-  fetchUser = () => {
-    this.service.loggedin()
-      .then(response => {
-        this.setState({
-          loggedInUser: response
-        })
-      })
-  }
-
-  filterProducts(e) {
-    const filter = e.target.value
-    let filteredProducts = this.state.products.filter((product) => {
-      return product.name.toLowerCase().indexOf(filter.toLowerCase()) > -1
-    })
-    this.setState({
-      ...this.state,
-      filterQuery: filter,
-      filteredProducts: filteredProducts,
-    })
-  }
-
-  render() {
-    // If the user is not logged, just allow him to go to login and sing up.
-    if (!this.state.loggedInUser) {
-      return (
-        <React.Fragment>
-          <Switch>
-            <Route exact path='/login' render={() => {
-              return <Login {...this.state.loggedInUser} getUser={this.getTheUser} />
-            }} />
-            <Route exact path='/signup' render={() => {
-              return <Signup {...this.state.loggedInUser} getUser={this.getTheUser} />
-            }} />
-            <Route render={() => {
-              return <Redirect to="/login" />
-            }} />
-          </Switch>
-        </React.Fragment>
-      )
+            ...this.state,
+            filterQuery: filterQuery
+        });
     }
+
+    render() {
+        // If the user is not logged, just allow him to go to login and sing up.
+        if (!this.state.loggedInUser) {
+            return (
+                <React.Fragment>
+                    <Switch>
+                        <Route exact path='/login' render={() => {
+                            return <Login {...this.state.loggedInUser} getUser={this.getTheUser} />
+                        }} />
+                        <Route exact path='/signup' render={() => {
+                            return <Signup {...this.state.loggedInUser} getUser={this.getTheUser} />
+                        }} />
+                        <Route render={() => {
+                            return <Redirect to="/login" />
+                        }} />
+                    </Switch>
+                </React.Fragment>
+            )
+        }
+
+        return (
+            <React.Fragment>
+                <Navbar filterProducts={(q) => this.filterProducts(q)} filterQuery={this.state.filterQuery} getTheUser = {this.getTheUser}>
+                </Navbar>
+                <Switch>
+                    <Route exact path='/login' render={() => {
+                        return <Redirect to="/products" />
+                    }} />
+                    <Route exact path='/profile' render={() => {
+                        return <Profile {...this.state.loggedInUser} logout={this.logout} />
+                    }} />
+                    <Route exact path='/products' render={() => {
+                        return <Listproducts getFilterQuery={() => { return this.state.filterQuery}} />
+                    }} />
+                    <Route exact path='/product/:id' component={ProductDetail} />
+                    }} />
+                    <Route exact path='/user/:id/products' component={ProductsOwner} />
+                    }} />
+                    <Route exact path='/myproducts' render={()=> {
+                        return <MyProducts {...this.state.loggedInUser} getUser={this.getTheUser} />
+                    }} />
+                    <Route exact path='/addProduct' render={()=> {
+                        return <Redirect to="/myproducts" />
+                    }} />
+                </Switch>
+            </React.Fragment>
+        );
+    }
+<<<<<<< HEAD
 
     return (
       <React.Fragment>
@@ -151,6 +150,8 @@ class App extends Component {
       </React.Fragment>
     );
   } 
+=======
+>>>>>>> 2fabd0e5472532b41ff3b416f50ee3ed4a5e53af
 }
 
 export default App;
