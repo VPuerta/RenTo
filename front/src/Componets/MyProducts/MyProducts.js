@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import './MyProducts.css'
 import UploadProduct from '../UploadProduct/UploadProduct';
-import AuthServices from '../../Services/Services'
+import AuthServices from '../../Services/Services';
+import placeholder2 from '../Assets/placeholder2.png'
 
 export default class MyProducts extends Component {
     constructor(props) {
@@ -41,7 +42,7 @@ export default class MyProducts extends Component {
         if (product.pictures.length !== 0) {
             imgName = product.pictures[0].imgName
         } else {
-            imgName = ""
+            imgName = placeholder2
         }
         return imgName;
     };
