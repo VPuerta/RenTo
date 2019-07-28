@@ -114,44 +114,6 @@ class App extends Component {
             </React.Fragment>
         );
     }
-<<<<<<< HEAD
-
-    return (
-      <React.Fragment>
-        <Navbar filterProducts={(e) => this.filterProducts(e)}
-          filterQuery={this.state.filterQuery} getTheUser = {this.getTheUser}>
-        </Navbar>
-        <Switch>
-        <Route exact path='/signup' render={() => {
-            return <Redirect to="/products" />
-          }} />
-          <Route exact path='/login' render={() => {
-            return <Redirect to="/products" />
-          }} />
-          <Route exact path='/profile' render={() => {
-            return <Profile {...this.state.loggedInUser} logout={this.logout} />
-          }} />
-          <Route exact path='/products' render={() => {
-            return <Listproducts products={this.props.products} 
-            filteredProducts ={this.props.filteredProducts}
-             />
-          }} />
-          <Route exact path='/product/:id' component={ProductDetail} />
-          }} />
-          <Route exact path='/user/:id/products' component={ProductsOwner} />
-          }} />
-          <Route exact path='/myproducts' render={()=> {
-            return <MyProducts {...this.state.loggedInUser} getUser={this.getTheUser} />
-          }} />
-          <Route exact path='/addProduct' render={()=> {
-            return <Redirect to="/myproducts" />
-          }} />
-        </Switch>
-      </React.Fragment>
-    );
-  } 
-=======
->>>>>>> 2fabd0e5472532b41ff3b416f50ee3ed4a5e53af
-}
+  }
 
 export default App;

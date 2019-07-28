@@ -19,14 +19,14 @@ export default class Listproducts extends Component {
     getAllProducts = () => {
         this.service.getProducts()
             .then(getAllProducts => {
-                console.log(getAllProducts);
                 this.setState({
-                 products:getAllProducts.data
-                });
-            }).catch(error => {
+                    products: this.filterProducts(getAllProducts.data)
+                })
+            })
+            .catch(error => {
                 console.log(error);
-    });
-}
+            });
+    }
 
 
     componentDidMount() {
@@ -63,25 +63,25 @@ export default class Listproducts extends Component {
 
     render() {
         return (
-            <div className ="container">
-                <FilterProducts {...this.state.product}/>
+            <div className="container">
+                <FilterProducts {...this.state.product} />
                 <div>
                     <div className="items" >
                         {
                             this.state.products.map(product => {
                                 return (
                                     <Link to={"/product/" + product._id}>
-                                    <div key={product._id}>
-                                        <div className="card" style={{width: "18rem",marginBottom:"2rem"}}>
-                                            <img src={this.getImageName(product)} className="card-img-top" alt={product.name} style={{height: "18rem"}} />
-                                            <div className="card-body">
-                                                
-                                                <h3>{product.name}</h3>
-                                                <h3>{product.price} €</h3>
+                                        <div key={product._id}>
+                                            <div className="card" style={{ width: "18rem", marginBottom: "2rem" }}>
+                                                <img src={this.getImageName(product)} className="card-img-top" alt={product.name} style={{ height: "18rem" }} />
+                                                <div className="card-body">
+
+                                                    <h3>{product.name}</h3>
+                                                    <h3>{product.price} €</h3>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </Link>
+                                    </Link>
                                 )
                             })
                         }
