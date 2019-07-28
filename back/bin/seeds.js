@@ -54,15 +54,15 @@ mongoose
   ]
   
   let products = [{
-    name: "zapatillas",
+    name: "Bicicleta",
     owner: idVane,
     category: 'Sport',
-    description: "nuevasss",
-    price: 20,
+    description: "chulisima, de montaña, para todos los domingos",
+    price: 30,
     days:1,
     pictures: [{
-      imgName: "https://www.runnea.com/archivos/201609/runnea-news-runtastic-miszapatillas-1-840xXx80.jpg?0",
-      imgPath: "zapas",
+      imgName: "https://cdn.wallapop.com/images/10420/68/0r/__/c10420p376269898/i911649266.jpg?pictureSize=W640",
+      imgPath: "Bicicleta",
     }],
     location:{lat: 41.3977381, lng: -0.3 },
   },  
@@ -92,6 +92,22 @@ mongoose
   pictures: [{
     imgName: "https://www.runnea.com/archivos/201609/runnea-news-runtastic-miszapatillas-1-840xXx80.jpg?0",
     imgPath: "zapas",
+  }],
+  position:{
+    lat: 41.3977381, 
+    lng: -0.4 
+    },
+  },
+  {
+  name: "Tabla de Surf",
+  owner: idChema,
+  category: 'Sport',
+  description: "Wapisima",
+  price: 35,
+  days:1,
+  pictures: [{
+    imgName: "https://cdn.wallapop.com/images/10420/69/h9/__/c10420p378719200/i923510105.jpg?pictureSize=W640",
+    imgPath: "Tabla Surf",
   }],position:{
     lat: 41.3977381, 
     lng: -0.4 

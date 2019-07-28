@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import './Listproducts.css'
 import FilterProducts from '../Filter/FilterProducts';
+import AuthServices from '../../Services/Services'
 
 export default class Listproducts extends Component {
     constructor() {
@@ -10,17 +11,20 @@ export default class Listproducts extends Component {
         this.state = {
             products: []
         }
+        this.service = new AuthServices();
     }
 
     getAllProducts = () => {
-        axios.get(`http://localhost:5000/products`)
-            .then(allProducts => {
-                console.log(allProducts.data);
+        this.service.getProducts()
+            .then(getAllProducts => {
+                console.log(getAllProducts);
                 this.setState({
-                    products: allProducts.data
-                })
-            }).catch(err => console.log(err))
-    };
+                 products:getAllProducts.data
+                });
+            }).catch(error => {
+                console.log(error);
+    });
+}
 
     componentDidMount() {
         this.getAllProducts();
@@ -38,24 +42,25 @@ export default class Listproducts extends Component {
 
     render() {
         return (
-            <div style={{ width: "18rem",padding:"2rem"}}>
+            <div className ="container">
                 <FilterProducts {...this.state.product}/>
                 <div>
-                    <div className="card" >
+                    <div className="items" >
                         {
                             this.state.products.map(product => {
                                 return (
+                                    <Link to={"/product/" + product._id}>
                                     <div key={product._id}>
-                                        <div className="card" style={{width: "18rem"}}>
-                                            <img src={this.getImageName(product)} className="card-img-top" alt={product.name} />
+                                        <div className="card" style={{width: "18rem",marginBottom:"2rem"}}>
+                                            <img src={this.getImageName(product)} className="card-img-top" alt={product.name} style={{height: "18rem"}} />
                                             <div className="card-body">
-                                                <Link to={"/product/" + product._id}>
-                                                    <h3>{product.name}</h3>
-                                                </Link>
+                                                
+                                                <h3>{product.name}</h3>
                                                 <h3>{product.price} €</h3>
                                             </div>
                                         </div>
                                     </div>
+                                </Link>
                                 )
                             })
                         }

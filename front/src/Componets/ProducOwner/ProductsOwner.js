@@ -43,7 +43,9 @@ export default class ProductsOwner extends Component {
     render() {
         return (
             <div style={{ width: "18rem",padding:"2rem"}}>
-                <p>All Products {this.productsOwner.length}</p>
+                <Link to={"/products"}>
+                <p>Back</p>
+                </Link>
                 <div>
                     <div className="card">
                         {

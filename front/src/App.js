@@ -123,15 +123,15 @@ class App extends Component {
           filterQuery={this.state.filterQuery} getTheUser = {this.getTheUser}>
         </Navbar>
         <Switch>
+        <Route exact path='/signup' render={() => {
+            return <Redirect to="/products" />
+          }} />
           <Route exact path='/login' render={() => {
             return <Redirect to="/products" />
           }} />
           <Route exact path='/profile' render={() => {
             return <Profile {...this.state.loggedInUser} logout={this.logout} />
           }} />
-          {/* <Route exact path='/signup' render={() => {
-            return <Redirect to="/login" />
-          }} /> */}
           <Route exact path='/products' render={() => {
             return <Listproducts products={this.props.products} 
             filteredProducts ={this.props.filteredProducts}

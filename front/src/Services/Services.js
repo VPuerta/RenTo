@@ -38,4 +38,8 @@ export default class AuthServices {
     return this.service.post('/deleteProduct', {id})
     .then(response => response.data)
   }
+  getProducts= () =>{
+    return this.service.get('/products')
+    .then(allProducts => allProducts)
+  }
 }
