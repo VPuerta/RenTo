@@ -1,0 +1,16 @@
+.carousel-slide{
+display: flex;
+flex-direction: column;
+margin-left: 20%
+}
+
+.head-card{
+    display: flex;
+    justify-content: space-between;
+    justify-items: center;
+   
+}
+
+.name-onwer{
+   margin-top: 5%;
+}

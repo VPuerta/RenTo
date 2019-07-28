@@ -29,8 +29,8 @@ export default class AuthServices {
   .then(response => response.data)
   };
 
-  addProduct = (owner, name, category, price, description) => {
-    return this.service.post('/addProduct', {owner,name,category,price,description})
+  addProduct = (owner, pictures, name, category, price, description) => {
+    return this.service.post('/addProduct', {owner,pictures,name,category,price,description})
     .then(response => response.data)
   };
 
@@ -41,5 +41,10 @@ export default class AuthServices {
   getProducts= () =>{
     return this.service.get('/products')
     .then(allProducts => allProducts)
+  }
+
+  getPcategory= (category )=>{
+    return this.service.get('/category',{category})
+    .then(productCat => productCat)
   }
 }

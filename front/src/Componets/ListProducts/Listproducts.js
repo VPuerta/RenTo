@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import axios from 'axios';
 import { Link } from 'react-router-dom';
 import './Listproducts.css'
 import FilterProducts from '../Filter/FilterProducts';
@@ -11,7 +10,8 @@ export default class Listproducts extends Component {
 
         this.state = {
             products: [],
-            getFilterQuery: props.getFilterQuery
+            getFilterQuery: props.getFilterQuery,
+            filterCategory: props.filterCategory
         }
         this.service = new AuthServices();
     }
@@ -64,7 +64,7 @@ export default class Listproducts extends Component {
     render() {
         return (
             <div className="container">
-                <FilterProducts {...this.state.product} />
+                <FilterProducts {...this.state.product} filterProducts = {this.filterProducts} />
                 <div>
                     <div className="items" >
                         {
@@ -75,9 +75,10 @@ export default class Listproducts extends Component {
                                             <div className="card" style={{ width: "18rem", marginBottom: "2rem" }}>
                                                 <img src={this.getImageName(product)} className="card-img-top" alt={product.name} style={{ height: "18rem" }} />
                                                 <div className="card-body">
-
                                                     <h3>{product.name}</h3>
                                                     <h3>{product.price} €</h3>
+                                                    <p>{product.category}</p>
+                                                    
                                                 </div>
                                             </div>
                                         </div>

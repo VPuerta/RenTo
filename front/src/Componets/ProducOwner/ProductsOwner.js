@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import './ProductsOwner.css'
 
 
 export default class ProductsOwner extends Component {
@@ -42,17 +43,17 @@ export default class ProductsOwner extends Component {
 
     render() {
         return (
-            <div style={{ width: "18rem",padding:"2rem"}}>
+            <div className="" style={{ width: "18rem",padding:"2rem"}}>
                 <Link to={"/products"}>
                 <p>Back</p>
                 </Link>
                 <div>
-                    <div className="card">
+                    <div className="box">
                         {
                             this.state.productsOwner.map(productOwner => {
                                 return (
                                     <div key={productOwner._id}>
-                                        <div className="card" style={{width: "18rem"}}>
+                                        <div className="card" >
                                             <img src={this.getImageName(productOwner)} className="card-img-top" alt={productOwner.name} />
                                             <div className="card-body">
                                                 <Link to={"/product/" + productOwner._id}>

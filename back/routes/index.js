@@ -4,6 +4,7 @@ const router = express.Router();
 const Product = require("../models/Product");
 const User = require("../models/User");
 ObjectId = require('mongodb').ObjectID;
+// const uploadCloud = require('../cloudinary');
 
 // const uploadCloud = require('../cloudinary.js');
 
@@ -50,7 +51,7 @@ router.get('/product/:id', (req, res, next) => {
 
 router.get('/products/:category', (req, res, next) => {
   Product
-      .find({ category: req.params.category })
+      .find({ category: req.body.category })
       .then(productsCategory => res.json(productsCategory))
       .catch(e => console.log(e))
 });
@@ -74,7 +75,9 @@ router.get('/user/:id/products', (req, res, next) => {
 // router.post('/addProduct', uploadCloud.single('photo'), (req, res, next) => {
 router.post('/addProduct', (req, res, next) => {
   // const imgName = req.file.originalname;
-  // const newPhoto = new Photo({imgName})
+  // const newPicture = new Picture({
+  //   imgName
+  // })
   // console.log(req.file.url);
 
   const owner = ObjectId(req.body.owner);
@@ -85,6 +88,7 @@ router.post('/addProduct', (req, res, next) => {
 
   const newProduct = new Product({
     name,
+    // pictures = newPicture,
     owner,
     category,
     description,
@@ -98,12 +102,12 @@ router.post('/addProduct', (req, res, next) => {
       .then(()=>{ res.status(200).json(newProduct) })
       .catch(err => res.status(500).json({ message: 'Could not save Product' + err }) );
 
-  // //actual write in mongo using mongoose
-  // newPhoto.save()
-  // .then(photo => {
-  //   res.json({url: req.file, photo: photo});
-  // }).catch(error => {console.log(error);
-  // })
+  //actual write in mongo using mongoose
+  newPhoto.save()
+  .then(photo => {
+    res.json({url: req.file, picture: photo});
+  }).catch(error => {console.log(error);
+  })
 });
 
 router.post('/deleteProduct', (req, res, next) => {

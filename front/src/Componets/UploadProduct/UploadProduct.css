@@ -1,0 +1,13 @@
+.form-contem{
+    display: flex;
+   
+   
+}
+
+.form{
+   align-content: space-between;
+   margin-left: 10%;
+   align-content: center;
+   justify-content: center;
+   
+}

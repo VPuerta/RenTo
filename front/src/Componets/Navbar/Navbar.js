@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css'
 import rento from '../Assets/logo-white.png';
+import exit from '../Assets/exit.png'
 
 class Navbar extends Component {
     constructor(props) {
@@ -52,6 +53,8 @@ class Navbar extends Component {
                     <Link to={"/messages"}>
                         <p>Messages</p>
                     </Link>
+
+                  
                 </div>
             </nav>
         )

@@ -69,14 +69,16 @@ export default class MyProducts extends Component {
                         return (
                             <div className="myproducts">
                                 <div key={idx} />
-                                <div className="col-md-4">
+                                <div className="">
                                     <img className="image" src={this.getImageName(myProduct)} alt={myProduct.name} />
                                 </div>
                                 <div className="card-body card-tittle">
                                     <h5 className="card-title">{myProduct.name}</h5>
                                 </div>
-                                <div>
+                                <div className="card-body">
                                     <p className="card-text">{myProduct.category}</p>
+                                </div>
+                                <div className="card-body">
                                     <p className="card-text">{myProduct.price} €</p>
                                 </div>
                                 <div className="card-body">
