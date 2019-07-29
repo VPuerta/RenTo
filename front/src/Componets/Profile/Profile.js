@@ -12,43 +12,42 @@ export default class Profile extends Component {
     // }
   }
 
-//   getImageName = (user) => {
-//     let imgName;
-//     if (user.image !== "") {
-//         imgName = user.image
-//     } else {
-//         image = ""
-//     }
-//     return imgName;
-// };
+  //   getImageName = (user) => {
+  //     let imgName;
+  //     if (user.image !== "") {
+  //         imgName = user.image
+  //     } else {
+  //         image = ""
+  //     }
+  //     return imgName;
+  // };
 
   render() {
     return (
-      <div>
-        <h1>Hola {this.props.username}</h1>
-
-        <div>
-          <p>Informacion Publica</p>
+      <div id="profile">
+        <div className="tittle-profile">
+          <h1>Hello {this.props.username} </h1>
         </div>
-        <div id="profile">
+        <div >
           <div>
-          {/* <img src={this.getImageName(product)} className="card-img-top" alt={product.name} /> */}
+            {/* <img src={this.getImageName(product)} className="card-img-top" alt={product.name} /> */}
           </div>
-          <div>
+          <div className="profile-body">
             <div>
-            {/* <img src={this.props.avatar} alt=""/> */}
-            <img id ="avatar" src = {photo}/>
+              {/* <img src={this.props.avatar} alt=""/> */}
+              <img id="avatar" src={photo} />
             </div>
             <div>
-            <p>Name : {this.props.username} </p>
-            <p>Password : {this.props.password} </p>
-            <p>City : {this.props.city} </p>
-            <p>Email : {this.props.email} </p>
+              <p>Name : {this.props.username} </p>
+              <p>Password : {this.props.password} </p>
+              <p>City : {this.props.city} </p>
+              <p>Email : {this.props.email} </p>
+              <button className="btn btn-warning" >Edit your data</button>
+              <button className="btn btn-warning" onClick={(e) => { this.props.logout(e) }}>Logout</button>
             </div>
           </div>
         </div>
 
-        <button onClick={(e) => { this.props.logout(e) }}>LOGOUT</button>
       </div>
     )
   }

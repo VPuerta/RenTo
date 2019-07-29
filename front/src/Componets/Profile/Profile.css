@@ -2,8 +2,21 @@
     width:300px; 
     height:300px;
    border-radius: 50%;
-   border: black solid 1px;
+   border: grey solid .2px;
 }
 #profile{
     display: flex;
+    flex-direction: column;
+    align-content: center;
+    margin: 30px;
+
+}
+.tittle-profile{
+    text-align: center;
+    color: grey;
+}
+.profile-body{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
 }

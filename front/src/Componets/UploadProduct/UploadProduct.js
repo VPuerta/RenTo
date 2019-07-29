@@ -17,20 +17,20 @@ export default class UploadProduct extends Component {
             price: "",
             description: "",
             imgUrl: "",
-            position:{
-                lat:"",
-                lng:""
+            position: {
+                lat: "",
+                lng: ""
             },
         };
         this.service = new AuthServices();
     }
 
-    coordinates = (lat,lng)=>{
-        const newPosition= {
-            lat:lat,
-            lng:lng,
+    coordinates = (lat, lng) => {
+        const newPosition = {
+            lat: lat,
+            lng: lng,
         }
-         this.setState({
+        this.setState({
             position: newPosition
         })
     }
@@ -68,11 +68,11 @@ export default class UploadProduct extends Component {
         const price = this.state.price;
         const description = this.state.description;
         const imageUrl = this.state.imageUrl;
-        const position ={
-            lat :this.state.position.lat,
+        const position = {
+            lat: this.state.position.lat,
             lng: this.state.position.lng
         }
-        
+
         this.service.addProduct(owner, imageUrl, name, category, price, description, position)
 
             .then(res => {
@@ -87,38 +87,42 @@ export default class UploadProduct extends Component {
 
     render() {
         return (
-            <React.Fragment>
-            <form className="add-new-product">
-                <input type="file" value={this.state.pictures} onChange={(e) => this.handleFileUpload(e)} />
-                <div className="form-contem">
-                    <img src={this.state.imageUrl} alt="" style={{ height: 100 }} />
+            <div className="map-container">
+                <form className="add-product">
                     <div className="form">
-                        <input type="text" placeholder="Product Name" name="name" value={this.state.name} onChange={e => this.handleChange(e)} />
+                    <input type="file" value={this.state.pictures} onChange={(e) => this.handleFileUpload(e)} />
+                        <img src={this.state.imageUrl} alt="" style={{ height: 50 }} />
                     </div>
-                    <div className="form">
-                        <select name="category" form="category" value={this.state.category} onChange={e => this.handleChange(e)}>
-                            <option value="">-----</option>
-                            <option value="Sport">Sport</option>
-                            <option value="Other">Other</option>
-                        </select>
-                    </div>
-                    <div className="form">
-                        <input type="text" placeholder="Price € " name="price" value={this.state.price} onChange={e => this.handleChange(e)} />
-                    </div>
+                    <div className="form-contem">
+                        <div className="form">
+                            <input type="text" placeholder="Product Name" name="name" value={this.state.name} onChange={e => this.handleChange(e)} />
+                        </div>
+                        <div className="form">
+                            <select name="category" form="category" value={this.state.category} onChange={e => this.handleChange(e)}>
+                                <option value="">-----</option>
+                                <option value="Sport">Sport</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        <div className="form">
+                            <input type="text" placeholder="Price € " name="price" value={this.state.price} onChange={e => this.handleChange(e)} />
+                        </div>
 
-                    <div className="form">
-                        <textarea type="text" placeholder="How is it?" name="description" value={this.state.description} onChange={e => this.handleChange(e)} />
-                    </div>
-                    <input type="text" value={this.state.position.lat}/>
-                    <input type="text" value={this.state.position.lng}/>
-                    <div className="btn-edit">
-                        <button className="btn btn-warning" onClick={(e) => this.handleSubmit(e)}>Add</button>
+                        <div className="form">
+                            <textarea type="text" placeholder="How is it?" name="description" value={this.state.description} onChange={e => this.handleChange(e)} />
+                        </div>
+                            {/* <input type="text" value={this.state.position.lat} />
+                            <input type="text" value={this.state.position.lng} /> */}
+                        <div className="btn-edit">
+                            <button className="btn btn-warning" onClick={(e) => this.handleSubmit(e)}>Add</button>
 
+                        </div>
                     </div>
+                </form>
+                <div>
+                <UploadMap API_KEY="AIzaSyAzGHDso1aXodTgAxYYmuTHdp9iVdxanhM" coordinates={this.coordinates}></UploadMap>
                 </div>
-            </form>
-           <UploadMap API_KEY = "AIzaSyAzGHDso1aXodTgAxYYmuTHdp9iVdxanhM" coordinates = {this.coordinates}></UploadMap>
-            </React.Fragment>
+            </div>
 
         )
     }

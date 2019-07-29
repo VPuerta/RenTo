@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
+import '../Map/UploadMap.css'
 
 export default class UploadMap extends Component {
 
@@ -26,12 +27,12 @@ export default class UploadMap extends Component {
                 lat: 40.416755454374595,
                 lng: -3.703208023041725
             },
-            zoom: 9
+            zoom: 10
         };
 
         return (
             // Important! Always set the container height explicitly
-            <div style={{ height: '60vh', width: '95%' }}>
+            <div style={{ height: '60vh', width: '95%' }} className="uploadmap">
                 <GoogleMapReact
                     onClick = {(e)=>this.clic(e)}
                     bootstrapURLKeys = {{ key: this.props.API_KEY }}

@@ -1,12 +1,25 @@
+
 .form-contem{
     display: flex;
    
-   
+}
+.add-product{
+    display: flex;
+    text-align: center;
+    border: dotted grey 2px;
+    background-color: whitesmoke;
+    flex-wrap: wrap;
+    margin: 2rem;
+    padding: 1rem;
+    flex-wrap: wrap;
+    
 }
 
 .form{
+    display: flex;
    align-content: space-between;
-   margin-left: 10%;
+   flex-flow: wrap;
+   /* margin-left: 10%; */
    align-content: center;
    justify-content: center;
    
