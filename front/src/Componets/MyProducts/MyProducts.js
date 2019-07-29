@@ -38,13 +38,13 @@ export default class MyProducts extends Component {
     };
 
     getImageName = (product) => {
-        let imgName;
-        if (product.pictures.length !== 0) {
-            imgName = product.pictures[0].imgName
-        } else {
-            imgName = placeholder2
-        }
-        return imgName;
+        // let imgName;
+        // if (product.pictures.length !== 0) {
+        //     imgName = product.pictures[0].imageUrl
+        // } else {
+        //     imgName = placeholder2
+        // }
+        return product.imageUrl;
     };
 
     deleteProduct = (product, idx) => {
@@ -68,8 +68,7 @@ export default class MyProducts extends Component {
                 {
                     this.state.myProducts.map((myProduct, idx) => {
                         return (
-                            <div className="myproducts">
-                                <div key={idx} />
+                            <div className="myproducts" key={idx} >
                                 <div className="">
                                     <img className="image" src={this.getImageName(myProduct)} alt={myProduct.name} />
                                 </div>

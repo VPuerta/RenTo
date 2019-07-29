@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-
+// const io = require('socket.io').listen(server);
 const http = require('http');
 
 let app = require('../app');
@@ -17,7 +17,7 @@ app.use((err, req, res, next) => {
   // only render if the error ocurred before sending the response
   if (!res.headersSent) {
     res.status(500);
-    res.render('error');
+    res.json({'error': err});
   }
 });
 
@@ -40,6 +40,15 @@ server.on('error', error => {
       throw error;
   }
 });
+
+// io.on("connection", socket => {
+//   //here go the events
+//   });
+
+//   socket.on("userConnect", user =>{
+//     console.log(`${user} connected`)
+//     socket.broadcast.emit("newUser", user)
+//      });
 
 server.listen(process.env.PORT, () => {
   console.log(`Listening on http://localhost:${process.env.PORT}`);

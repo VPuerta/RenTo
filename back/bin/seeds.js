@@ -25,6 +25,7 @@ mongoose
   let users = [
     {
       _id: idVane,
+      avatar:"https://image.freepik.com/vector-gratis/perfil-avatar-mujer-icono-redondo_24640-14047.jpg",
       username: "Vanesa",
       password: bcrypt.hashSync("alice", bcrypt.genSaltSync(bcryptSalt)),
       email: "vanesa.p@hotmail.com",
@@ -39,6 +40,7 @@ mongoose
     },
     {
       _id: idChema,
+      avatar:"https://image.freepik.com/vector-gratis/perfil-avatar-hombre-icono-redondo_24640-14044.jpg",
       username: "Chema",
       password: bcrypt.hashSync("bob", bcrypt.genSaltSync(bcryptSalt)),
       email: "chema.p@hotmail.com",
@@ -60,11 +62,16 @@ mongoose
     description: "chulisima, de montaña, para todos los domingos",
     price: 30,
     days:1,
-    pictures: [{
-      imgName: "https://cdn.wallapop.com/images/10420/68/0r/__/c10420p376269898/i911649266.jpg?pictureSize=W640",
-      imgPath: "Bicicleta",
-    }],
-    location:{lat: 41.3977381, lng: -0.3 },
+    // pictures: [{
+    //   imgName: "https://cdn.wallapop.com/images/10420/68/0r/__/c10420p376269898/i911649266.jpg?pictureSize=W640",
+    //   imgPath: "Bicicleta",
+    // }],
+    imageUrl: "https://cdn.wallapop.com/images/10420/68/0r/__/c10420p376269898/i911649266.jpg?pictureSize=W640",
+
+    position:{
+      lat: 41.3977381, 
+      lng: -0.3 
+    },
   },  
   {
     name: "Barbacoa",
@@ -73,10 +80,11 @@ mongoose
     description: "Como me gusta la barbacoa",
     price: 39,
     days:1,
-    pictures: [{
-      imgName:"https://images.vibbo.com/635x476/094/09403867981.jpg",
-      imgPath: "barbacoa",
-    }],
+    // pictures: [{
+    //   imgName:"https://images.vibbo.com/635x476/094/09403867981.jpg",
+    //   imgPath: "barbacoa",
+    // }],
+    imageUrl:"https://images.vibbo.com/635x476/094/09403867981.jpg",
     position:{
       lat: 40.3977381, 
       lng: -0.3 
@@ -89,10 +97,11 @@ mongoose
   description: "nuevasss",
   price: 15,
   days:1,
-  pictures: [{
-    imgName: "https://www.runnea.com/archivos/201609/runnea-news-runtastic-miszapatillas-1-840xXx80.jpg?0",
-    imgPath: "zapas",
-  }],
+  // pictures: [{
+  //   imgName: "https://www.runnea.com/archivos/201609/runnea-news-runtastic-miszapatillas-1-840xXx80.jpg?0",
+  //   imgPath: "zapas",
+  // }],
+  imageUrl:"https://www.runnea.com/archivos/201609/runnea-news-runtastic-miszapatillas-1-840xXx80.jpg?0",
   position:{
     lat: 41.3977381, 
     lng: -0.4 
@@ -105,10 +114,12 @@ mongoose
   description: "Wapisima",
   price: 35,
   days:1,
-  pictures: [{
-    imgName: "https://cdn.wallapop.com/images/10420/69/h9/__/c10420p378719200/i923510105.jpg?pictureSize=W640",
-    imgPath: "Tabla Surf",
-  }],position:{
+  // pictures: [{
+  //   imgName: "https://cdn.wallapop.com/images/10420/69/h9/__/c10420p378719200/i923510105.jpg?pictureSize=W640",
+  //   imgPath: "Tabla Surf",
+  // }],
+  imageUrl: "https://cdn.wallapop.com/images/10420/69/h9/__/c10420p378719200/i923510105.jpg?pictureSize=W640",
+  position:{
     lat: 41.3977381, 
     lng: -0.4 
   },

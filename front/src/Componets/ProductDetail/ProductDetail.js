@@ -11,8 +11,9 @@ export default class ProductDetail extends Component {
         console.log(props)
         this.state = {
             product: {
-                pictures: [],
-                owner: {}
+                imageUrl:"",
+                owner: {},
+                position:[],
             }
         }
     }
@@ -25,8 +26,9 @@ export default class ProductDetail extends Component {
         const { params } = this.props.match;
         axios.get(`http://localhost:5000/product/${params.id}`)
             .then(response => {
-                console.log(response.data)
+                // console.log(response.data)
                 const product = response.data;
+                console.log(product)
                 this.setState({
                     product: product
                 });
@@ -58,9 +60,8 @@ export default class ProductDetail extends Component {
                 </ol>
 
                 <div className="carousel-inner">
-
-
-                    {
+                <img src={this.state.product.imageUrl} className="d-block w-100" alt="" />
+                    {/* {
                         this.state.product.pictures.map((picture, idx) => {
                             return (
                                 <div key={idx}>
@@ -71,7 +72,7 @@ export default class ProductDetail extends Component {
                             )
                         })
 
-                    }
+                    } */}
                     <div>
                         <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                             <span className="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -95,7 +96,7 @@ export default class ProductDetail extends Component {
                         
                 </div>
                 <div>
-                <SimpleMap API_KEY = "AIzaSyAzGHDso1aXodTgAxYYmuTHdp9iVdxanhM" ></SimpleMap>
+                <SimpleMap API_KEY = "AIzaSyAzGHDso1aXodTgAxYYmuTHdp9iVdxanhM" prod={this.state.product}></SimpleMap>
                 </div>
             </div>
                     )

@@ -29,8 +29,8 @@ export default class AuthServices {
   .then(response => response.data)
   };
 
-  addProduct = (owner, pictures, name, category, price, description) => {
-    return this.service.post('/addProduct', {owner,pictures,name,category,price,description})
+  addProduct = (owner, imageUrl, name, category, price, description,position) => {
+    return this.service.post('/addProduct', {owner,imageUrl,name,category,price,description,position})
     .then(response => response.data)
   };
 
@@ -47,4 +47,13 @@ export default class AuthServices {
     return this.service.get('/category',{category})
     .then(productCat => productCat)
   }
+
+  
+    handleUpload =(theFile) =>{
+      // console.log('file in service: ', theFile)
+      return this.service.post('/upload', theFile)
+        .then(res => res.data)
+        .catch(error=>error);
+    }
+  
 }

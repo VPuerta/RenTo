@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import photo from '../Assets/photo.jpg'
+import './Profile.css'
 
 export default class Profile extends Component {
   constructor(props) {
@@ -28,15 +30,21 @@ export default class Profile extends Component {
         <div>
           <p>Informacion Publica</p>
         </div>
-        <div>
+        <div id="profile">
           <div>
           {/* <img src={this.getImageName(product)} className="card-img-top" alt={product.name} /> */}
           </div>
           <div>
+            <div>
+            {/* <img src={this.props.avatar} alt=""/> */}
+            <img id ="avatar" src = {photo}/>
+            </div>
+            <div>
             <p>Name : {this.props.username} </p>
             <p>Password : {this.props.password} </p>
             <p>City : {this.props.city} </p>
             <p>Email : {this.props.email} </p>
+            </div>
           </div>
         </div>
 

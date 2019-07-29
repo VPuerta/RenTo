@@ -32,13 +32,13 @@ export default class ProductsOwner extends Component {
             })
     }
     getImageName = (product) => {
-        let imgName;
-        if (product.pictures.length !== 0) {
-            imgName = product.pictures[0].imgName
-        } else {
-            imgName = ""
-        }
-        return imgName;
+        // let imgName;
+        // if (product.pictures.length !== 0) {
+        //     imgName = product.pictures[0].imgName
+        // } else {
+        //     imgName = ""
+        // }
+        return product.imageUrl;
     };
 
     render() {
