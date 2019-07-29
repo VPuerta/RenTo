@@ -7,6 +7,10 @@ const User = require("../models/User");
 const bcrypt = require("bcrypt");
 const bcryptSalt = 10;
 
+// Chat
+const stream = require('getstream');
+const client = stream.connect('mdq88ggqqy4c', '2vv7xbbp7vm3fkn92jjgxdmaxnyp6ymfyupfnsqevmctwe2vrm2hyq3mrbdykuh7', '56301');
+
 router.get("/userData", (req,res)=>{
   let user = req.user;
   res.json(user)
@@ -16,8 +20,10 @@ router.post('/login', (req, res, next) => {
   passport.authenticate('local', (err, theUser, failureDetails) => {
     if (err) { res.status(500).json({ message: 'Something went wrong authenticating user' }); return; }
     // "failureDetails" contains the error messages from our logic in "LocalStrategy" { message: '...' }.
-    if (!theUser) { res.status(500).json(failureDetails); return; }
+
+    if (!theUser) { res.status(500).json({ message: 'The user does not exists' }); return; }
     // save user in session
+
     req.login(theUser, (err) => {
       if (err) { res.status(500).json({ message: 'Session save went bad.' }); return; }
       // We are now logged in (that's why we can also send req.user)
@@ -48,12 +54,14 @@ router.post("/signup", (req, res, next) => {
 
     const salt = bcrypt.genSaltSync(bcryptSalt);
     const hashPass = bcrypt.hashSync(password, salt);
+    const chatToken = client.createUserToken(username);
 
     const newUser = new User({
       username,
       password: hashPass,
       email,
-      city
+      city,
+      chatToken
     });
 
     newUser

@@ -9,6 +9,7 @@ const userSchema = new Schema({
   email: String,
   city: String,
   rating: [Number],
+  chatToken: String
 }, 
 {
   timestamps: {

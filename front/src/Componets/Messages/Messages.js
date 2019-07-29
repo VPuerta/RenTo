@@ -8,18 +8,15 @@ import 'stream-chat-react/dist/css/index.css';
 export default class Messages extends Component {
     constructor(props) {
         super(props);
-        this.chatClient = new StreamChat('qk4nn7rpcn75');
-        const userToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoicmVkLWhhemUtMiJ9.LPfZDP2Wwnfm2rvNYZ3JNB4qdvoopsQQq-eEaFaVPDE'
+        this.chatClient = new StreamChat('mdq88ggqqy4c');
 
         this.chatClient.setUser({
-            id: 'red-haze-2',
-            name: 'Vane',
+            id: this.props.loggedInUser.username,
+            name: this.props.loggedInUser.username,
             image: 'https://getstream.io/random_svg/?id=red-haze-2&name=Red+haze'
-        },
-            userToken,
-        );
+        }, this.props.loggedInUser.chatToken);
 
-        this.channel = this.chatClient.channel('messaging', 'rento', {
+        this.channel = this.chatClient.channel('messaging', 'godevs', {
             // add as many custom fields as you'd like
             image: 'https://cdn.chrisshort.net/testing-certificate-chains-in-go/GOPHER_MIC_DROP.png',
             name: 'Rento',
