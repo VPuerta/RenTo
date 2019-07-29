@@ -9,7 +9,7 @@ const bcryptSalt = 10;
 
 // Chat
 const stream = require('getstream');
-const client = stream.connect('mdq88ggqqy4c', '2vv7xbbp7vm3fkn92jjgxdmaxnyp6ymfyupfnsqevmctwe2vrm2hyq3mrbdykuh7', '56301');
+const client = stream.connect('476rbkbracqc', 'c5samscsckehakrs9syzhfjf86h2yywjv8vft78g5gam568pqajtk3jcatwkf3wp', '56355');
 
 router.get("/userData", (req,res)=>{
   let user = req.user;

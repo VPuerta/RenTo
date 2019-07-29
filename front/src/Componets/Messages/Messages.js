@@ -8,7 +8,7 @@ import 'stream-chat-react/dist/css/index.css';
 export default class Messages extends Component {
     constructor(props) {
         super(props);
-        this.chatClient = new StreamChat('mdq88ggqqy4c');
+        this.chatClient = new StreamChat('476rbkbracqc');
 
         this.chatClient.setUser({
             id: this.props.loggedInUser.username,
