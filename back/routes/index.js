@@ -42,7 +42,7 @@ router.get('/products', (req, res, next) => {
 
 router.post('/productDetail', (req, res, next) => {
   Product
-    .findById(req.body.id)
+    .findById(req.b.id)
     .populate("owner")
     .then(product => res.json(product))
     .catch(e => console.log(e))

@@ -11,8 +11,8 @@ import Listproducts from './Componets/ListProducts/Listproducts';
 import ProductDetail from './Componets/ProductDetail/ProductDetail';
 import ProductsOwner from './Componets/ProducOwner/ProductsOwner';
 import MyProducts from './Componets/MyProducts/MyProducts';
-// import Chat from './Componets/Messages/Chat';
 import Messages from './Componets/Messages/Messages';
+import EditProduct from './Componets/EditProduct/EditProduct';
 
 
 
@@ -110,6 +110,9 @@ class App extends Component {
             }} />
             <Route exact path='/myproducts' render={() => {
               return <MyProducts {...this.state.loggedInUser} getUser={this.getTheUser} />
+            }} />
+            <Route exact path='/editMyProduct' render={() => {
+              return <EditProduct {...this.state.loggedInUser} getUser={this.getTheUser} />
             }} />
             <Route exact path='/addProduct' render={() => {
               return <Redirect to="/myproducts" />

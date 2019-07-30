@@ -55,10 +55,11 @@ export default class UploadProduct extends Component {
                 // console.log('response is: ', response);
                 // after the console.log we can see that response carries 'secure_url' which we can use to update the state 
                 this.setState({ ...this.state, imageUrl: response.secure_url });
-                if (this.state.position.lat !== 0 || this.state.position.lng !== 0) {
-                    console.log("entra")
-                    document.getElementById(this.button).disabled = false;
-                }
+                console.log(this.state.position)
+                // if (this.state.position.lat !== 0 || this.state.position.lng !== 0) {
+              
+                //     document.getElementById(this.button).disabled = false;
+                // }
             })
             .catch(err => {
                 console.log("Error while uploading the file: ", err);
@@ -67,7 +68,7 @@ export default class UploadProduct extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
-
+        console.log("hola")
         const owner = this.props._id;
         const name = this.state.name;
         const category = this.state.category;
@@ -149,7 +150,7 @@ export default class UploadProduct extends Component {
                         </div >
 
                             <div>
-                                <button id="add" className="btn btn-warning" disabled onClick={(e) => this.handleSubmit(e)}>Add</button>
+                                <button id="add" className="btn btn-warning"  onClick={(e) => this.handleSubmit(e)}>Add</button>
                             </div>
                         </form>
            

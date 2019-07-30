@@ -111,9 +111,7 @@ export default class ProductDetail extends Component {
                         <p className="card-text">{this.state.product.price} €</p>
                         <p className="card-text">{this.state.product.description}</p>
                     </div>
-                    <div>
-                        {/* <button className="btn btn-warning" style={{ marginBottom: "1.5rem", color: "white" }}>I WANT IT</button> */}
-                    </div>
+                  
 
                 </div>
                 <div>
