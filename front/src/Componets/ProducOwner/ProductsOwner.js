@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import './ProductsOwner.css'
+import AuthServices from '../../Services/Services';
 
 
 export default class ProductsOwner extends Component {
@@ -10,8 +11,9 @@ export default class ProductsOwner extends Component {
         console.log(props)
         this.state = {
             productsOwner: [],
-            
+
         }
+        this.service = new AuthServices();
     }
     componentDidMount() {
         this.ownerProduct();
@@ -19,10 +21,9 @@ export default class ProductsOwner extends Component {
 
     ownerProduct = () => {
         const { params } = this.props.match;
-        axios.get(`http://localhost:5000/user/${params.id}/products`)
+        this.service.getMyProducts(params.id)
             .then(response => {
-                console.log(response.data)
-                const productsOwner = response.data;
+                const productsOwner = response;
                 this.setState({
                     productsOwner: productsOwner
                 });
@@ -31,6 +32,22 @@ export default class ProductsOwner extends Component {
                 console.log(err)
             })
     }
+
+    // ownerProduct = () => {
+    //     const { params } = this.props.match;
+    //     axios.get(`http://localhost:5000/user/${params.id}/products`)
+    //         .then(response => {
+    //             console.log(response.data)
+    //             const productsOwner = response.data;
+    //             this.setState({
+    //                 productsOwner: productsOwner
+    //             });
+    //         })
+    //         .catch((err) => {
+    //             console.log(err)
+    //         })
+    // }
+    
     getImageName = (product) => {
         // let imgName;
         // if (product.pictures.length !== 0) {
@@ -43,9 +60,9 @@ export default class ProductsOwner extends Component {
 
     render() {
         return (
-            <div className="" style={{ width: "18rem",padding:"2rem"}}>
+            <div className="" style={{ width: "18rem", padding: "2rem" }}>
                 <Link to={"/products"}>
-                <p>Back</p>
+                    <p>Back</p>
                 </Link>
                 <div>
                     <div className="box">

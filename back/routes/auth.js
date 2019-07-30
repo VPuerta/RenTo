@@ -8,12 +8,15 @@ const bcrypt = require("bcrypt");
 const bcryptSalt = 10;
 
 // Chat
+// stream clase para conectarnos a la plataforma de GetStream
 const stream = require('getstream');
+//client: para poder hacer peticiones a la plataforma nos identificamos con nuesta clave api key, api Secret,appID. lo necesitamos para poder obtenerel token de usuario
 const client = stream.connect('476rbkbracqc', 'c5samscsckehakrs9syzhfjf86h2yywjv8vft78g5gam568pqajtk3jcatwkf3wp', '56355');
 
 router.get("/userData", (req,res)=>{
-  let user = req.user;
-  res.json(user)
+  if(req.user){
+    res.status(200).json(req.user)
+  }
 });
 
 router.post('/login', (req, res, next) => {
@@ -54,6 +57,7 @@ router.post("/signup", (req, res, next) => {
 
     const salt = bcrypt.genSaltSync(bcryptSalt);
     const hashPass = bcrypt.hashSync(password, salt);
+    //construimos el token, a partir del client creamos el token. le pasamos el username del usuario logado.
     const chatToken = client.createUserToken(username);
 
     const newUser = new User({

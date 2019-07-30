@@ -8,25 +8,41 @@ import placeholder2 from '../Assets/placeholder2.png'
 export default class MyProducts extends Component {
     constructor(props) {
         super(props);
+
         this.state = {
             myProducts: []
         }
         this.service = new AuthServices();
     }
 
-    componentDidMount() {
-        axios.get(`http://localhost:5000/user/${this.props._id}/products`)
-            .then(response => {
-                console.log("Get my products did success with response", response);
-                const myProducts = response.data;
+    componentDidMount(){
+        let id = this.props._id
+        this.service.getMyProducts(id)
+            .then(getMyProdcuts => {
+                console.log(getMyProdcuts)
                 this.setState({
-                    myProducts: myProducts
-                });
+                    myProducts: getMyProdcuts
+                })
             })
-            .catch((err) => {
-                console.log("Get my products did fail with error", err);
-            })
-    };
+            .catch(error => {
+                console.log(error);
+            });
+    }
+   
+
+    // componentDidMount() {
+    //     axios.get(`http://localhost:5000/user/${this.props._id}/products`)
+    //         .then(response => {
+    //             console.log("Get my products did success with response", response);
+    //             const myProducts = response.data;
+    //             this.setState({
+    //                 myProducts: myProducts
+    //             });
+    //         })
+    //         .catch((err) => {
+    //             console.log("Get my products did fail with error", err);
+    //         })
+    // };
 
     uploadProductDidAddProduct = (product) => {
         console.log("Product added", product);

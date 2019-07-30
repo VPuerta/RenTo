@@ -6,6 +6,7 @@ import rento from '../Assets/logo-white.png';
 class Navbar extends Component {
     constructor(props) {
         super(props);
+        console.log(props)
         this.state = {
             filterQuery: props.filterQuery
         }

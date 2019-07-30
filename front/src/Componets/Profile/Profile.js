@@ -38,10 +38,26 @@ export default class Profile extends Component {
               <img id="avatar" src={photo} />
             </div>
             <div>
+              <div>
               <p>Name : {this.props.username} </p>
+              {/* <p>Name :</p>
+              <input type="text" value="name" placeholder = {this.props.username} /> */}
+              </div>
+              <div>
               <p>Password : {this.props.password} </p>
+              {/* <p>Password :</p>
+              <input type="password" value="password" placeholder = {this.props.password} /> */}
+              </div>
+              <div>
               <p>City : {this.props.city} </p>
+              {/* <p>City :</p>
+              <input type="text" value="city" placeholder = {this.props.city} /> */}
+              </div>
+              <div>
               <p>Email : {this.props.email} </p>
+              {/* <p>Email :</p>
+              <input type="email" value="email" placeholder = {this.props.email} /> */}
+              </div>
               <button className="btn btn-warning" >Edit your data</button>
               <button className="btn btn-warning" onClick={(e) => { this.props.logout(e) }}>Logout</button>
             </div>

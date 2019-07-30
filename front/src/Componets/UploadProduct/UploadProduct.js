@@ -18,11 +18,13 @@ export default class UploadProduct extends Component {
             description: "",
             imgUrl: "",
             position: {
-                lat: "",
-                lng: ""
+                lat: 0,
+                lng: 0
             },
         };
+        this.button = "add"
         this.service = new AuthServices();
+
     }
 
     coordinates = (lat, lng) => {
@@ -53,6 +55,10 @@ export default class UploadProduct extends Component {
                 // console.log('response is: ', response);
                 // after the console.log we can see that response carries 'secure_url' which we can use to update the state 
                 this.setState({ ...this.state, imageUrl: response.secure_url });
+                if (this.state.position.lat !== 0 || this.state.position.lng !== 0) {
+                    console.log("entra")
+                    document.getElementById(this.button).disabled = false;
+                }
             })
             .catch(err => {
                 console.log("Error while uploading the file: ", err);
@@ -72,6 +78,8 @@ export default class UploadProduct extends Component {
             lat: this.state.position.lat,
             lng: this.state.position.lng
         }
+        this.button = "add"
+
 
         this.service.addProduct(owner, imageUrl, name, category, price, description, position)
 
@@ -79,6 +87,22 @@ export default class UploadProduct extends Component {
                 console.log('added: ', res);
                 // here you would redirect to some other page 
                 this.props.uploadProductDidAddProduct(res)
+                this.setState({
+                    owner: this.props._id,
+                    // picture: [{
+                    //     imageUrl: ""
+                    // }],
+                    name: "",
+                    category: "",
+                    price: "",
+                    description: "",
+                    imgUrl: "",
+                    position: {
+                        lat: 0,
+                        lng: 0
+                    },
+
+                })
             })
             .catch(err => {
                 console.log("Error while adding the thing: ", err);
@@ -87,10 +111,56 @@ export default class UploadProduct extends Component {
 
     render() {
         return (
+            <div className="todo">
+                <h2>Add New Product</h2>
             <div className="map-container">
-                <form className="add-product">
+               
+                        <form className="form" onSubmit={this.handleFormSubmit}>
+                            <div >
+                                <input type="file" value={this.state.pictures} onChange={(e) => this.handleFileUpload(e)} />
+                                <img src={this.state.imageUrl} alt="" style={{ height: 50 }} />
+                                
+                            </div>
+                            <div>
+                                <input type="text" placeholder="Product Name" name="name" value={this.state.name} onChange={e => this.handleChange(e)} />
+                            </div>
+
+                            <div>
+                                <select name="category" form="category" value={this.state.category} onChange={e => this.handleChange(e)}>
+                                    <option value="">-----</option>
+                                    <option value="Sport">Sport</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+
+
+                            <div>
+                                <input type="text" placeholder="Price € " name="price" value={this.state.price} onChange={e => this.handleChange(e)} />
+                            </div>
+
+                            <div>
+                                <textarea type="text" placeholder="How is it?" name="description" value={this.state.description} onChange={e => this.handleChange(e)} />
+                            </div>
+
+                            <div>
+                                <p>
+                                    Remember, you must select the location of your product on the map
+                                </p>
+                        </div >
+
+                            <div>
+                                <button id="add" className="btn btn-warning" disabled onClick={(e) => this.handleSubmit(e)}>Add</button>
+                            </div>
+                        </form>
+           
+                <div>
+                    <UploadMap API_KEY="AIzaSyAzGHDso1aXodTgAxYYmuTHdp9iVdxanhM" coordinates={this.coordinates}></UploadMap>
+                </div>
+            
+                {/* <div className="add-product">
+                <form >
                     <div className="form">
-                    <input type="file" value={this.state.pictures} onChange={(e) => this.handleFileUpload(e)} />
+                        <input type="file" value={this.state.pictures} onChange={(e) => this.handleFileUpload(e)} />
                         <img src={this.state.imageUrl} alt="" style={{ height: 50 }} />
                     </div>
                     <div className="form-contem">
@@ -111,17 +181,22 @@ export default class UploadProduct extends Component {
                         <div className="form">
                             <textarea type="text" placeholder="How is it?" name="description" value={this.state.description} onChange={e => this.handleChange(e)} />
                         </div>
-                            {/* <input type="text" value={this.state.position.lat} />
-                            <input type="text" value={this.state.position.lng} /> */}
+                        <input type="text" value={this.state.position.lat} />
+                            <input type="text" value={this.state.position.lng} />
+                        <div>
+                            <p>
+
+                                Remember, you must select the location of your product on the map
+                                </p>
+                        </div>
                         <div className="btn-edit">
-                            <button className="btn btn-warning" onClick={(e) => this.handleSubmit(e)}>Add</button>
+                            <button id="add" className="btn btn-warning" disabled onClick={(e) => this.handleSubmit(e)}>Add</button>
 
                         </div>
                     </div>
                 </form>
-                <div>
-                <UploadMap API_KEY="AIzaSyAzGHDso1aXodTgAxYYmuTHdp9iVdxanhM" coordinates={this.coordinates}></UploadMap>
-                </div>
+                </div> */}
+            </div>
             </div>
 
         )

@@ -40,9 +40,9 @@ router.get('/products', (req, res, next) => {
     .catch(e => console.log(e))
 });
 
-router.get('/product/:id', (req, res, next) => {
+router.post('/productDetail', (req, res, next) => {
   Product
-    .findById(req.params.id)
+    .findById(req.body.id)
     .populate("owner")
     .then(product => res.json(product))
     .catch(e => console.log(e))
@@ -62,13 +62,21 @@ router.get('/products/:city', (req, res, next) => {
     .catch(e => console.log(e))
 });
 
-router.get('/user/:id/products', (req, res, next) => {
+router.post('/myproducts', (req, res, next) => {
   Product
-    .find({ owner: req.params.id })
+    .find({ owner: req.body.id })
     .populate("owner")
     .then(productsOwner => res.json(productsOwner))
     .catch(e => console.log(e))
 });
+
+// router.get('/user/:id/myproducts', (req, res, next) => {
+//   Product
+//     .find({ owner: req.params.id })
+//     .populate("owner")
+//     .then(myProducts => res.json(myProducts))
+//     .catch(e => console.log(e))
+// });
 
 
 //actual write to cloudinary via the middleware specified in ../config/cloudinary.js

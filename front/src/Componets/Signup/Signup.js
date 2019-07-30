@@ -1,17 +1,17 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import AuthServices from '../../Services/Services'
 import './Signup.css'
 import logo from '../Assets/logo-white.png';
 
-export default class Signup extends Component {
+class Signup extends Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
             username: '',
             password: '',
-            city:'',
+            city: '',
             email: '',
         };
         this.service = new AuthServices();
@@ -24,45 +24,50 @@ export default class Signup extends Component {
         const city = this.state.city
         const email = this.state.email;
 
-        this.service.signup(username, password,city,email)
-            .then( response => {
+        this.service.signup(username, password, city, email)
+            .then(() => {
                 this.setState({
                     username: "",
                     password: "",
-                    city:"",
+                    city: "",
                     email: "",
                 });
-                this.props.getUser(response)
+                this.service.login(username, password)
+                    .then(response => {
+                        this.props.getUser(response)
+                        this.props.history.push("/products")
+                    })
+                    .catch(error => console.log(error))
             })
-            .catch(error => console.log(error) )
+            .catch(error => console.log(error))
     };
 
     handleChange = (event) => {
-        const {name, value} = event.target;
-        this.setState({[name]: value});
+        const { name, value } = event.target;
+        this.setState({ [name]: value });
     };
 
 
-    render(){
-        return(
+    render() {
+        return (
             <div>
                 <div className="login-clean">
                     <form onSubmit={this.handleFormSubmit}>
                         <h2 className="sr-only">Login Form</h2>
                         <div className="illustration">
-                            <img className="rounded-circle" src={logo} width={150} alt="logo"/>
+                            <img className="rounded-circle" src={logo} width={150} alt="logo" />
                         </div>
                         <div className="form-group">
-                            <input className="form-control" type="text" name="username" placeholder="Username" value={this.state.username} onChange={ e => this.handleChange(e)}/>
+                            <input className="form-control" type="text" name="username" placeholder="Username" value={this.state.username} onChange={e => this.handleChange(e)} />
                         </div>
                         <div className="form-group">
-                            <input className="form-control" type="password" name="password" placeholder="Password" value={this.state.password} onChange={ e => this.handleChange(e)}/>
+                            <input className="form-control" type="password" name="password" placeholder="Password" value={this.state.password} onChange={e => this.handleChange(e)} />
                         </div>
                         <div className="form-group">
-                            <input className="form-control" type="text" name="city" placeholder="City" value={this.state.city} onChange={ e => this.handleChange(e)}/>
+                            <input className="form-control" type="text" name="city" placeholder="City" value={this.state.city} onChange={e => this.handleChange(e)} />
                         </div>
                         <div className="form-group">
-                            <input className="form-control" type="email" name="email" placeholder="Email" value={this.state.email} onChange={ e => this.handleChange(e)}/>
+                            <input className="form-control" type="email" name="email" placeholder="Email" value={this.state.email} onChange={e => this.handleChange(e)} />
                         </div>
                         <div className="form-group">
                             <button className="btn btn-primary btn-block" type="submit" value="Signup" >Signup</button>
@@ -76,3 +81,5 @@ export default class Signup extends Component {
         )
     }
 }
+
+export default withRouter(Signup)

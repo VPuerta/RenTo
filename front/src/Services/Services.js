@@ -1,59 +1,74 @@
 import axios from 'axios';
 
-export default class AuthServices {  
-  constructor(){
+export default class AuthServices {
+  constructor() {
     this.service = axios.create({
       baseURL: 'http://localhost:5000',
       withCredentials: true
     })
   }
 
-  signup = (username, password,city,email) => {
-    return this.service.post('/auth/signup', {username, password,city,email})
-    .then(response => response.data)
+  signup = (username, password, city, email) => {
+    return this.service.post('/auth/signup', { username, password, city, email })
+      .then(response => response.data)
   };
 
-  login = (username, password,city,email)=>{
-    return this.service.post('/auth/login', {username, password,city,email})
-    .then(response => response.data)
+  login = (username, password) => {
+    return this.service.post('/auth/login', { username, password })
+      .then(response => response.data)
 
   };
 
-  loggedin = ()=>{
+  loggedin = () => {
     return this.service.get('/auth/userData')
-  .then(response => response.data)
+      .then(response => {
+        return response.data
+      })
   };
 
-  logout = ()=>{
+  logout = () => {
     return this.service.get('/auth/logout')
-  .then(response => response.data)
+      .then(response => response.data)
   };
 
-  addProduct = (owner, imageUrl, name, category, price, description,position) => {
-    return this.service.post('/addProduct', {owner,imageUrl,name,category,price,description,position})
-    .then(response => response.data)
+  addProduct = (owner, imageUrl, name, category, price, description, position) => {
+    return this.service.post('/addProduct', { owner, imageUrl, name, category, price, description, position })
+      .then(response => response.data)
   };
 
   deleteProduct = (id) => {
-    return this.service.post('/deleteProduct', {id})
-    .then(response => response.data)
+    return this.service.post('/deleteProduct', { id })
+      .then(response => response.data)
   }
-  getProducts= () =>{
+
+  getProducts = () => {
     return this.service.get('/products')
-    .then(allProducts => allProducts)
+      .then(allProducts => allProducts)
   }
 
-  getPcategory= (category )=>{
-    return this.service.get('/category',{category})
-    .then(productCat => productCat)
+  getMyProducts = (id) => {
+    return this.service.post('/myproducts', { id })
+      .then(MyProducts => MyProducts.data)
+      .catch(err => err)
   }
 
-  
-    handleUpload =(theFile) =>{
-      // console.log('file in service: ', theFile)
-      return this.service.post('/upload', theFile)
-        .then(res => res.data)
-        .catch(error=>error);
-    }
-  
+  getProductDetail = id => {
+    return this.service.post('/productDetail', {id})
+    .then(MyProducts => MyProducts.data)
+    .catch(err => err)
+  }
+
+  getPcategory = (category) => {
+    return this.service.get('/category', { category })
+      .then(productCat => productCat)
+  }
+
+
+  handleUpload = (theFile) => {
+    // console.log('file in service: ', theFile)
+    return this.service.post('/upload', theFile)
+      .then(res => res.data)
+      .catch(error => error);
+  }
+
 }

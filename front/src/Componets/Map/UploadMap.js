@@ -5,6 +5,7 @@ import '../Map/UploadMap.css'
 export default class UploadMap extends Component {
 
     clic(e){
+        console.log(e.lat,e.lng)
         this.props.coordinates(e.lat,e.lng)
     }
 
@@ -32,7 +33,7 @@ export default class UploadMap extends Component {
 
         return (
             // Important! Always set the container height explicitly
-            <div style={{ height: '60vh', width: '95%' }} className="uploadmap">
+            <div  style={{ height: '60vh', width: '100%' }} id ="map" >
                 <GoogleMapReact
                     onClick = {(e)=>this.clic(e)}
                     bootstrapURLKeys = {{ key: this.props.API_KEY }}

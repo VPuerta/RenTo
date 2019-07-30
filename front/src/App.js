@@ -27,11 +27,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.service.loggedin().then(useData => {
-      this.setState({
-        loggedInUser: useData
-      })
-    })
+    this.fetchUser()
   };
 
   getTheUser = (userObj) => {
@@ -39,6 +35,7 @@ class App extends Component {
       ...this.state,
       loggedInUser: userObj,
     })
+    // this.fetchUser()
   };
 
   logout = (e) => {
@@ -54,9 +51,11 @@ class App extends Component {
   fetchUser = () => {
     this.service.loggedin()
         .then(response => {
-          this.setState({
-            loggedInUser: response
-          })
+          // if(response!=""){
+            this.setState({
+              loggedInUser: response
+            })
+          // }
         })
   };
 
@@ -69,6 +68,7 @@ class App extends Component {
 
   render() {
     // If the user is not logged, just allow him to go to login and sing up.
+    console.log(this.state.loggedInUser)
     if (!this.state.loggedInUser) {
       return (
           <React.Fragment>
@@ -96,7 +96,7 @@ class App extends Component {
               return <Redirect to="/products" />
             }} />
             <Route exact path='/singup' render={() => {
-              return <Redirect to="/login" />
+              return <Redirect to="/products" />
             }} />
             <Route exact path='/profile' render={() => {
               return <Profile {...this.state.loggedInUser} logout={this.logout} />

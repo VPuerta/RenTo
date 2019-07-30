@@ -8,19 +8,33 @@
     text-align: center;
     border: dotted grey 2px;
     background-color: whitesmoke;
-    flex-wrap: wrap;
     margin: 2rem;
     padding: 1rem;
-    flex-wrap: wrap;
     
 }
 
 .form{
     display: flex;
-   align-content: space-between;
-   flex-flow: wrap;
-   /* margin-left: 10%; */
-   align-content: center;
-   justify-content: center;
+    flex-direction: column;
+    padding: 10px ;
    
+   
+}
+
+.form-group p{
+    width: 50%;
+}
+.map-container{
+  
+    width: 90%;
+    padding: 10px ;
+    border: solid grey .5px;
+    /* width: 30% */
+
+}
+.todo{
+  
+    margin-left: 10%;
+    text-align: center;
+    
 }
