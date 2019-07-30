@@ -15,7 +15,7 @@ const hbs = require("hbs");
 
 
 mongoose
-  .connect('mongodb://localhost/rento', {useNewUrlParser: true})
+  .connect(process.env.MONGODB, {useNewUrlParser: true})
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })
@@ -69,7 +69,8 @@ app.use('/', index);
 const authRoutes = require('./routes/auth');
 app.use('/auth', authRoutes);
 
-// app.use(require('./routes/index'));
-
+app.use((req, res) => {
+  res.sendFile(__dirname + "/public/index.html");
+  });
 
 module.exports = app;
