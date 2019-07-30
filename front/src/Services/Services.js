@@ -71,4 +71,8 @@ export default class AuthServices {
       .catch(error => error);
   }
 
+  updateProduct = (id, imageUrl, name, category, price, description, position) => {
+    return this.service.post('/updateProduct', { id, imageUrl, name, category, price, description, position })
+      .then(editMyProduct => editMyProduct)
+  }
 }

@@ -41,21 +41,6 @@ export default class ProductDetail extends Component {
             })
     }
 
-    // getSingleProduct = () => {
-    //     const { params } = this.props.match;
-    //     axios.get(`http://localhost:5000/product/${params.id}`)
-    //         .then(response => {
-    //             // console.log(response.data)
-    //             const product = response.data;
-    //             console.log(product)
-    //             this.setState({
-    //                 product: product
-    //             });
-    //         })
-    //         .catch((err) => {
-    //             console.log(err)
-    //         })
-    // }
 
     render() {
         return (

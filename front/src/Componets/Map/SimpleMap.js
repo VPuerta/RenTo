@@ -9,12 +9,10 @@ export default class SimpleMap extends Component {
         }
     }
 
-
     cli(e){
         console.log(e)
     }
     
-
     setMapProperties(map, maps) {
         return new maps.Marker({
             position: { 

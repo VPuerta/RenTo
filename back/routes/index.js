@@ -91,12 +91,26 @@ router.post('/upload', uploadCloud.single("imageUrl"), (req, res, next) => {
   res.json({ secure_url: req.file.secure_url });
 })
 
+router.post('/updateProduct', (req,res,next)=>{
+  console.log(req.body)
+  Product
+  .findByIdAndUpdate(req.body.id ,{
+    name: req.body.name,
+    imageUrl: req.body.imageUrl,
+    category: req.body.category,
+    description: req.body.description,
+    price: req.body.price,
+    position: req.body.position
+  })
+  .then(() => { res.status(200).json(myProductEdit) })
+  .catch(err => res.status(500).json({ message: 'Could not save Product' + err }));
+})
+
 router.post('/addProduct', (req, res, next) => {
   console.log(req.body)
 
   const name = req.body.name;
   const imageUrl = req.body.imageUrl
-  // const owner = ObjectId(req.body.owner);
   const owner = req.body.owner;
   const category = req.body.category;
   const description = req.body.description;
