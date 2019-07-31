@@ -70,15 +70,6 @@ router.post('/myproducts', (req, res, next) => {
     .catch(e => console.log(e))
 });
 
-// router.get('/user/:id/myproducts', (req, res, next) => {
-//   Product
-//     .find({ owner: req.params.id })
-//     .populate("owner")
-//     .then(myProducts => res.json(myProducts))
-//     .catch(e => console.log(e))
-// });
-
-
 //actual write to cloudinary via the middleware specified in ../config/cloudinary.js
 router.post('/upload', uploadCloud.single("imageUrl"), (req, res, next) => {
   console.log('file is: ', req.file)
@@ -107,7 +98,7 @@ router.post('/updateProduct', (req,res,next)=>{
 })
 
 router.post('/addProduct', (req, res, next) => {
-  console.log(req.body)
+  console.log("addProduct", req.body)
 
   const name = req.body.name;
   const imageUrl = req.body.imageUrl
@@ -134,23 +125,29 @@ router.post('/addProduct', (req, res, next) => {
     .save()
     .then(() => { res.status(200).json(newProduct) })
     .catch(err => res.status(500).json({ message: 'Could not save Product' + err }));
-
-  //actual write in mongo using mongoose
-  // newPhoto.save()
-  //   .then(photo => {
-  //     res.json({ url: req.file, picture: photo });
-  //   }).catch(error => {
-  //     console.log(error);
-  //   })
 });
 
 router.post('/deleteProduct', (req, res, next) => {
-  console.log("body", req.body)
+  console.log("deleteProduct", req.body)
+  
   Product
     .findByIdAndDelete(req.body.id)
     .then(Products => res.json(Products))
     .catch(e => console.log(e))
 });
+
+router.post('/updateUser', (req,res,next)=>{
+  console.log("updateUser", req.body)
+
+  User
+  .findByIdAndUpdate(req.body.id ,{
+    username: req.body.username,
+    city: req.body.city,
+    email: req.body.email,
+  })
+  .then(() => { res.status(200).json(userUpdate) })
+  .catch(err => res.status(500).json({ message: 'Could not save dates User' + err }));
+})
 
 
 

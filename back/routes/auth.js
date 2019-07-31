@@ -2,6 +2,8 @@ const express = require("express");
 const passport = require('passport');
 const router = express.Router();
 const User = require("../models/User");
+const uploadCloud = require('../cloudinary');
+
 
 // Bcrypt to encrypt passwords
 const bcrypt = require("bcrypt");
@@ -35,6 +37,20 @@ router.post('/login', (req, res, next) => {
   })(req, res, next);
 });
 
+//actual write to cloudinary via the middleware specified in ../config/cloudinary.js
+router.post('/signup/upload', uploadCloud.single("photo"), (req, res, next) => {
+  console.log("fotazaaaa")
+  console.log('photo: ', req.file)
+  if (!req.file) {
+    next(new Error('No file uploaded!'));
+    return;
+  }
+  // get secure_url from the file object and save it in the 
+  // variable 'secure_url', but this can be any name, just make sure you remember to use the same in frontend
+  res.json({ photo: req.file.secure_url });
+})
+
+
 router.post("/signup", (req, res, next) => {
   console.log("Signing up!");
 
@@ -42,6 +58,8 @@ router.post("/signup", (req, res, next) => {
   const password = req.body.password;
   const email = req.body.email;
   const city = req.body.city;
+  const photo= req.body.photo;
+  const raiting = [];
 
   if (username === "" || password === "") {
     res.status(500).json({ message: 'Invalid username or password.' });
@@ -65,6 +83,8 @@ router.post("/signup", (req, res, next) => {
       password: hashPass,
       email,
       city,
+      photo,
+      raiting,
       chatToken
     });
 

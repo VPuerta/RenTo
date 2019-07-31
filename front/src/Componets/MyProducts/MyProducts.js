@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import './MyProducts.css'
 import UploadProduct from '../UploadProduct/UploadProduct';
 import AuthServices from '../../Services/Services';
-import { Link } from 'react-router-dom';
 
 
 export default class MyProducts extends Component {
@@ -158,9 +156,12 @@ export default class MyProducts extends Component {
                                 }
                                 </div>
                                 <div className="btn-edit">
-                                    <button className="btn btn-warning" onClick={e => this.editButtonClicked(myProduct, idx)} producs={this.myproducts} >Edit</button>
-                                    {/* <button className="btn btn-warning" >Edit</button> */}
-                                    <button className="btn btn-warning" onClick={() => this.deleteProductClicked(myProduct, idx)}>Delete</button>
+
+                                { this.state.editingIndexes.includes(idx) ?
+                                    (<button id ="button" className="btn btn-warning" onClick={e => this.editButtonClicked(myProduct, idx)} producs={this.myproducts} >Save</button>) :
+                                    (<button  id ="button"className="btn btn-warning" onClick={e => this.editButtonClicked(myProduct, idx)} producs={this.myproducts} >Edit</button>)
+                                }
+                                    <button id ="button" className="btn btn-warning" onClick={() => this.deleteProductClicked(myProduct, idx)}>Delete</button>
                                 </div>
 
 

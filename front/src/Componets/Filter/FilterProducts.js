@@ -21,7 +21,7 @@ export default class FilterProducts extends Component {
         return (
             <div>
                 <div >
-                    <select className="btn btn-warning dropdown-toggle" name="category" form="category" value={this.state.category} onChange={ e => this.handleChange(e) }>
+                    <select id="button" className="btn btn-warning dropdown-toggle" name="category" form="category" value={this.state.category} onChange={ e => this.handleChange(e) }>
                         <option className="dropdown-item-text" value="All">All Categories</option>
                         <option className="dropdown-item" value="Sport">Sport</option>
                         <option className="dropdown-item" value="Other">Other</option>

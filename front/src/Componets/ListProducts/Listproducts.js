@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import './Listproducts.css'
 import FilterProducts from '../Filter/FilterProducts';
 import AuthServices from '../../Services/Services';
-import placeholder2 from '../Assets/placeholder2.png'
 
 export default class Listproducts extends Component {
     constructor(props) {

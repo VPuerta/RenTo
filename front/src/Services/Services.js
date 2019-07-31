@@ -8,8 +8,8 @@ export default class AuthServices {
     })
   }
 
-  signup = (username, password, city, email) => {
-    return this.service.post('/auth/signup', { username, password, city, email })
+  signup = (username, password, city, email,photo) => {
+    return this.service.post('/auth/signup', { username, password, city, email,photo })
       .then(response => response.data)
   };
 
@@ -65,14 +65,25 @@ export default class AuthServices {
 
 
   handleUpload = (theFile) => {
-    // console.log('file in service: ', theFile)
     return this.service.post('/upload', theFile)
-      .then(res => res.data)
+    .then(res => ("res" ,res.data))
+      .catch(error => error);
+  }
+
+  handleUploadUser = (photo) => {
+    console.log("hola", photo)
+    return this.service.post('/auth/signup/upload', photo)
+    .then(res => ("res" ,res.data))
       .catch(error => error);
   }
 
   updateProduct = (id, imageUrl, name, category, price, description, position) => {
     return this.service.post('/updateProduct', { id, imageUrl, name, category, price, description, position })
       .then(editMyProduct => editMyProduct)
+  }
+
+  updateUser = (id, username, city, email) => {
+    return this.service.post('/updateUser', { id, username, city, email })
+      .then(userEdit => userEdit)
   }
 }

@@ -12,7 +12,6 @@ import ProductDetail from './Componets/ProductDetail/ProductDetail';
 import ProductsOwner from './Componets/ProducOwner/ProductsOwner';
 import MyProducts from './Componets/MyProducts/MyProducts';
 import Messages from './Componets/Messages/Messages';
-import EditProduct from './Componets/EditProduct/EditProduct';
 
 
 
@@ -35,7 +34,6 @@ class App extends Component {
       ...this.state,
       loggedInUser: userObj,
     })
-    // this.fetchUser()
   };
 
   logout = (e) => {
@@ -51,7 +49,6 @@ class App extends Component {
   fetchUser = () => {
     this.service.loggedin()
         .then(response => {
-          // if(response!=""){
             this.setState({
               loggedInUser: response
             })
@@ -89,7 +86,7 @@ class App extends Component {
 
     return (
         <React.Fragment>
-          <Navbar filterProducts={(q) => this.filterProducts(q)} filterQuery={this.state.filterQuery} getTheUser={this.getTheUser}>
+          <Navbar filterProducts={(q) => this.filterProducts(q)} filterQuery={this.state.filterQuery} getTheUser={this.getTheUser} logout={this.logout}>
           </Navbar>
           <Switch>
             <Route exact path='/login' render={() => {

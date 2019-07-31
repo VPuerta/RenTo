@@ -2,12 +2,11 @@ const mongoose = require('mongoose');
 const Schema   = mongoose.Schema;
 
 const userSchema = new Schema({
-  avatar: String,
   username: String,
   password: String,
-  // location: { type: { type: String }, coordinates: [Number] },
   email: String,
   city: String,
+  photo: String,
   rating: [Number],
   chatToken: String
 }, 

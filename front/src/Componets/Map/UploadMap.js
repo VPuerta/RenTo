@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
-import { Marker } from 'google-map-react';
 import '../Map/UploadMap.css'
 
 export default class UploadMap extends Component {

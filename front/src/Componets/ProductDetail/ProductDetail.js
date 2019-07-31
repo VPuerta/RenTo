@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import { Link } from 'react-router-dom';
 import SimpleMap from '../Map/SimpleMap';
 import './ProductDetail.css'
@@ -53,7 +52,7 @@ export default class ProductDetail extends Component {
                         </Link>
                     </div>
                     <div>
-                        <Link to={"/messages"}>
+                        <Link to={"/messages" }>
                             <button className="btn btn-warning" style={{ marginBottom: "1.5rem", color: "white" }}>Chat</button>
                         </Link>
                     </div>
@@ -67,18 +66,6 @@ export default class ProductDetail extends Component {
 
                 <div className="carousel-inner">
                     <img src={this.state.product.imageUrl} className="d-block w-100" alt="" />
-                    {/* {
-                        this.state.product.pictures.map((picture, idx) => {
-                            return (
-                                <div key={idx}>
-                                    <div className="carousel-item active">
-                                        <img src={picture.imgName} className="d-block w-100" alt="" />
-                                    </div>
-                                </div>
-                            )
-                        })
-
-                    } */}
                     <div>
                         <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                             <span className="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -90,15 +77,15 @@ export default class ProductDetail extends Component {
                         </a>
                     </div>
                 </div>
+
                 <div className="card mb-3">
                     <div className="card-body">
                         <h5 className="card-title">{this.state.product.name}</h5>
                         <p className="card-text">{this.state.product.price} €</p>
                         <p className="card-text">{this.state.product.description}</p>
-                    </div>
-                  
-
+                    </div>  
                 </div>
+                
                 <div>
                     <SimpleMap API_KEY="AIzaSyAzGHDso1aXodTgAxYYmuTHdp9iVdxanhM" prod={this.state.product}></SimpleMap>
                 </div>

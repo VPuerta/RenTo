@@ -13,13 +13,13 @@ export default class UploadProduct extends Component {
             category: "",
             price: "",
             description: "",
-            imgUrl: "",
+            imageUrl: "",
             position: {
                 lat: 0,
                 lng: 0
             },
         };
-        this.button = "add"
+        this.image="image"
         this.service = new AuthServices();
 
     }
@@ -36,7 +36,9 @@ export default class UploadProduct extends Component {
 
     handleChange = (event) => {
         const { name, value } = event.target;
-        this.setState({ [name]: value });
+        this.setState({ 
+            [name]: value 
+        });
     };
 
     handleFileUpload = e => {
@@ -51,8 +53,10 @@ export default class UploadProduct extends Component {
             .then(response => {
                 // console.log('response is: ', response);
                 // after the console.log we can see that response carries 'secure_url' which we can use to update the state 
-                this.setState({ ...this.state, imageUrl: response.secure_url });
-                console.log(this.state.position)
+                this.setState({ 
+                    ...this.state, 
+                    imageUrl: response.secure_url 
+                });
                 // if (this.state.position.lat !== 0 || this.state.position.lng !== 0) {
 
                 //     document.getElementById(this.button).disabled = false;
@@ -65,7 +69,6 @@ export default class UploadProduct extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
-        console.log("hola")
         const owner = this.props._id;
         const name = this.state.name;
         const category = this.state.category;
@@ -81,22 +84,26 @@ export default class UploadProduct extends Component {
 
         this.service.addProduct(owner, imageUrl, name, category, price, description, position)
             .then(res => {
+                
                 console.log('added: ', res);
                 // here you would redirect to some other page 
                 this.props.uploadProductDidAddProduct(res)
+                document.getElementById(this.image).value=""
                 this.setState({
                     owner: this.props._id,
                     name: "",
                     category: "",
                     price: "",
                     description: "",
-                    imgUrl: "",
+                    imageUrl: "",
                     position: {
                         lat: 0,
                         lng: 0
                     },
+                  
                 })
             })
+           
             .catch(err => {
                 console.log("Error while adding the thing: ", err);
             });
@@ -105,44 +112,42 @@ export default class UploadProduct extends Component {
     render() {
         return (
             <div className="todo">
-                <h2>Add New Product</h2>
+                <h2>New Product</h2>
                 <div className="map-container">
 
                     <form className="form" onSubmit={this.handleFormSubmit}>
-                        <div >
-                            <input type="file" value={this.state.pictures} onChange={(e) => this.handleFileUpload(e)} />
+                        <div className="dates">
+                            <input id="image" type="file" value={this.state.pictures} onChange={(e) => this.handleFileUpload(e)} />
                             <img src={this.state.imageUrl} alt="" style={{ height: 50 }} />
 
                         </div>
-                        <div>
-                            <input type="text" placeholder="Product Name" name="name" value={this.state.name} onChange={e => this.handleChange(e)} />
+                        <div className="dates">
+                            <input type="text" placeholder="Product Name" name="name" value={this.state.name} onChange={e => this.handleChange(e)} required />
                         </div>
 
-                        <div>
+                        <div className="dates">
                             <select name="category" form="category" value={this.state.category} onChange={e => this.handleChange(e)}>
                                 <option value="">-----</option>
                                 <option value="Sport">Sport</option>
                                 <option value="Other">Other</option>
                             </select>
-                        </div>
+                        </div >
 
 
-                        <div>
+                        <div className="dates">
                             <input type="text" placeholder="Price € " name="price" value={this.state.price} onChange={e => this.handleChange(e)} />
                         </div>
 
-                        <div>
+                        <div className="dates">
                             <textarea type="text" placeholder="How is it?" name="description" value={this.state.description} onChange={e => this.handleChange(e)} />
                         </div>
 
-                        <div>
-                            <p>
-                                Remember, you must select the location of your product on the map
-                                </p>
+                        <div className="dates">
+                            <p>Remember, you must select the location of your product on the map</p>
                         </div >
 
                         <div>
-                            <button id="add" className="btn btn-warning" onClick={(e) => this.handleSubmit(e)}>Add</button>
+                            <button id="add" className="button" onClick={(e) => this.handleSubmit(e)}>Add</button>
                         </div>
                     </form>
 

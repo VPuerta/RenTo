@@ -1,26 +1,52 @@
 import React, { Component } from 'react';
 import photo from '../Assets/photo.jpg'
-import './Profile.css'
+import './Profile.css';
+import AuthServices from '../../Services/Services';
+
 
 export default class Profile extends Component {
   constructor(props) {
     console.log(props)
     super(props)
-    console.log(props)
-    // this.state={
-
-    // }
+    this.state = {
+      username: this.props.username,
+      password: this.props.password,
+      city: this.props.city,
+      email: this.props.email,
+      photo: this.props.photo,
+      editing: false
+    }
+    this.service = new AuthServices();
   }
 
-  //   getImageName = (user) => {
-  //     let imgName;
-  //     if (user.image !== "") {
-  //         imgName = user.image
-  //     } else {
-  //         image = ""
-  //     }
-  //     return imgName;
-  // };
+  editButtonClicked = () => {
+    if (this.state.editing) {
+      this.updateUser()
+    }
+
+    this.setState({
+      ...this.state,
+      editing: !this.state.editing
+    })
+  }
+
+  handleChange = (event) => {
+    const { name, value } = event.target;
+    this.setState({ [name]: value });
+  };
+
+  updateUser = () => {
+    console.log(this.props._id)
+    this.service.updateUser(
+      this.props._id,
+      this.state.username,
+      // this.state.password,
+      this.state.city,
+      this.state.email,
+    )
+      .then((response) => { console.log("Updated!", response) })
+      .catch((err) => { console.log(err) })
+  }
 
   render() {
     return (
@@ -29,37 +55,50 @@ export default class Profile extends Component {
           <h1>Hello {this.props.username} </h1>
         </div>
         <div >
-          <div>
-            {/* <img src={this.getImageName(product)} className="card-img-top" alt={product.name} /> */}
-          </div>
+
           <div className="profile-body">
             <div>
-              {/* <img src={this.props.avatar} alt=""/> */}
-              <img id="avatar" src={photo} />
+              <img id="avatar" src={this.state.photo} />
             </div>
             <div>
               <div>
-              <p>Name : {this.props.username} </p>
-              {/* <p>Name :</p>
-              <input type="text" value="name" placeholder = {this.props.username} /> */}
+                <p>Name:</p>
+                {this.state.editing ?
+                  (<input className="card-title" type="test" name="username" value={this.state.username} onChange={this.handleChange} />) :
+                  (<p>{this.state.username} </p>)
+                }
+
               </div>
               <div>
-              <p>Password : {this.props.password} </p>
-              {/* <p>Password :</p>
-              <input type="password" value="password" placeholder = {this.props.password} /> */}
+                <p>Password :</p>
+                {this.state.editing ?
+                  (<input className="form-control" type="password" name="password" placeholder="Password" value={this.state.password} onChange={this.handleChange} />) :
+                  (<p>{this.state.password} </p>)
+                }
               </div>
+
               <div>
-              <p>City : {this.props.city} </p>
-              {/* <p>City :</p>
-              <input type="text" value="city" placeholder = {this.props.city} /> */}
+                <p>City : </p>
+                {this.state.editing ?
+                  (<input className="form-control" type="text" name="city" placeholder="City" value={this.state.city} onChange={this.handleChange} />) :
+                  (<p>{this.state.city}</p>)
+                }
               </div>
+
               <div>
-              <p>Email : {this.props.email} </p>
-              {/* <p>Email :</p>
-              <input type="email" value="email" placeholder = {this.props.email} /> */}
+                <p>Email : </p>
+                {this.state.editing ?
+                  (<input className="form-control" type="email" name="email" placeholder="Email" value={this.state.email} onChange={this.handleChange} />) :
+                  (<p>{this.state.email}</p>)
+                }
               </div>
-              <button className="btn btn-warning" >Edit your data</button>
-              <button className="btn btn-warning" onClick={(e) => { this.props.logout(e) }}>Logout</button>
+
+              {this.state.editing ?
+                (<button id="button" className="btn" onClick={this.editButtonClicked}>Save</button>) :
+                (<button id="button" className="btn" onClick={this.editButtonClicked} >Edit your data</button>)
+              }
+
+              <button id="button" className="btn" onClick={(e) => { this.props.logout(e) }}>Logout</button>
             </div>
           </div>
         </div>

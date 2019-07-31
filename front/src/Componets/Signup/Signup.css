@@ -1,5 +1,6 @@
 .login-clean {
     background: #f1f7fc;
+    background-size: cover;
     padding: 80px 0;
 }
 
@@ -68,4 +69,7 @@
 
 .login-clean form .btn-block {
     color: #333336;
+}
+#potho{
+    width: 110%
 }
