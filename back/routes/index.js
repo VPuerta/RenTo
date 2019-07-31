@@ -41,7 +41,7 @@ router.get('/products', (req, res, next) => {
 });
 
 router.post('/productDetail', (req, res, next) => {
-  console.log("req.body.id" , req.body.id)
+  console.log("req.body.id", req.body.id)
   Product
     .findById(req.body.id)
     .populate("owner")
