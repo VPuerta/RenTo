@@ -52,8 +52,8 @@ export default class AuthServices {
       .catch(err => err)
   }
 
-  getProductDetail = id => {
-    return this.service.post('/productDetail', {id})
+  getProductDetail = (id) => {
+    return this.service.post('/productDetail', { id })
     .then(MyProducts => MyProducts.data)
     .catch(err => err)
   }

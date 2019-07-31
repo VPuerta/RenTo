@@ -52,7 +52,7 @@ export default class ProductDetail extends Component {
                         </Link>
                     </div>
                     <div>
-                        <Link to={"/messages" }>
+                        <Link to={"/messages/" + this.state.product._id }>
                             <button className="btn btn-warning" style={{ marginBottom: "1.5rem", color: "white" }}>Chat</button>
                         </Link>
                     </div>
@@ -85,7 +85,6 @@ export default class ProductDetail extends Component {
                         <p className="card-text">{this.state.product.description}</p>
                     </div>  
                 </div>
-                
                 <div>
                     <SimpleMap API_KEY="AIzaSyAzGHDso1aXodTgAxYYmuTHdp9iVdxanhM" prod={this.state.product}></SimpleMap>
                 </div>

@@ -108,8 +108,8 @@ class App extends Component {
             <Route exact path='/myproducts' render={() => {
               return <MyProducts {...this.state.loggedInUser} getUser={this.getTheUser} />
             }} />
-            <Route exact path='/messages' render={() => {
-              return <Messages loggedInUser={this.state.loggedInUser}/>
+            <Route exact path='/messages/:id' render={(props) => {
+              return <Messages loggedInUser={this.state.loggedInUser} productId={props.match.params.id}/>
             }} />
           </Switch>
         </React.Fragment>
