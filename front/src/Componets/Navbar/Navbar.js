@@ -28,15 +28,15 @@ class Navbar extends Component {
 
     render() {
         return (
-            <nav className="navbar navbar-light bg-light">
+            <nav className="navbar">
                 <Link to={"/products"} className="navbar-brand" onClick={ e => this.homeButtonClicked(e) }>
-                    <img src={rento} width="30" height="30" alt="logo" className="d-inline-block align-top" />
-                    RenTo
+                    <img src={rento} width="50" height="50" alt="logo" className="logo" />
+     
                 </Link>
 
                 <form className="form-inline">
                     <input className="form-control mr-sm-2 search" type="search" name="search" placeholder="Search" aria-label="Search" onChange={ e => this.handleChange(e)} value={this.state.filterQuery} />
-                    <Link className="btn btn-outline-primary" onClick={ e => this.searchButtonClicked(e) } to={"/products"}>Search</Link>
+                    <Link className="btn btn-light" onClick={ e => this.searchButtonClicked(e) } to={"/products"}>Search</Link>
                 </form>
 
                 <div className="nav-left-item">

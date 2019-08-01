@@ -72,6 +72,7 @@ export default class Messages extends Component {
             product: product
         });
     }
+    
     getChannelId = (product) => {
         let interested = this.props.loggedInUser.id
         let ownerProduct = product.owner._id
@@ -86,27 +87,20 @@ export default class Messages extends Component {
         }
 
         const filters = { members: { $in: [this.props.loggedInUser.username] } };
-        const sort = { last_message_at: -1 };
+        const sort = { last_message_at: -1 , limit: 3 };
 
         return (
             <div>
                 <Chat client={this.state.chatClient} theme={'messaging light'}>
-                    <ChannelList
-                        // filters={filters}
-                        sort={sort}
-                        List={ChannelListMessenger}
-                        Preview={ChannelPreviewMessenger}
-                    />
-                    <Channel >
-                        <Window>
-                            <ChannelHeader />
-                            <MessageList />
-                            <MessageInput />
-                        </Window>
-                        <Thread />
-                    </Channel>
+                    {this.state.channel === null ?
+                        (<ChannelList sort={sort} List={ChannelListMessenger} Preview={ChannelPreviewMessenger} />) :
+                        (<div></div>)
+                    }
+                    {this.state.channel === null ?
+                        (<Channel> <Window> <ChannelHeader /> <MessageList /> <MessageInput /> </Window> <Thread /> </Channel>) :
+                        (<Channel channel={this.state.channel}> <Window> <ChannelHeader /> <MessageList /> <MessageInput /> </Window> <Thread /> </Channel>)
+                    }
                 </Chat>
-                );
             </div>
         )
     }

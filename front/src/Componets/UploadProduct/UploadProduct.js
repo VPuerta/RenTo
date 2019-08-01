@@ -116,7 +116,7 @@ export default class UploadProduct extends Component {
             <div className="head">
                     <h2>New Product</h2>
                 </div>
-            <div className="drop">
+            <div className="drop3">
                 <div className="box">
 
                     <form className="form1" onSubmit={this.handleFormSubmit}>
@@ -140,7 +140,7 @@ export default class UploadProduct extends Component {
                                     <option value="Tools">Tools</option>
                                     <option value="Home">Home</option>
                                     <option value="Other">Other</option>
-                                    <option className="dropdown-item" value="Fashion">Fashion</option>
+                                    <option value="Fashion">Fashion</option>
 
                                 </select>
                             </div >

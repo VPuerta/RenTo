@@ -31,8 +31,6 @@ export default class FilterProducts extends Component {
                         <option className="dropdown-item" value="Home">Home</option>
                         <option className="dropdown-item" value="Other">Other</option>
                     </select>
-
-
                 </div>  
             </div>
         )
