@@ -6,7 +6,7 @@ const productSchema = new Schema({
   owner: { type: Schema.Types.ObjectId, ref: "User" },
   category: {
     type: String,
-    enum: ['Sport', 'Other']
+    enum: ["Fashion", "Sports", "Motor", "Books", "Tools", "Home", "Other"]
   },
   description: String,
   price: Number,

@@ -41,8 +41,9 @@ class Navbar extends Component {
 
                 <div className="nav-left-item">
 
+                <img src={this.props.loggedInUser.potho} style={{height:20}}/>
                     <Link to={"/profile"}>
-                        <p>My Profile</p>
+                        <p>Hello {this.props.loggedInUser.username}</p>
                     </Link>
 
                     <Link to="/myproducts">

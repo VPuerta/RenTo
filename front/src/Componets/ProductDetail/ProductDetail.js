@@ -45,6 +45,7 @@ export default class ProductDetail extends Component {
         return (
 
             <div className="carousel-slide" data-ride="carousel" style={{ width: "55%", padding: "1.5rem" }}>
+
                 <div className="head-card">
                     <div className="name-onwer">
                         <Link to={"/user/" + this.state.product.owner._id + "/products"}>
@@ -57,19 +58,20 @@ export default class ProductDetail extends Component {
                         </Link>
                     </div>
                 </div>
-            <div className="carousel-inner">
-                <div >
+            <div className="box-detail">
+                <div className="image-detail" >
                     <img src={this.state.product.imageUrl} alt="" />
                 </div>
 
-                    <div className="card-detail" >
+                    <div className="detail" >
                         <h5 className="card-title">{this.state.product.name}</h5>
                         <p className="card-text">{this.state.product.price} €</p>
                         <p className="card-text">{this.state.product.description}</p>
                     </div>  
-            </div>
-                <div>
+            
+                <div  className="map-detail">
                     <SimpleMap API_KEY="AIzaSyAzGHDso1aXodTgAxYYmuTHdp9iVdxanhM" prod={this.state.product}></SimpleMap>
+                </div>
                 </div>
             </div>
         )

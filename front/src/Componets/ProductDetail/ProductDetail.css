@@ -4,30 +4,52 @@ flex-direction: column;
 margin-left: 20%
 }
 
+.box-detail{
+    display: flex;
+    flex-direction: column;
+    color: #505e6c;
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.1);  
+    padding: 1rem;
+   
+}
+
 .head-card{
     color: grey;
     display: flex;
     justify-content: space-between;
     justify-items: center;
-   
-}
-.card-detail{
-    margin-left: 30rem;
-    max-width: 320px;
-    width: 90%;
-    margin: 0 auto;
+    padding: 0 1rem;
     background-color: #ffffff;
     border-radius: 4px;
     color: #505e6c;
     box-shadow: 1px 1px 5px rgba(0,0,0,0.1);
-    width: 500%
+    margin-bottom: 1rem;
+    text-align: center;
+   
+}
+.name-onwer{
+    color: #505e6c;
+    padding-top: 2rem;
+    padding-left: 2rem;
+ }
+
+.image-detail{
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: center;
+    
+    
+}
+.image-detail img{
+    display: flex;
+    max-width: 40rem;
+    max-height: 40rem ;
+    border-radius: 1%;
+}
+.detail{
+    padding-left: 4rem;
 }
 
-.name-onwer{
-   margin-top: 5%;
-   
-   color: #505e6c;
-}
 #button-chat{
     background: #ffed4f;
     border: none;
@@ -53,4 +75,12 @@ margin-left: 20%
 
 #button-chat:hover, .btn-primary:active {
     background: #ffed4f;
+}
+
+.map-detail{
+width: "105%";
+display: flex;
+justify-content: center;
+padding-top: 1rem;
+border-radius: 1%;
 }

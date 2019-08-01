@@ -161,7 +161,7 @@ export default class MyProducts extends Component {
 
                                 { this.state.editingIndexes.includes(idx) ?
                                     (<button id ="button" className="btn btn-warning" onClick={e => this.editButtonClicked(myProduct, idx)} producs={this.myproducts} >Save</button>) :
-                                    (<button  id ="button"className="btn btn-warning" onClick={e => this.editButtonClicked(myProduct, idx)} producs={this.myproducts} >Edit</button>)
+                                    (<button  id ="button"className="" onClick={e => this.editButtonClicked(myProduct, idx)} producs={this.myproducts} >Edit</button>)
                                 }
                                     <button id ="button" className="btn btn-warning" onClick={() => this.deleteProductClicked(myProduct, idx)}>Delete</button>
                                 </div>

@@ -20,12 +20,19 @@ export default class FilterProducts extends Component {
     render() {
         return (
             <div>
-                <div >
-                    <select id="button" className="btn btn-warning dropdown-toggle" name="category" form="category" value={this.state.category} onChange={ e => this.handleChange(e) }>
+                <div className="filter" >
+                    <select id="button-chat" className="btn btn-warning dropdown-toggle" name="category" form="category" value={this.state.category} onChange={ e => this.handleChange(e) }>
                         <option className="dropdown-item-text" value="All">All Categories</option>
-                        <option className="dropdown-item" value="Sport">Sport</option>
+                        <option className="dropdown-item" value="Fashion">Fashion</option>
+                        <option className="dropdown-item" value="Sports">Sports</option>
+                        <option className="dropdown-item" value="Motor">Motor</option>
+                        <option className="dropdown-item" value="Books">Books</option>
+                        <option className="dropdown-item" value="Tools">Tools</option>
+                        <option className="dropdown-item" value="Home">Home</option>
                         <option className="dropdown-item" value="Other">Other</option>
                     </select>
+
+
                 </div>  
             </div>
         )

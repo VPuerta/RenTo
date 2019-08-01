@@ -50,19 +50,20 @@ export default class Profile extends Component {
 
   render() {
     return (
-      <div id="profile">
-        
-        <div className="tittle-profile">
-          <h1>Hello {this.props.username} </h1>
-        </div>
-        <div >
+      
+      <div className="profile">
 
-          <div className="profile-body">
-            <div>
-              <img id="avatar" src={this.state.photo} />
+        <div className="profile-body">
+          <div>
+            <img id="avatar" src={this.state.photo} />
+          </div>
+          <div >
+      
+            <div className="tittle-profile">
+              <h1>Hello {this.props.username} </h1>
             </div>
             <div>
-              <div>
+              <div className="my-dates">
                 <p>Name:</p>
                 {this.state.editing ?
                   (<input className="card-title" type="test" name="username" value={this.state.username} onChange={this.handleChange} />) :
@@ -70,15 +71,9 @@ export default class Profile extends Component {
                 }
 
               </div>
-              <div>
-                <p>Password :</p>
-                {this.state.editing ?
-                  (<input className="form-control" type="password" name="password" placeholder="Password" value={this.state.password} onChange={this.handleChange} />) :
-                  (<p>{this.state.password} </p>)
-                }
-              </div>
 
-              <div>
+
+              <div className="my-dates">
                 <p>City : </p>
                 {this.state.editing ?
                   (<input className="form-control" type="text" name="city" placeholder="City" value={this.state.city} onChange={this.handleChange} />) :
@@ -86,24 +81,27 @@ export default class Profile extends Component {
                 }
               </div>
 
-              <div>
+              <div className="my-dates">
                 <p>Email : </p>
                 {this.state.editing ?
                   (<input className="form-control" type="email" name="email" placeholder="Email" value={this.state.email} onChange={this.handleChange} />) :
                   (<p>{this.state.email}</p>)
                 }
               </div>
+              <div className="">
+                {this.state.editing ?
+                  (<button  className="buton-profile" onClick={this.editButtonClicked}>Save</button>) :
+                  (<button  className="buton-profile" onClick={this.editButtonClicked} >Edit your data</button>)
+                }
+                <button id="button" className="buton-profile" onClick={(e) => { this.props.logout(e) }}>Logout</button>
 
-              {this.state.editing ?
-                (<button id="button" className="btn" onClick={this.editButtonClicked}>Save</button>) :
-                (<button id="button" className="btn" onClick={this.editButtonClicked} >Edit your data</button>)
-              }
+              </div>
 
-              <button id="button" className="btn" onClick={(e) => { this.props.logout(e) }}>Logout</button>
+              </div>
             </div>
-          
-          </div>
-          
+
+
+
         </div>
 
       </div>

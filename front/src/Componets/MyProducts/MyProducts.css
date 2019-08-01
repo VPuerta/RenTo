@@ -1,6 +1,7 @@
 
 .image{
-    width: 8rem;  
+    width: 8rem; 
+    height: 8rem; 
 }
 .btn-edit{
    display: flex;
@@ -16,33 +17,27 @@ height: 2.5rem;
     color: grey;
 }
 
-
 #button{
     background: #ffed4f;
     border: none;
     border-radius: 4px;
-    padding: 11px;
     box-shadow: none;
-    margin-top: 26px;
     text-shadow: none;
     outline: none;
+    height: 35%;
 }
 
 .drop3 {
     display: flex;
     padding: 1rem;
-    border: 3px dashed #DADFE3;
+    border: 2px  #DADFE3;
     border-radius: 15px;
-    overflow: hidden;
     text-align: center;
-    background: transparent;
-    -webkit-transition: all 0.5s ease-out;
-    -moz-transition: all 0.5s ease-out;
-    transition: all 0.5s ease-out;
     margin-top: 0px;
     margin-right: auto;
     margin-left: auto;
     margin-bottom: 10px;
+    background-color: white;
   }
   .container3{
     padding: 10px 90px;
