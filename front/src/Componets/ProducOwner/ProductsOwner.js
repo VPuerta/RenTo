@@ -57,33 +57,40 @@ export default class ProductsOwner extends Component {
         return product.imageUrl;
     };
 
+
+
+
     render() {
         return (
-            <div className="" style={{ width: "18rem", padding: "2rem" }}>
+
+           <div className="container2">
+            <div >  
                 <Link to={"/products"}>
                     <p>Back</p>
                 </Link>
                 <div>
-                    <div className="box">
+                    <div className="items2">
                         {
                             this.state.productsOwner.map(productOwner => {
                                 return (
                                     <div key={productOwner._id}>
-                                        <div className="card" >
-                                            <img src={this.getImageName(productOwner)} className="card-img-top" alt={productOwner.name} />
+                                        <div className="card2" >
+                                            <img src={this.getImageName(productOwner)} style={{height:250}} className="card-img-top" alt={productOwner.name} />
                                             <div className="card-body">
                                                 <Link to={"/product/" + productOwner._id}>
-                                                    <h3>{productOwner.name}</h3>
+                                                    <h6>{productOwner.name}</h6>
                                                 </Link>
-                                                <h3>{productOwner.price} €</h3>
+                                                <h6>{productOwner.price} €</h6>
                                             </div>
                                         </div>
                                     </div>
                                 )
                             })
                         }
+                        
                     </div>
                 </div>
+            </div>
             </div>
         )
     }

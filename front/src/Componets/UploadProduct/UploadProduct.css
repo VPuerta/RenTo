@@ -1,61 +1,72 @@
 
-.form-contem{
-    display: flex;
-   
-}
-.add-product{
-    display: flex;
-    text-align: center;
-    border: dotted grey 2px;
-    background-color: whitesmoke;
-    margin: 1rem;
-    padding: 1rem;
-    
-}
-
-.form{
-    display: flex;
-    flex-direction: column;
-    padding: 10px ;
-   
-   
-}
-
-.form-group p{
-    width: 50%;
-}
-.map-container{
-  
-    width: 90%;
-    padding: 10px ;
-    border: solid grey .5px;
-    /* width: 30% */
-
-}
-.todo{
-  
-    text-align: center;
-    color: grey
-    
-}
 .dates{
     max-width: 350px;
-    width: 50%;
-    margin: 0 auto;
     background-color: #ffffff;
     padding: 10px;
     border-radius: 4px;
     color: #505e6c;
     box-shadow: 1px 1px 5px rgba(0,0,0,0.1);
-    
+ 
 }
+
+.date{
+    display: flex;
+    margin: 10px;
+    justify-content: center;
+    
+
+}
+
+.box{
+    display: flex;
+
+}
+.head{
+    padding-bottom: 20px;
+}
+.map{
+    margin-left: 70px;
+}
+.drop {
+    color: #505e6c;
+    align-content: space-around;
+    padding: 1rem;
+    border: 3px dashed #DADFE3;
+    border-radius: 15px;
+    overflow: hidden;
+    text-align: center;
+    background: transparent;
+    -webkit-transition: all 0.5s ease-out;
+    -moz-transition: all 0.5s ease-out;
+    transition: all 0.5s ease-out;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 10px;
+
+  }
+  
+
+  .select{
+      display: flex;
+      flex-direction: column;
+  }
+
+
+  .form1{
+    display: flex;
+    flex-direction: column;
+    color: #505e6c;
+   align-content: space-between;
+    padding: 1rem;
+    text-align: center;
+  }
+
 .button{
     background: #ffed4f;
     border: none;
     border-radius: 4px;
     padding: 11px;
     box-shadow: none;
-    margin-top: 26px;
     text-shadow: none;
     outline: none !important;
 }

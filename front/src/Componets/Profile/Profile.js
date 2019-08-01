@@ -51,6 +51,7 @@ export default class Profile extends Component {
   render() {
     return (
       <div id="profile">
+        
         <div className="tittle-profile">
           <h1>Hello {this.props.username} </h1>
         </div>
@@ -100,7 +101,9 @@ export default class Profile extends Component {
 
               <button id="button" className="btn" onClick={(e) => { this.props.logout(e) }}>Logout</button>
             </div>
+          
           </div>
+          
         </div>
 
       </div>

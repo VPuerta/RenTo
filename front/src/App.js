@@ -111,6 +111,9 @@ class App extends Component {
             <Route exact path='/messages/:id' render={(props) => {
               return <Messages loggedInUser={this.state.loggedInUser} productId={props.match.params.id}/>
             }} />
+            <Route exact path='/messages' render={(props) => {
+              return <Messages loggedInUser={this.state.loggedInUser} />
+            }} />
           </Switch>
         </React.Fragment>
     );

@@ -80,9 +80,9 @@ export default class Listproducts extends Component {
 
     render() {
         return (
-            <div className="container">
+            <div className="container1">
                 <FilterProducts {...this.state.product} filterProducts={c => this.filterCategoryDidUpdate(c)} />
-                <div>
+             
                     <div className="items" >
                         {
                             this.state.products.map(product => {
@@ -102,7 +102,7 @@ export default class Listproducts extends Component {
                             })
                         }
                     </div>
-                </div>
+                
             </div>
         )
     }

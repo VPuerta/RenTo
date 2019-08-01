@@ -56,7 +56,7 @@ export default class UploadMap extends Component {
 
         return (
             // Important! Always set the container height explicitly
-            <div style={{ height: '60vh', width: '100%' }} id="map" >
+            <div style={{ height: '60vh', width: '50vw' }}>
                 <GoogleMapReact
                     onClick={(e) => this.clic(e)}
                     bootstrapURLKeys={{ key: this.props.API_KEY }}

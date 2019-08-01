@@ -50,9 +50,9 @@ class Navbar extends Component {
                     </Link>
 
 
-                    {/* <Link to={"/messages"}>
+                    <Link to={"/messages"}>
                         <p>Messages</p>
-                    </Link> */}
+                    </Link>
 
                   
                 </div>

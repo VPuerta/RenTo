@@ -1,12 +1,4 @@
-.myproducts{
-    display: flex;
-    margin: 2rem;
-    padding: 1rem;
-    text-align: center;
-    border: dotted grey 2px;
-    background-color: whitesmoke;
-   
-}
+
 .image{
     width: 8rem;  
 }
@@ -14,29 +6,17 @@
    display: flex;
 }
 .btn-warning{
-
 margin-left: 1.5rem;
 height: 2.5rem;
-
 }
 
-.card-tittle{
-    width: .3rem;
-}
 .tittle{
     text-align: center;
-    padding-top: 1rem;
+    padding: 1rem;
     color: grey;
 }
-.add-new-product{
-    display: flex;
-    margin: 2rem;
-    padding: 1rem;
-    text-align: center;
-    border: dotted grey 2px;
-    background-color: whitesmoke;
-    flex-wrap: wrap;
-}
+
+
 #button{
     background: #ffed4f;
     border: none;
@@ -45,5 +25,29 @@ height: 2.5rem;
     box-shadow: none;
     margin-top: 26px;
     text-shadow: none;
-    outline: none !important;
+    outline: none;
 }
+
+.drop3 {
+    display: flex;
+    padding: 1rem;
+    border: 3px dashed #DADFE3;
+    border-radius: 15px;
+    overflow: hidden;
+    text-align: center;
+    background: transparent;
+    -webkit-transition: all 0.5s ease-out;
+    -moz-transition: all 0.5s ease-out;
+    transition: all 0.5s ease-out;
+    margin-top: 0px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 10px;
+  }
+  .container3{
+    padding: 10px 90px;
+  }
+
+
+
+  

@@ -53,38 +53,21 @@ export default class ProductDetail extends Component {
                     </div>
                     <div>
                         <Link to={"/messages/" + this.state.product._id }>
-                            <button className="btn btn-warning" style={{ marginBottom: "1.5rem", color: "white" }}>Chat</button>
+                            <button id ="button-chat" className="" style={{ marginBottom: "1.5rem", color: "white" }}>Chat</button>
                         </Link>
                     </div>
                 </div>
-                <ol className="carousel-indicators">
-
-                    <li data-target="#carouselExampleIndicators" data-slide-to="0" className="active"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                </ol>
-
-                <div className="carousel-inner">
-                    <img src={this.state.product.imageUrl} className="d-block w-100" alt="" />
-                    <div>
-                        <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                            <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span className="sr-only">Previous</span>
-                        </a>
-                        <a className="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                            <span className="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span className="sr-only">Next</span>
-                        </a>
-                    </div>
+            <div className="carousel-inner">
+                <div >
+                    <img src={this.state.product.imageUrl} alt="" />
                 </div>
 
-                <div className="card mb-3">
-                    <div className="card-body">
+                    <div className="card-detail" >
                         <h5 className="card-title">{this.state.product.name}</h5>
                         <p className="card-text">{this.state.product.price} €</p>
                         <p className="card-text">{this.state.product.description}</p>
                     </div>  
-                </div>
+            </div>
                 <div>
                     <SimpleMap API_KEY="AIzaSyAzGHDso1aXodTgAxYYmuTHdp9iVdxanhM" prod={this.state.product}></SimpleMap>
                 </div>

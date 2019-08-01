@@ -1,15 +1,30 @@
-.container{
+
+.container1{
     display: flex;
     flex-direction: column;
-    padding:1rem;
+    justify-content: center;
+    padding:1rem 8rem;
+    
 }
 
 .items{
     display: flex;
     flex-flow: wrap;
-    margin-top: 1.5rem;
+    margin: 1.5rem;
+    justify-content:space-around;
     
 }
+
 .card{
-    margin-left: 25px;
+    margin-left: 30rem;
+    max-width: 320px;
+    width: 90%;
+    margin: 0 auto;
+    background-color: #ffffff;
+    border-radius: 4px;
+    color: #505e6c;
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.1);
 }
+
+
+

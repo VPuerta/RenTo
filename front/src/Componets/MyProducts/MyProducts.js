@@ -114,18 +114,20 @@ export default class MyProducts extends Component {
 
     render() {
         return (
-            <div className="card mb-3">
+            <div className="container3">
+             
+
                 <div className="tittle">
                     <h3>Your Products {this.props.username}</h3>
                 </div>
                 {
                     this.state.myProducts.map((myProduct, idx) => {
                         return (
-                            <div className="myproducts" key={idx} >
+                            <div className="drop3 cont" key={idx} >
                                 <div className="">
                                     <img className="image" src={this.getImageName(myProduct)} alt={myProduct.name} />
                                 </div>
-                                <div className="card-body card-tittle">
+                                <div className="">
                                 { this.state.editingIndexes.includes(idx) ?
                                     (<input className="card-title" type="test" name="name" value={myProduct.name} onChange={e => this.handleChange(e, idx) } /> ) :
                                     (<h5 className="card-title">{myProduct.name}</h5>)
@@ -163,12 +165,14 @@ export default class MyProducts extends Component {
                                 }
                                     <button id ="button" className="btn btn-warning" onClick={() => this.deleteProductClicked(myProduct, idx)}>Delete</button>
                                 </div>
+                                
 
 
                             </div>
                         )
                     })
                 }
+
 
                 <div >
                     <UploadProduct {...this.props} uploadProductDidAddProduct={p => this.uploadProductDidAddProduct(p)} />
