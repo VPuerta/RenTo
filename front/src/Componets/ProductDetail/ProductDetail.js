@@ -43,9 +43,7 @@ export default class ProductDetail extends Component {
 
     render() {
         return (
-
-            <div className="carousel-slide" data-ride="carousel" style={{ width: "55%", padding: "1.5rem" }}>
-
+            <div className="carousel-slide" data-ride="carousel">
                 <div className="head-card">
                     <div className="name-onwer">
                         <Link to={"/user/" + this.state.product.owner._id + "/products"}>
@@ -54,24 +52,24 @@ export default class ProductDetail extends Component {
                     </div>
                     <div>
                         <Link to={"/messages/" + this.state.product._id }>
-                            <button id ="button-chat" className="" style={{ marginBottom: "1.5rem", color: "white" }}>Chat</button>
+                            <button id ="button-chat">Chat</button>
                         </Link>
                     </div>
                 </div>
-            <div className="box-detail">
-                <div className="image-detail" >
-                    <img src={this.state.product.imageUrl} alt="" />
-                </div>
+                <div className="box-detail">
+                    <div className="image-detail" >
+                        <img src={this.state.product.imageUrl} alt="" />
+                    </div>
 
                     <div className="detail" >
                         <h5 className="card-title">{this.state.product.name}</h5>
                         <p className="card-text">{this.state.product.price} €</p>
                         <p className="card-text">{this.state.product.description}</p>
-                    </div>  
-            
-                <div  className="map-detail">
-                    <SimpleMap API_KEY="AIzaSyAzGHDso1aXodTgAxYYmuTHdp9iVdxanhM" prod={this.state.product}></SimpleMap>
-                </div>
+                    </div>
+
+                    <div  className="map-detail">
+                        <SimpleMap API_KEY="AIzaSyAzGHDso1aXodTgAxYYmuTHdp9iVdxanhM" prod={this.state.product}></SimpleMap>
+                    </div>
                 </div>
             </div>
         )
