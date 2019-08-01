@@ -11,7 +11,7 @@ const Product = require("../models/Product");
 const bcryptSalt = 10;
 
 mongoose
-    .connect("mongodb://localhost:27017/rento", {useNewUrlParser: true})
+    .connect(process.env.MONGODB, {useNewUrlParser: true})
     .then(x => {
         console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
     })
