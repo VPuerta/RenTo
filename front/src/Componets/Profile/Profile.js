@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import photo from '../Assets/photo.jpg'
 import './Profile.css';
 import AuthServices from '../../Services/Services';
 
