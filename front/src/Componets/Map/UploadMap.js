@@ -18,8 +18,10 @@ export default class UploadMap extends Component {
     }
 
     clic(e) {
+        console.log("hola")
+        console.log(e.lat,e.lng)
         this.props.coordinates(e.lat, e.lng)
-
+        
         let lat = e.lat
         let lng = e.lng
         let position = { 

@@ -94,6 +94,7 @@ export default class Listproducts extends Component {
                                                 <h3>{product.name}</h3>
                                                 <h3>{product.price} €</h3>
                                                 <p>{product.category}</p>
+                                                <p>Owner: {product.owner.username}</p>
 
                                             </div>
                                         </div>

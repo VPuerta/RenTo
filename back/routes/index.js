@@ -36,6 +36,7 @@ router.get('/products', (req, res, next) => {
   }
 
   promise
+   .populate("owner")
     .then(allProducts => res.json(allProducts))
     .catch(e => console.log(e))
 });

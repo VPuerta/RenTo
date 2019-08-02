@@ -72,7 +72,7 @@ export default class Messages extends Component {
             product: product
         });
     }
-    
+
     getChannelId = (product) => {
         let interested = this.props.loggedInUser.id
         let ownerProduct = product.owner._id
@@ -93,7 +93,7 @@ export default class Messages extends Component {
             <div>
                 <Chat client={this.state.chatClient} theme={'messaging light'}>
                     {this.state.channel === null ?
-                        (<ChannelList sort={sort} List={ChannelListMessenger} Preview={ChannelPreviewMessenger} />) :
+                        (<ChannelList filters={filters} sort={sort} List={ChannelListMessenger} Preview={ChannelPreviewMessenger} />) :
                         (<div></div>)
                     }
                     {this.state.channel === null ?

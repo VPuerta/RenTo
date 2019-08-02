@@ -77,7 +77,7 @@ router.post("/signup", (req, res, next) => {
     const hashPass = bcrypt.hashSync(password, salt);
     //construimos el token, a partir del client creamos el token. le pasamos el username del usuario logado.
     const chatToken = client.createUserToken(username);
-
+    
     const newUser = new User({
       username,
       password: hashPass,
