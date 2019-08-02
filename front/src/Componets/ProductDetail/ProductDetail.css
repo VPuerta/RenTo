@@ -33,6 +33,9 @@
     padding-top: 2rem;
     padding-left: 2rem;
 }
+a{
+    color: #505e6c; 
+}
 
 .image-detail {
     margin-bottom: 1.5rem;
