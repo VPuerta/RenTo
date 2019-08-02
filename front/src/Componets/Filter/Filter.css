@@ -5,17 +5,12 @@
     padding: 11px;
     box-shadow: none;
     text-shadow: none;
-    position: relative;
     margin: 0 auto;
 }
 
-select {
-    display: block;
-    margin: 0 auto;
-}
-
-.filter{
+.filter {
     display: flex;
-    align-items: center;
+    flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
 }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import AuthServices from '../../Services/Services'
+import './Filter.css'
 
 export default class FilterProducts extends Component {
     constructor(props) {
