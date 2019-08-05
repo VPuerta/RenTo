@@ -1,51 +1,50 @@
 
-.dates{
+.dates {
     max-width: 350px;
     background-color: #ffffff;
     padding: 1rem;
     border-radius: 4px;
     color: #505e6c;
     box-shadow: 1px 1px 5px rgba(0,0,0,0.1);
- 
 }
 
-.date{
+.date {
     display: flex;
     margin: 1rem;
     justify-content: center;
-    padding: .2rem;  
-
+    padding: .2rem;
 }
 
-.box{
+.box {
     display: flex;
-
 }
-.head{
+
+.head {
     text-align: center;
     padding: 1rem;
     color: grey;
-
 }
-.map{
-    margin-left: 70px;
+
+.map {
+    width: 350px;
+    height: 100%;
+    border-radius: 4px;
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.1);
 }
-  
 
-  .select{
-      display: flex;
-      flex-direction: column;
-  }
-
-
-  .form1{
+.select {
     display: flex;
     flex-direction: column;
+}
+
+.form1 {
+    display: flex;
     color: #505e6c;
-   align-content: space-between;
     padding: 1rem;
     text-align: center;
-  }
+    align-content: space-between;
+    justify-content: space-between;w
+}
 
 .button{
     background: #ffed4f;
@@ -57,10 +56,11 @@
     outline: none !important;
     width: 200px;
 }
- .btn-primary:active {
+
+.btn-primary:active {
     background: #ffed4f;
 }
 
- .btn-primary:active {
+.btn-primary:active {
     transform: translateY(1px);
 }

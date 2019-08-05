@@ -115,8 +115,6 @@ export default class MyProducts extends Component {
     render() {
         return (
             <div className="container3">
-
-
                 <div className="tittle">
                     <h3>Your Products {this.props.username}</h3>
                 </div>
@@ -184,8 +182,7 @@ export default class MyProducts extends Component {
                     })
                 }
 
-
-                <div >
+                <div>
                     <UploadProduct {...this.props} uploadProductDidAddProduct={p => this.uploadProductDidAddProduct(p)} />
                 </div>
             </div>

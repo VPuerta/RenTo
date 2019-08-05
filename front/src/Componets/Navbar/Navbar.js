@@ -29,19 +29,18 @@ class Navbar extends Component {
     render() {
         return (
             <nav className="navbar">
-                <Link to={"/products"} className="navbar-brand" onClick={ e => this.homeButtonClicked(e) }>
-                    <img src={rento} width="50" height="50" alt="logo" className="logo" />
-     
-                </Link>
-
-                <form className="form-inline">
-                    <input className="form-control mr-sm-2 search" type="search" name="search" placeholder="Search" aria-label="Search" onChange={ e => this.handleChange(e)} value={this.state.filterQuery} />
-                    <Link className="btn btn-light" onClick={ e => this.searchButtonClicked(e) } to={"/products"}>Search</Link>
-                </form>
-
                 <div className="nav-left-item">
+                    <Link to={"/products"} className="navbar-brand" onClick={ e => this.homeButtonClicked(e) }>
+                        <img src={rento} alt="logo" className="logo" />
+                    </Link>
 
-                <img src={this.props.loggedInUser.potho} style={{height:20}}/>
+                    <form className="form-inline">
+                        <input className="form-control mr-sm-2 search" type="search" name="search" placeholder="Search" aria-label="Search" onChange={ e => this.handleChange(e)} value={this.state.filterQuery} />
+                        <Link className="btn btn-light" onClick={ e => this.searchButtonClicked(e) } to={"/products"}>Search</Link>
+                    </form>
+                </div>
+
+                <div className="nav-right-item">
                     <Link to={"/profile"}>
                         <p>Hello {this.props.loggedInUser.username}</p>
                     </Link>
@@ -50,12 +49,9 @@ class Navbar extends Component {
                         <p>My Products</p>
                     </Link>
 
-
                     <Link to={"/messages"}>
                         <p>Messages</p>
                     </Link>
-
-                  
                 </div>
             </nav>
         )

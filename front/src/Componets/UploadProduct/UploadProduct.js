@@ -25,7 +25,7 @@ export default class UploadProduct extends Component {
     }
 
     coordinates = (lat, lng) => {
-        
+
         const newPosition = {
             lat: lat,
             lng: lng,
@@ -89,8 +89,8 @@ export default class UploadProduct extends Component {
 
                 console.log('added: ', res);
                 // here you would redirect to some other page 
-                this.props.uploadProductDidAddProduct(res)
-                document.getElementById(this.image).value = ""
+                this.props.uploadProductDidAddProduct(res);
+                document.getElementById(this.image).value = "";
                 this.setState({
                     owner: this.props._id,
                     name: "",
@@ -114,64 +114,63 @@ export default class UploadProduct extends Component {
     render() {
         return (
             <React.Fragment>
-            
-            <div className="head">
+
+                <div className="head">
                     <h2>New Product</h2>
                 </div>
-            <div className="drop3">
-                <div className="box">
 
-                    <form className="form1" onSubmit={this.handleFormSubmit}>
-                        <div className="dates">
-                            <div className="select">
-                                <input id="image" type="file" value={this.state.pictures} onChange={(e) => this.handleFileUpload(e)} />
-                                <img src={this.state.imageUrl} alt="" style={{ height: 20, width: 20 }} />
+                <div className="drop3">
+                    <div className="box">
+                        <form className="form1" onSubmit={this.handleFormSubmit}>
+                            <div className="dates">
+                                <div className="select">
+                                    <input id="image" type="file" value={this.state.pictures} onChange={(e) => this.handleFileUpload(e)} />
+                                    <img src={this.state.imageUrl} alt="" style={{ height: 20, width: 20 }} />
 
+                                </div>
+
+                                <div className="date">
+                                    <input type="text" placeholder="Product Name" name="name" value={this.state.name} onChange={e => this.handleChange(e)} required />
+                                </div>
+
+                                <div className="date">
+                                    <select name="category" form="category" value={this.state.category} onChange={e => this.handleChange(e)}>
+                                        <option value="">-----</option>
+                                        <option value="Sports">Sports</option>
+                                        <option value="Motor">Motor</option>
+                                        <option value="Books">Books</option>
+                                        <option value="Tools">Tools</option>
+                                        <option value="Home">Home</option>
+                                        <option value="Other">Other</option>
+                                        <option value="Fashion">Fashion</option>
+
+                                    </select>
+                                </div >
+
+
+                                <div className="date">
+                                    <input type="text" placeholder="Price € " name="price" value={this.state.price} onChange={e => this.handleChange(e)} />
+                                </div>
+
+                                <div className="date">
+                                    <textarea type="text" placeholder="How is it?" name="description" value={this.state.description} onChange={e => this.handleChange(e)} />
+                                </div>
+
+                                <div className="date">
+                                    <p>Remember, you must select the location of your product on the map</p>
+                                </div >
+
+                                <div>
+                                    <button id="add" className="button" onClick={(e) => this.handleSubmit(e)}>Add</button>
+                                </div>
                             </div>
-                            <div className="date">
-                                <input type="text" placeholder="Product Name" name="name" value={this.state.name} onChange={e => this.handleChange(e)} required />
+                            <div className="map">
+                                <UploadMap API_KEY="AIzaSyAzGHDso1aXodTgAxYYmuTHdp9iVdxanhM" coordinates={this.coordinates}></UploadMap>
                             </div>
-
-                            <div className="date">
-
-                                <select name="category" form="category" value={this.state.category} onChange={e => this.handleChange(e)}>
-                                    <option value="">-----</option>
-                                    <option value="Sports">Sports</option>
-                                    <option value="Motor">Motor</option>
-                                    <option value="Books">Books</option>
-                                    <option value="Tools">Tools</option>
-                                    <option value="Home">Home</option>
-                                    <option value="Other">Other</option>
-                                    <option value="Fashion">Fashion</option>
-
-                                </select>
-                            </div >
-
-
-                            <div className="date">
-                                <input type="text" placeholder="Price € " name="price" value={this.state.price} onChange={e => this.handleChange(e)} />
-                            </div>
-
-                            <div className="date">
-                                <textarea type="text" placeholder="How is it?" name="description" value={this.state.description} onChange={e => this.handleChange(e)} />
-                            </div>
-
-                            <div className="date">
-                                <p>Remember, you must select the location of your product on the map</p>
-                            </div >
-
-                            <div>
-                                <button id="add" className="button" onClick={(e) => this.handleSubmit(e)}>Add</button>
-                            </div>
-                        </div>
-                    </form>
-
-                    <div className="map">
-                        <UploadMap API_KEY="AIzaSyAzGHDso1aXodTgAxYYmuTHdp9iVdxanhM" coordinates={this.coordinates}></UploadMap>
+                        </form>
                     </div>
-                </div>
 
-            </div>
+                </div>
             </React.Fragment>
         )
     }

@@ -18,12 +18,11 @@ export default class UploadMap extends Component {
     }
 
     clic(e) {
-        console.log("hola")
-        console.log(e.lat,e.lng)
-        this.props.coordinates(e.lat, e.lng)
+        console.log(e.lat,e.lng);
+        this.props.coordinates(e.lat, e.lng);
         
-        let lat = e.lat
-        let lng = e.lng
+        let lat = e.lat;
+        let lng = e.lng;
         let position = { 
             lat: lat, 
             lng: lng 
@@ -58,17 +57,13 @@ export default class UploadMap extends Component {
 
         return (
             // Important! Always set the container height explicitly
-            <div style={{ height: '60vh', width: '50vw' }}>
-                <GoogleMapReact
-                    onClick={(e) => this.clic(e)}
-                    bootstrapURLKeys={{ key: this.props.API_KEY }}
-                    defaultCenter={defaultProps.center}
-                    defaultZoom={defaultProps.zoom}
-                    onGoogleApiLoaded ={({ map, maps }) => this.setMapProperties(map, maps)}
-                >  
-            
-                </GoogleMapReact>
-            </div>
-        );
+            <GoogleMapReact
+                onClick={(e) => this.clic(e)}
+                bootstrapURLKeys={{ key: this.props.API_KEY }}
+                defaultCenter={defaultProps.center}
+                defaultZoom={defaultProps.zoom}
+                onGoogleApiLoaded ={({ map, maps }) => this.setMapProperties(map, maps)}
+            />
+            );
     }
 }
