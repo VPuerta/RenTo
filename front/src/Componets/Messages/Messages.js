@@ -76,9 +76,10 @@ export default class Messages extends Component {
     getChannelId = (product) => {
         let interested = this.props.loggedInUser.id
         let ownerProduct = product.owner._id
+        let productId = product._id
         console.log(ownerProduct)
 
-        return interested + "-" + ownerProduct
+        return interested + "-" + ownerProduct + "-" + productId
     }
 
     render() {

@@ -49,9 +49,14 @@ class Navbar extends Component {
                         <p>My Products</p>
                     </Link>
 
+                    <Link to={"/user/"+this.props.loggedInUser._id+"/myrents"}>
+                        <p>My Rents</p>
+                    </Link>
+
                     <Link to={"/messages"}>
                         <p>Messages</p>
                     </Link>
+                  
                 </div>
             </nav>
         )

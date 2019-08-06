@@ -13,6 +13,7 @@ import ProductsOwner from './Componets/ProducOwner/ProductsOwner';
 import MyProducts from './Componets/MyProducts/MyProducts';
 import Messages from './Componets/Messages/Messages';
 import { StreamChat } from 'stream-chat';
+import MyRents from './Componets/MyRents/MyRents';
 
 
 
@@ -127,6 +128,10 @@ class App extends Component {
           }} />
           <Route exact path='/messages' render={(props) => {
             return <Messages loggedInUser={this.state.loggedInUser} />
+          }} />
+
+          <Route exact path='/user/:id/myrents' render={() => {
+            return <MyRents {...this.state.loggedInUser} getUser={this.getTheUser} />
           }} />
         </Switch>
       </React.Fragment>

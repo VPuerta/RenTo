@@ -66,6 +66,8 @@ export default class Listproducts extends Component {
         return filteredProducts
     };
 
+    
+
     getImageName = (product) => {
         // let imgName;
         // if (product.pictures.length !== 0) {
