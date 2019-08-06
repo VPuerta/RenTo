@@ -71,7 +71,6 @@ export default class AuthServices {
   }
 
   handleUploadUser = (photo) => {
-    console.log("hola", photo)
     return this.service.post('/auth/signup/upload', photo)
     .then(res => ("res" ,res.data))
       .catch(error => error);
@@ -86,4 +85,18 @@ export default class AuthServices {
     return this.service.post('/updateUser', { id, username, city, email })
       .then(userEdit => userEdit)
   }
+
+  getMyRents = (id) => {
+    return this.service.post('/myrents', { id })
+      .then(myRents => myRents.data)
+      .catch(err => err)
+  }
+
+  updateRating = (id,rating) => {
+    return this.service.post('/updateRating', { id, rating })
+      .then(myRents => myRents.data)
+      .catch(err => err)
+  }
+
+
 }

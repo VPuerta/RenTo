@@ -4,13 +4,15 @@ const Schema = mongoose.Schema;
 const productSchema = new Schema({
   name: String,
   owner: { type: Schema.Types.ObjectId, ref: "User" },
+  rents:{ type: Schema.Types.ObjectId, ref: "Rent" },
   category: {
     type: String,
     enum: ["Fashion", "Sports", "Motor", "Books", "Tools", "Home", "Other"]
   },
   description: String,
   price: Number,
-  days: Number,
+  rating:[Number],
+  average:Number,
   imageUrl: { type: String, required: true },
   position:{
     lat:Number,

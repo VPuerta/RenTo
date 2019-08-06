@@ -7,6 +7,7 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const User = require("../models/User");
 const Product = require("../models/Product");
+const Rent = require('../models/Rent');
 
 const bcryptSalt = 10;
 
@@ -23,6 +24,8 @@ let idVane = require("mongoose").Types.ObjectId();
 let idChema = require("mongoose").Types.ObjectId();
 let idNoe = require("mongoose").Types.ObjectId();
 let idMaria = require("mongoose").Types.ObjectId();
+let idProduct= require("mongoose").Types.ObjectId();
+
 
 // Hay que añadir un token + username que permita loquearse en el chat
 let users = [
@@ -68,8 +71,21 @@ let users = [
     }
 ]
 
+let rents = [
+    {
+    product : idProduct,
+    owner: idVane,
+    client: idNoe,
+    fristDay: new Date(),
+    lastDay: new Date(),
+    rating: 6,
+}
+
+]
+
 let products = [
     {
+        _id:idProduct,
         name: "Broca",
         owner: idChema,
         imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Bohrer.jpg/220px-Bohrer.jpg",
@@ -790,3 +806,22 @@ Product
         mongoose.disconnect()
         throw err
     })
+
+
+Rent
+.deleteMany()
+.then(() => {
+    return Rent.create(rents)
+})
+.then(rentsCreated => {
+    console.log(`${rentsCreated.length} rents created with the following id:`);
+    console.log(rentsCreated.map(u => u._id));
+})
+.then(() => {
+    // Close properly the connection to Mongoose
+    mongoose.disconnect()
+})
+.catch(err => {
+    mongoose.disconnect()
+    throw err
+})

@@ -3,6 +3,7 @@ require('dotenv');
 const router = express.Router();
 const Product = require("../models/Product");
 const User = require("../models/User");
+const Rent = require("../models/Rent");
 ObjectId = require('mongodb').ObjectID;
 const uploadCloud = require('../cloudinary');
 
@@ -150,6 +151,28 @@ router.post('/updateUser', (req,res,next)=>{
   .then(() => { res.status(200).json(userUpdate) })
   .catch(err => res.status(500).json({ message: 'Could not save dates User' + err }));
 })
+
+
+router.post('/myrents', (req, res, next) => {
+  console.log(req.body.id)
+  Rent
+    .find({ client: req.body.id  })
+    .populate("client")
+    .populate("product")
+    .populate('owner')
+    .then(myrents => res.json(myrents))
+    .catch(e => console.log(e))
+});
+
+router.post('/updateRating', (req, res, next) => {
+  console.log(req.body.id)
+  Rent
+    .findByIdAndUpdate(req.body.id,{rating:req.body.rating})
+    .then(rating => res.json(rating))
+    .catch(e => console.log(e))
+});
+
+
 
 
 
