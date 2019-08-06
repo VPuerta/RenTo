@@ -4,7 +4,6 @@ const Schema = mongoose.Schema;
 const productSchema = new Schema({
   name: String,
   owner: { type: Schema.Types.ObjectId, ref: "User" },
-  rents:{ type: Schema.Types.ObjectId, ref: "Rent" },
   category: {
     type: String,
     enum: ["Fashion", "Sports", "Motor", "Books", "Tools", "Home", "Other"]

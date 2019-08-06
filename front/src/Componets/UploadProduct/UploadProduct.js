@@ -53,16 +53,11 @@ export default class UploadProduct extends Component {
 
         this.service.handleUpload(uploadData)
             .then(response => {
-                // console.log('response is: ', response);
-                // after the console.log we can see that response carries 'secure_url' which we can use to update the state 
+                // after the console.log we can see that response carries 'secure_url' which we can use to update the state
                 this.setState({
                     ...this.state,
                     imageUrl: response.secure_url
                 });
-                // if (this.state.position.lat !== 0 || this.state.position.lng !== 0) {
-
-                //     document.getElementById(this.button).disabled = false;
-                // }
             })
             .catch(err => {
                 console.log("Error while uploading the file: ", err);

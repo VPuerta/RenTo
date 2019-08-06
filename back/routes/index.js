@@ -101,24 +101,25 @@ router.post('/updateProduct', (req,res,next)=>{
 });
 
 router.post('/addProduct', (req, res, next) => {
-  console.log("addProduct", req.body)
+  console.log("addProduct", req.body);
 
   const name = req.body.name;
-  const imageUrl = req.body.imageUrl
+  const imageUrl = req.body.imageUrl;
   const owner = req.body.owner;
   const category = req.body.category;
   const description = req.body.description;
   const price = req.body.price;
-  const position= req.body.position
-
+  const position= req.body.position;
+  const rating = 0;
 
   const newProduct = new Product({
     name,
-    imageUrl,
     owner,
     category,
     description,
     price,
+    rating,
+    imageUrl,
     position
   });
 

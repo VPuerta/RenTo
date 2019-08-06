@@ -34,8 +34,6 @@ export default class MyRents extends Component {
     }
 
     handleChange = (rating, idx) => {
-        //tengo que crear un service para que lo guarde en la base de datos
-
         this.service.updateRating(this.state.myRents[idx]._id, rating.rating)
             .then(() => {
                 this.state.myRents[idx].rating = rating.rating;
@@ -79,7 +77,6 @@ export default class MyRents extends Component {
                                         <div>
                                             Rating:
                                             <Rater total={5} rating={myRent.rating} onRate={(rating) => { this.handleChange(rating, idx) }}/>
-
                                         </div>
                                     </div>
                                 </div>

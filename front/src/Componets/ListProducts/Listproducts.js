@@ -4,6 +4,7 @@ import './Listproducts.css'
 import FilterProducts from '../Filter/FilterProducts';
 import AuthServices from '../../Services/Services';
 import Rater from 'react-rater'
+import 'react-rater/lib/react-rater.css';
 
 export default class Listproducts extends Component {
     constructor(props) {
@@ -66,7 +67,6 @@ export default class Listproducts extends Component {
 
         return filteredProducts
     };
-
     
 
     getImageName = (product) => {
