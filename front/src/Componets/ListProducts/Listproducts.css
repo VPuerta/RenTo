@@ -4,10 +4,24 @@
     justify-content: center;
     padding:1rem 8rem;
     background: #f1f7fc;
-    
 }
 
-.items{
+.react-rater-star.is-active {
+    color: #fc6;
+}
+
+.tag {
+    font-size: 0.7rem;
+    float: left;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    background-color: #505e6c;
+    padding: 5px 5px 5px 5px;
+    border-radius: 100px;
+}
+
+.items {
     display: flex;
     flex-flow: wrap;
     margin: 1.5rem;

@@ -39,8 +39,7 @@ router.post('/login', (req, res, next) => {
 
 //actual write to cloudinary via the middleware specified in ../config/cloudinary.js
 router.post('/signup/upload', uploadCloud.single("photo"), (req, res, next) => {
-  console.log("fotazaaaa")
-  console.log('photo: ', req.file)
+  console.log('photo: ', req.file);
   if (!req.file) {
     next(new Error('No file uploaded!'));
     return;

@@ -19,10 +19,10 @@ export default class MyRents extends Component {
     }
 
     componentDidMount() {
-        let id = this.props._id
+        let id = this.props._id;
         this.service.getMyRents(id)
             .then(myRents => {
-                console.log("MyRents", myRents)
+                console.log("MyRents", myRents);
                 this.setState({
                     ...this.state,
                     myRents: myRents
@@ -34,29 +34,16 @@ export default class MyRents extends Component {
     }
 
     handleChange = (rating, idx) => {
-        this.service.updateRating(this.state.myRents[idx]._id,rating.rating)
-        this.product.values.push(rating)
-        this.product.average = this.product.values.reduce((a,b)=>a+b/this.product.values.length)
-
         //tengo que crear un service para que lo guarde en la base de datos
-        
-        console.log(this.product.average)
 
-        .then(() => {
-            this.state.myRents[idx].rating = rating.rating
-            
-            this.setState({
-                ...this.state,
-                // myRents : myRents,
-                // product :{
-                //     values: values,
-                //     average: average,
-                // }
-
-
+        this.service.updateRating(this.state.myRents[idx]._id, rating.rating)
+            .then(() => {
+                this.state.myRents[idx].rating = rating.rating;
+                this.setState({
+                    ...this.state
+                })
             })
-        })
-        .catch(console.log)
+            .catch(console.log)
     };
 
 
@@ -92,7 +79,7 @@ export default class MyRents extends Component {
                                         <div>
                                             Rating:
                                             <Rater total={5} rating={myRent.rating} onRate={(rating) => { this.handleChange(rating, idx) }}/>
-                                        
+
                                         </div>
                                     </div>
                                 </div>

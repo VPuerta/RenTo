@@ -11,8 +11,7 @@ const productSchema = new Schema({
   },
   description: String,
   price: Number,
-  rating:[Number],
-  average:Number,
+  rating: Number,
   imageUrl: { type: String, required: true },
   position:{
     lat:Number,

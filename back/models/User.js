@@ -7,7 +7,6 @@ const userSchema = new Schema({
   email: String,
   city: String,
   photo: String,
-  rating: [Number],
   chatToken: String
 }, 
 {

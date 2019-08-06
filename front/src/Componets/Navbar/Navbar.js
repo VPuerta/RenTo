@@ -35,14 +35,14 @@ class Navbar extends Component {
                     </Link>
 
                     <form className="form-inline">
-                        <input className="form-control mr-sm-2 search" type="search" name="search" placeholder="Search" aria-label="Search" onChange={ e => this.handleChange(e)} value={this.state.filterQuery} />
+                        <input className="form-control mr-sm-2 search" type="search" name="search" placeholder="Write something..." aria-label="Search" onChange={ e => this.handleChange(e)} value={this.state.filterQuery} />
                         <Link className="btn btn-light" onClick={ e => this.searchButtonClicked(e) } to={"/products"}>Search</Link>
                     </form>
                 </div>
 
                 <div className="nav-right-item">
                     <Link to={"/profile"}>
-                        <p>Hello {this.props.loggedInUser.username}</p>
+                        <p>Profile</p>
                     </Link>
 
                     <Link to="/myproducts">
