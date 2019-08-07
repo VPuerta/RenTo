@@ -32,65 +32,37 @@ export default class ProductsOwner extends Component {
             })
     }
 
-    // ownerProduct = () => {
-    //     const { params } = this.props.match;
-    //     axios.get(`http://localhost:5000/user/${params.id}/products`)
-    //         .then(response => {
-    //             console.log(response.data)
-    //             const productsOwner = response.data;
-    //             this.setState({
-    //                 productsOwner: productsOwner
-    //             });
-    //         })
-    //         .catch((err) => {
-    //             console.log(err)
-    //         })
-    // }
-    
-    getImageName = (product) => {
-        // let imgName;
-        // if (product.pictures.length !== 0) {
-        //     imgName = product.pictures[0].imgName
-        // } else {
-        //     imgName = ""
-        // }
-        return product.imageUrl;
-    };
-
-
-
-
     render() {
         return (
 
-           <div className="container2">
-            <div >  
-                <Link to={"/products"}>
-                    <p>Back</p>
-                </Link>
-                <div>
-                    <div className="items2">
-                        {
-                            this.state.productsOwner.map(productOwner => {
-                                return (
-                                    <div key={productOwner._id}>
-                                        <div className="card2" >
-                                            <img src={this.getImageName(productOwner)} style={{height:250}} className="card-img-top" alt={productOwner.name} />
-                                            <div className="card-body">
-                                                <Link to={"/product/" + productOwner._id}>
-                                                    <h6>{productOwner.name}</h6>
-                                                </Link>
-                                                <h6>{productOwner.price} €</h6>
+            <div className="container2">
+                
+                    {/* <Link to={"/products"}>
+                        <p>Back</p>
+                    </Link> */}
+                    <div>
+                        <div className="items2">
+                            {
+                                this.state.productsOwner.map(productOwner => {
+                                    return (
+                                        <Link to={"/product/" + productOwner._id}>
+                                            <div key={productOwner._id}>
+                                                <div className="card2" >
+                                                    <img src={productOwner.imageUrl} style={{ height: 250}} className="card-img-top" alt={productOwner.name} />
+                                                    <div className="card-body">
+                                                        <h6>{productOwner.name}</h6>
+                                                        <h6>{productOwner.price} €</h6>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                )
-                            })
-                        }
-                        
+                                        </Link>
+                                    )
+                                })
+                            }
+
+                        </div>
                     </div>
-                </div>
-            </div>
+                
             </div>
         )
     }

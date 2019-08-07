@@ -83,7 +83,6 @@ export default class UploadProduct extends Component {
             .then(res => {
 
                 console.log('added: ', res);
-                // here you would redirect to some other page 
                 this.props.uploadProductDidAddProduct(res);
                 document.getElementById(this.image).value = "";
                 this.setState({

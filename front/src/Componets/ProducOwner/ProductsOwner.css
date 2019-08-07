@@ -14,11 +14,11 @@
     
 }
 .card2{
-    margin-top: 10rem;
+    margin-top: 1.5rem;
     margin-left: 1.5rem;
-    max-width: 320px;
+    max-width: 225px;
     width: 90%;
-    margin: 0 auto;
+    /* margin: 0 auto; */
     background-color: #ffffff;
     border-radius: 4px;
     color: #505e6c;

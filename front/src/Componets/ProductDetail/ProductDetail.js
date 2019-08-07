@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import SimpleMap from '../Map/SimpleMap';
 import './ProductDetail.css'
 import AuthServices from '../../Services/Services';
+import UploadRent from '../UploadProduct/UploadRent/UploadRent';
 
 
 export default class ProductDetail extends Component {
@@ -40,20 +41,32 @@ export default class ProductDetail extends Component {
             })
     }
 
+    iWantIt = () =>{
+
+    }
+
 
     render() {
         return (
             <div className="carousel-slide" data-ride="carousel">
+                
+                 <UploadRent></UploadRent>
                 <div className="head-card">
                     <div className="name-onwer">
-                        <Link to={"/user/" + this.state.product.owner._id + "/products"}>
+                         <Link to={"/user/" + this.state.product.owner._id + "/products"}>
                             <p>Rent {this.state.product.owner.username}</p>
                         </Link>
+                    
                     </div>
+                   
                     <div>
                         <Link to={"/messages/" + this.state.product._id }>
                             <button id ="button-chat">Chat</button>
                         </Link>
+                        <div>
+
+                         <button id ="button-chat" onClick={e => this.iWantIt()}>Rent</button>
+                        </div>
                     </div>
                 </div>
                 <div className="box-detail">
@@ -71,6 +84,7 @@ export default class ProductDetail extends Component {
                         <SimpleMap API_KEY="AIzaSyAzGHDso1aXodTgAxYYmuTHdp9iVdxanhM" prod={this.state.product}></SimpleMap>
                     </div>
                 </div>
+               
             </div>
         )
     }

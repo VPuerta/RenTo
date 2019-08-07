@@ -85,9 +85,9 @@ export default class Listproducts extends Component {
                                 return (
                                     <Link to={"/product/" + product._id} key={product._id}>
                                         <div className="card" style={{ width: "18rem", marginBottom: "2rem" }}>
-                                            { hasRating && (<Rater className="tag" total={rating} rating={rating} interactive={false}/>)}
                                             <img src={this.getImageName(product)} className="card-img-top" alt={product.name} style={{ height: "18rem" }} />
                                             <div className="card-body">
+                                            { hasRating && <Rater total={rating} rating={rating} interactive={false}/>}
                                                 <h3>{product.name}</h3>
                                                 <h3>{product.price} €</h3>
                                                 <p>{product.category}</p>

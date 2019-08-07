@@ -96,4 +96,18 @@ export default class AuthServices {
         .then(myRents => myRents.data)
         .catch(err => err)
   }
+
+  addRent = (product, owner, client, category, fristDay, lastDay )=>{
+    return this.service.post('/addRent', { product, owner, client, category, fristDay, lastDay })
+    .then(response => response.data)
+};
+
+getMyRentsPending = (id) => {
+  return this.service.post('/myRentsPending', { id })
+      .then(myRentsPending => myRentsPending.data)
+      .catch(err => err)
+};
+
+  
 }
+

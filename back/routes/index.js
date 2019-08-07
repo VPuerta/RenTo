@@ -155,8 +155,7 @@ router.post('/updateUser', (req,res,next)=>{
 
 router.post('/myrents', (req, res, next) => {
   console.log("myrents", req.body.id);
-
-
+  
   Rent
       .find({ client: req.body.id  })
       .populate("client")
@@ -207,6 +206,48 @@ router.post('/updateRating', (req, res, next) => {
       .findByIdAndUpdate(req.body.id,{ rating: req.body.rating })
       .then(updateProduct)
       .catch(sendError)
+});
+
+router.post('/addRent', (req, res, next) => {
+  console.log("addRent", req.body);
+
+  const product = req.body.product;
+  const owner = req.body.owner;
+  const client = req.body.client;
+  const fristDay = req.body.fristDay;
+  const lastDay = req.body.lastDay;
+  const rating = 0;
+  const status= "peding";
+ 
+
+  const newRent = new Rent({
+    product,
+    owner,
+    client,
+    fristDay,
+    lastDay,
+    rating,
+    status,
+
+  });
+
+  console.log("Trying to store Rent", newRent);
+
+  newRent
+      .save()
+      .then(() => { res.status(200).json(newRent) })
+      .catch(err => res.status(500).json({ message: 'Could not save Rent' + err }));
+});
+
+router.post('/myRentsPending', (req, res, next) => {
+  console.log("myRentsPending", req.body.id);
+  
+  Rent
+      .find({ owner: req.body.id, status:"peding" })
+      .populate("client")
+      .populate("product")
+      .then(myRentsPending => res.json(myRentsPending))
+      .catch(e => console.log(e))
 });
 
 module.exports = router;

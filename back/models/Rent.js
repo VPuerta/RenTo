@@ -8,6 +8,12 @@ const rentSchema = new Schema({
   fristDay: Date,
   lastDay: Date,
   rating: Number,
+  status: {
+    type: String,
+    enum: ["pending","confirmed","rejected"],
+    default:"pending",
+  },
+ 
 }, {
     timestamps: {
       createdAt: 'created_at',

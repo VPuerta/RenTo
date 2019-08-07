@@ -6,11 +6,15 @@
     background: #f1f7fc;
 }
 
-.react-rater-star.is-active {
-    color: #fc6;
+a{
+    color:#505e6c;
 }
 
-.tag {
+/* .react-rater-star.is-active {
+    color: #fc6;
+} */
+
+/* .tag {
     font-size: 0.7rem;
     float: left;
     position: absolute;
@@ -19,7 +23,7 @@
     background-color: #505e6c;
     padding: 5px 5px 5px 5px;
     border-radius: 100px;
-}
+} */
 
 .items {
     display: flex;
