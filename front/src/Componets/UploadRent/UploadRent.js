@@ -3,6 +3,7 @@ import AuthServices from '../../Services/Services';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import './UploadRent.css';
+import {Link} from "react-router-dom";
 
 
 export default class UploadRent extends Component {
@@ -21,21 +22,23 @@ export default class UploadRent extends Component {
 
     handleChangeFirstDate(date) {
         this.setState({
-            firstDay: +date,
+            ...this.state,
+            firstDay: date,
         });
     }
 
     handleChangeLastDate(date) {
         this.setState({
-            lastDay: +date,
+            ...this.state,
+            lastDay: date,
         });
     }
-    
+
 
     handleSubmit = e => {
         e.preventDefault();
-        console.log("handleSubmit", this.props)
-        const product = this.props.product
+        console.log("handleSubmit", this.props);
+        const product = this.props.product;
         const owner = this.props.product.owner;
         const client = this.props.loggedInUser._id;
         const firstDay = this.state.firstDay;
@@ -43,58 +46,52 @@ export default class UploadRent extends Component {
 
         this.service.addRent(product, owner, client, firstDay, lastDay)
             .then(res => {
-                console.log('added: ', res);
+                // this.props.history.push('/dashboard')
                 this.setState({
                     product,
                     owner,
                     client,
                     firstDay,
                     lastDay,
-
                 })
             })
 
             .catch(err => {
                 console.log("Error while adding the thing: ", err);
             });
-    }
+    };
 
     render() {
         return (
-            
-                <React.Fragment>
-
-
-                    <div className="head-card">
-                        <div className="">
-                            <form className="form1" onSubmit={this.handleFormSubmit}>
-                                <div>
+            <React.Fragment>
+                <div className="head-card">
+                    <div className="">
+                        <form className="form1" onSubmit={this.handleFormSubmit}>
+                            <div>
                                 From:
-                                    <DatePicker className="date"
-                                        
-                                        selected={this.state.firstDay}
-                                        onChange={this.handleChangeFirstDate}
-                                        dateFormat="dd/MM/yyyy"
-                                       
-                                    />
+                                <DatePicker className="date"
+                                            selected={this.state.firstDay}
+                                            onChange={this.handleChangeFirstDate}
+                                            dateFormat="dd/MM/yyyy"
+                                />
 
-                                </div>
-                                    <div>
-                                   to:
-                                      <DatePicker className="date"
-                                        selected={this.state.lastDay}
-                                        onChange={this.handleChangeLastDate}
-                                        dateFormat="dd/MM/yyyy"
-                                    />
+                            </div>
+                            <div>
+                                to:
+                                <DatePicker className="date"
+                                            selected={this.state.lastDay}
+                                            onChange={this.handleChangeLastDate}
+                                            dateFormat="dd/MM/yyyy"
+                                />
 
-                                    </div>
-                                <div>
-                                    <button  id="button-chat" onClick={(e) => this.handleSubmit(e)}>Apply For</button>
-                                </div>
+                            </div>
+                            <div>
+                                <button id="button-chat" onClick={(e) => this.handleSubmit(e)}>Request</button>
+                            </div>
                         </form>
                     </div>
 
-                  </div>
+                </div>
             </React.Fragment>
         )
     }

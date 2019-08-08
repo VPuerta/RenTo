@@ -33,6 +33,7 @@
     padding-top: 2rem;
     padding-left: 2rem;
 }
+
 a{
     color: #505e6c; 
 }
@@ -45,8 +46,6 @@ a{
 
 .image-detail img {
     display: flex;
-    /* max-width: 100%;
-    max-height: 100%; */
     width: 90%;
     height: 90%;
     border-radius: 1%;
@@ -66,7 +65,6 @@ a{
     text-shadow: none;
     color: #505e6c;
 }
-
 
 #button-chat:hover, .btn-primary:active {
     background: #ffed4f;

@@ -218,7 +218,6 @@ router.post('/addRent', (req, res, next) => {
   const lastDay = req.body.lastDay;
   const rating = 0;
   const status= "pending";
- 
 
   const newRent = new Rent({
     product,

@@ -21,8 +21,6 @@ export default class MyRents extends Component {
         Promise
             .all([this.service.getMyRents(id), this.service.getMyRentsPending(id)])
             .then((rents) => {
-
-                console.log(rents[1])
                 this.setState({
                     ...this.state,
                     myRents: rents[0],
@@ -39,7 +37,9 @@ export default class MyRents extends Component {
             .then(() => {
                 this.state.myRents[idx].rating = rating.rating;
                 this.setState({
-                    ...this.state
+                    ...this.state,
+                    myRents: this.state.myRents
+
                 })
             })
             .catch(console.log)
@@ -49,14 +49,28 @@ export default class MyRents extends Component {
         let status = event.target.value;
 
         this.service.updateStatus(this.state.myRentsPending[idx]._id, status)
-        .then( () =>{
+        .then(() =>{
             this.state.myRentsPending[idx].status = status;
             this.setState({
                 ...this.state,
+                myRentsPending: this.state.myRentsPending
             })
-        })
+        }).catch(console.log)
     };
 
+    formatDate = (date) => {
+        let stringDate = date.toString();
+        let times = stringDate.split("T");
+        if (times.length > 1) {
+            return times[0]
+        } else {
+            return "Unknown"
+        }
+    };
+
+    canInteract = (rent) => {
+        return rent.status === "confirmed"
+    };
 
     render() {
         return (
@@ -65,67 +79,86 @@ export default class MyRents extends Component {
                     <h3>My Rents</h3>
                 </div>
                 {
-                    this.state.myRents.map((myRent, idx) => {
+                    this.state.myRents.map((rent, idx) => {
                         return (
-                            <div className="drop3 cont" >
-                                <div className="contenido" key={idx} >
-
-                                    <div >
-                                        <img className="image" src={myRent.product.imageUrl} alt={myRent.product.name} />
+                            <div className="drop3 cont" key={idx} >
+                                <div >
+                                    <img className="image" src={rent.product.imageUrl} alt={rent.product.name} />
+                                </div>
+                                <div className="flex-xl-fill">
+                                    <div className="colum">
+                                        <div className="contenido">
+                                            <div className="product">
+                                                <h5 className="card-title">{rent.product.name}</h5>
+                                            </div>
+                                            <div className="product">
+                                                <p className="card-text">{rent.product.price} €</p>
+                                            </div>
+                                            <div className="product">
+                                                <p className="card-text">{rent.category}</p>
+                                            </div>
+                                            <div className="product">
+                                                <p className="card-text">{this.formatDate(rent.firstDay)}</p>
+                                            </div>
+                                            <div className="product">
+                                                <p className="card-text">{this.formatDate(rent.lastDay)}</p>
+                                            </div>
+                                            <div className="product">
+                                                <p className="card-text">Status: {rent.status}</p>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div  className="colum">
-                                    <div className="product" >
-                                        <div  className="card-body">
-                                            <p>Owner : {myRent.owner.username}</p>
-                                            {/* <p>Client : {myRent.client.username}</p> */}
-                                        </div>
-
-                                        <div className="card-body">{myRent.firstDay}</div>
-                                        <div className="card-body">{myRent.lastDay}</div>
-                                        <div className="card-body"> Status: {myRent.status}</div>
-                                     </div>
-                                        <div>
-                                            Rating:
-                                            <Rater total={5} rating={myRent.rating} onRate={(rating) => { this.handleChange(rating, idx) }} />
-                                        </div>
+                                    <div>
+                                        <Rater total={5} rating={rent.rating} interactive={this.canInteract(rent)} onRate={(rating) => { this.handleChange(rating, idx) }} />
                                     </div>
                                 </div>
                             </div>
                         )
                     })
                 }
+
                 <div className="tittle">
                     <h3>My Rental Requests</h3>
                 </div>
                 {
-                    this.state.myRentsPending.map((myRentPending, idx) => {
+                    this.state.myRentsPending.map((rent, idx) => {
                         return (
-                            <div className="drop3 cont" >
-                                <div className="contenido" key={idx} >
-
-                                    <div >
-                                        <img className="image" src={myRentPending.product.imageUrl} alt={myRentPending.product.name} />
-                                    </div>
-                                    <div  className="colum">
-                                        <div className="product" >
-                                            <div  className="card-body">
-                                                <p>Owner : {myRentPending.owner.username}</p>
+                            <div className="drop3 cont" key={idx} >
+                                <div >
+                                    <img className="image" src={rent.product.imageUrl} alt={rent.product.name} />
+                                </div>
+                                    <div className="colum">
+                                        <div className="contenido">
+                                            <div className="product">
+                                                <h5 className="card-title">{rent.product.name}</h5>
                                             </div>
-
-                                            <div className="card-body">{myRentPending.firstDay}</div>
-                                            <div className="card-body">{myRentPending.lastDay}</div>
-                                            <div className="card-body"> Status: {myRentPending.status}</div>
-                                        </div>
-                                        <div>
-                                            <button id="button-chat" value={"confirmed"} hidden={myRentPending.status!=="pending"} onClick={ event => this.handleStatus(event, idx) }>Confirm</button>
-                                            <button id="button-chat" value={"rejected"} hidden={myRentPending.status!=="pending"} onClick={event => this.handleStatus(event, idx) }>Reject</button>
+                                            <div className="product">
+                                                <p className="card-text">{rent.product.price}</p>
+                                            </div>
+                                            <div className="product">
+                                                <p className="card-text">{rent.category}</p>
+                                            </div>
+                                            <div className="product">
+                                                <p className="card-text">{this.formatDate(rent.firstDay)}</p>
+                                            </div>
+                                            <div className="product">
+                                                <p className="card-text">{this.formatDate(rent.lastDay)}</p>
+                                            </div>
+                                            <div className="product">
+                                                <p className="card-text">Status: {rent.status}</p>
+                                            </div>
                                         </div>
                                     </div>
+
+                                <div className="btn-edit">
+                                    <button id="button" className="btn btn-warning" disabled={rent.status !== "pending"} value={"confirmed"} onClick={ event => this.handleStatus(event, idx) }>Confirm</button>
+                                    <button id="button" className="btn btn-warning" disabled={rent.status !== "pending"} value={"rejected"} onClick={ event => this.handleStatus(event, idx) }>Reject</button>
                                 </div>
                             </div>
                         )
                     })
                 }
+
             </div>
         )
     }

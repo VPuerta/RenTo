@@ -97,8 +97,8 @@ export default class AuthServices {
         .catch(err => err)
   }
 
-  addRent = (product, owner, client, category, firstDay, lastDay )=>{
-    return this.service.post('/addRent', { product, owner, client, category, firstDay, lastDay })
+  addRent = (product, owner, client, firstDay, lastDay )=>{
+    return this.service.post('/addRent', { product, owner, client, firstDay, lastDay })
     .then(response => response.data)
 };
 

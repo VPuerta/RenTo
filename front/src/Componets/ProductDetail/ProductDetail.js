@@ -9,7 +9,7 @@ import UploadRent from '../UploadRent/UploadRent';
 export default class ProductDetail extends Component {
     constructor(props) {
         super(props);
-        console.log(props)
+        console.log(props);
         this.state = {
             product: {
                 imageUrl: "",
@@ -17,8 +17,8 @@ export default class ProductDetail extends Component {
                 position: [],
 
             },
-          uploadRent:false,  
-        }
+            uploadRent:false,
+        };
         this.service = new AuthServices();
     }
 
@@ -31,7 +31,7 @@ export default class ProductDetail extends Component {
             .then(response => {
                 // console.log(response.data)
                 const product = response;
-                console.log(product)
+
                 this.setState({
                     product: product
                 });
@@ -39,44 +39,34 @@ export default class ProductDetail extends Component {
             .catch((err) => {
                 console.log(err)
             })
-    }
+    };
 
-    iWantIt = () =>{
-        // this.state.uploadRent != this.state.uploadRent,
-        // this.setState({
-        //     ...this.state,
-        //     uploadRent: uploadRent,
-        // })
-    }
-
+    isMyProduct = () => {
+        return this.props.loggedInUser._id === this.state.product.owner._id
+    };
 
     render() {
         return (
             <div className="carousel-slide" data-ride="carousel">
                 {
-                    this.state.uploadRent &&
-                <UploadRent product = {this.state.product} loggedInUser={this.props.loggedInUser}></UploadRent>
-                }
-                <UploadRent product = {this.state.product} loggedInUser={this.props.loggedInUser}></UploadRent>
+                    !this.isMyProduct() &&
+                    <React.Fragment>
+                        <UploadRent product = {this.state.product} loggedInUser={this.props.loggedInUser}/>
+                        <div className="head-card">
+                            <div className="name-onwer">
+                                <Link to={"/user/" + this.state.product.owner._id + "/products"}>
+                                    <p>{this.state.product.owner.username}'s profile</p>
+                                </Link>
 
-                <div className="head-card">
-                    <div className="name-onwer">
-                         <Link to={"/user/" + this.state.product.owner._id + "/products"}>
-                            <p>Rent {this.state.product.owner.username}</p>
-                        </Link>
-                    
-                    </div>
-                   
-                    <div>
-                        <Link to={"/messages/" + this.state.product._id }>
-                            <button id ="button-chat">Chat</button>
-                        </Link>
-                        <div>
+                            </div>
 
-                         <button id ="button-chat" onClick={e => this.iWantIt()}>Rent</button>
+                            <Link to={"/messages/" + this.state.product._id }>
+                                <button id ="button-chat">Chat</button>
+                            </Link>
                         </div>
-                    </div>
-                </div>
+                    </React.Fragment>
+                }
+
                 <div className="box-detail">
                     <div className="image-detail" >
                         <img src={this.state.product.imageUrl} alt="" />
@@ -84,7 +74,9 @@ export default class ProductDetail extends Component {
 
                     <div className="detail" >
                         <h5 className="card-title">{this.state.product.name}</h5>
+                        <h7 className="card-text">Price per day</h7>
                         <p className="card-text">{this.state.product.price} €</p>
+                        <h7 className="card-text">Description</h7>
                         <p className="card-text">{this.state.product.description}</p>
                     </div>
 
@@ -92,7 +84,7 @@ export default class ProductDetail extends Component {
                         <SimpleMap API_KEY="AIzaSyAzGHDso1aXodTgAxYYmuTHdp9iVdxanhM" prod={this.state.product}></SimpleMap>
                     </div>
                 </div>
-               
+
             </div>
         )
     }
