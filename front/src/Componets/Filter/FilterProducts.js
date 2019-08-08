@@ -2,15 +2,72 @@ import React, { Component } from 'react';
 import AuthServices from '../../Services/Services'
 import './Filter.css';
 
+import ScrollMenu from 'react-horizontal-scrolling-menu';
+
+const list = [
+    { name: 'All' },
+    { name: 'Fashion' },
+    { name: 'Sports' },
+    { name: 'Motor' },
+    { name: 'Books' },
+    { name: 'Tools' },
+    { name: 'Home' },
+    { name: 'Other' },
+  ];
+   
+  // One item component
+  // selected prop will be passed
+  const MenuItem = ({text, selected}) => {
+    return <div
+      className={`menu-item ${selected ? 'active' : ''}`}
+      >{text}
+      </div>;
+  };
+   
+  // All items component
+  // Important! add unique key
+  export const Menu = (list, selected) =>
+    list.map(el => {
+      const {name} = el;
+   
+      return <MenuItem text={name} key={name} selected={selected} />;
+    });
+   
+   
+  const Arrow = ({ text, className }) => {
+    return (
+      <div
+        className={className}
+      >{text}</div>
+    );
+  };
+   
+   
+  const ArrowLeft = Arrow({ text: '<', className: 'arrow-prev' });
+  const ArrowRight = Arrow({ text: '>', className: 'arrow-next' });
+   
+  const selected = 'All';
+
 export default class FilterProducts extends Component {
     constructor(props) {
         super(props);
         console.log(props);
         this.state = {
-            filterCategory: "All"
+            filterCategory: "All",
+            
         }
+        this.menuItems = Menu(list, selected);
         this.service = new AuthServices();
     }
+
+    state = {
+        selected
+      };
+     
+      onSelect = (value) => {
+        this.setState({filterCategory: value})
+        this.props.filterProducts(value)
+      }
    
 
     handleChange = (event) => {
@@ -26,22 +83,25 @@ export default class FilterProducts extends Component {
        this.service.getProductCategory(category)
     };
 
-    render() {
-        return (
-            <div>
-                    <div className="filter" >
-                        <select id="button-chat" className="btn btn-warning dropdown-toggle" name="category" form="category" value={this.state.category} onChange={ e => this.handleChange(e) }>
-                            <option className="dropdown-item-text" value="All">All Categories</option>
-                            <option className="dropdown-item" value="Fashion">Fashion</option>
-                            <option className="dropdown-item" value="Sports">Sports</option>
-                            <option className="dropdown-item" value="Motor">Motor</option>
-                            <option className="dropdown-item" value="Books">Books</option>
-                            <option className="dropdown-item" value="Tools">Tools</option>
-                            <option className="dropdown-item" value="Home">Home</option>
-                            <option className="dropdown-item" value="Other">Other</option>
-                        </select>
-                    </div> 
-            </div>
-        )
-    }
+render(){
+    const { selected } = this.state;
+    // Create menu from items
+    const menu = this.menuItems;
+ 
+    return (
+      <div className="App">
+        <ScrollMenu
+          data={menu}
+          arrowLeft={ArrowLeft}
+          arrowRight={ArrowRight}
+          selected={selected}
+          onSelect={this.onSelect}
+        />
+      </div>
+    );
+  }
 }
+
+
+
+
