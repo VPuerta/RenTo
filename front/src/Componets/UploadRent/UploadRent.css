@@ -1,6 +1,21 @@
-.day {
+.date-selector {
+    height: 3rem;
+    width: 100px;
+    color: #505e6c;
+    text-align: center;
+}
+
+.form1 {
+    width: 100%;
+}
+
+.button-large {
+    width: 100px;
+    height: 3rem;
+    margin-left: 20px !important;
+}
+
+.button-container {
     display: flex;
-    margin: 1rem;
-    /* justify-content: center; */
-    /* padding: .2rem; */
+    justify-items: right;
 }

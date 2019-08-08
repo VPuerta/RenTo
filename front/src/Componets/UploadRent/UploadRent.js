@@ -38,6 +38,7 @@ export default class UploadRent extends Component {
     handleSubmit = e => {
         e.preventDefault();
         console.log("handleSubmit", this.props);
+
         const product = this.props.product;
         const owner = this.props.product.owner;
         const client = this.props.loggedInUser._id;
@@ -65,32 +66,32 @@ export default class UploadRent extends Component {
         return (
             <React.Fragment>
                 <div className="head-card">
-                    <div className="">
-                        <form className="form1" onSubmit={this.handleFormSubmit}>
-                            <div>
-                                From:
-                                <DatePicker className="date"
-                                            selected={this.state.firstDay}
-                                            onChange={this.handleChangeFirstDate}
-                                            dateFormat="dd/MM/yyyy"
-                                />
+                    <form className="form1" onSubmit={this.handleFormSubmit}>
+                        <div >
+                            From:
+                            <DatePicker className="date date-selector"
+                                        selected={this.state.firstDay}
+                                        onChange={this.handleChangeFirstDate}
+                                        dateFormat="dd/MM/yyyy"
+                            />
 
-                            </div>
-                            <div>
-                                to:
-                                <DatePicker className="date"
-                                            selected={this.state.lastDay}
-                                            onChange={this.handleChangeLastDate}
-                                            dateFormat="dd/MM/yyyy"
-                                />
+                        </div>
+                        <div>
+                            to:
+                            <DatePicker className="date date-selector"
+                                        selected={this.state.lastDay}
+                                        onChange={this.handleChangeLastDate}
+                                        dateFormat="dd/MM/yyyy"
+                            />
 
-                            </div>
-                            <div>
-                                <button id="button-chat" onClick={(e) => this.handleSubmit(e)}>Request</button>
-                            </div>
-                        </form>
-                    </div>
-
+                        </div>
+                        <div className="button-container">
+                            <button className="button-large" id="button-chat" onClick={(e) => this.handleSubmit(e)}>Request</button>
+                            <Link to={"/messages/" + this.props.product }>
+                                <button className="button-large" id ="button-chat">Chat</button>
+                            </Link>
+                        </div>
+                    </form>
                 </div>
             </React.Fragment>
         )

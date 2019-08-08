@@ -50,21 +50,7 @@ export default class ProductDetail extends Component {
             <div className="carousel-slide" data-ride="carousel">
                 {
                     !this.isMyProduct() &&
-                    <React.Fragment>
-                        <UploadRent product = {this.state.product} loggedInUser={this.props.loggedInUser}/>
-                        <div className="head-card">
-                            <div className="name-onwer">
-                                <Link to={"/user/" + this.state.product.owner._id + "/products"}>
-                                    <p>{this.state.product.owner.username}'s profile</p>
-                                </Link>
-
-                            </div>
-
-                            <Link to={"/messages/" + this.state.product._id }>
-                                <button id ="button-chat">Chat</button>
-                            </Link>
-                        </div>
-                    </React.Fragment>
+                    <UploadRent product = {this.state.product} loggedInUser={this.props.loggedInUser}/>
                 }
 
                 <div className="box-detail">
@@ -80,8 +66,14 @@ export default class ProductDetail extends Component {
                         <p className="card-text">{this.state.product.description}</p>
                     </div>
 
+                    <div className="detail" >
+                        <Link to={"/user/" + this.state.product.owner._id + "/products"}>
+                            <p>See other products of {this.state.product.owner.username}</p>
+                        </Link>
+                    </div>
+
                     <div  className="map-detail">
-                        <SimpleMap API_KEY="AIzaSyAzGHDso1aXodTgAxYYmuTHdp9iVdxanhM" prod={this.state.product}></SimpleMap>
+                        <SimpleMap API_KEY="AIzaSyAzGHDso1aXodTgAxYYmuTHdp9iVdxanhM" prod={this.state.product}/>
                     </div>
                 </div>
 

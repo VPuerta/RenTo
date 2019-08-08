@@ -69,7 +69,7 @@ export default class MyRents extends Component {
     };
 
     canInteract = (rent) => {
-        return rent.status === "confirmed"
+        return rent.status === "confirmed" && rent.rating === 0
     };
 
     render() {
@@ -85,7 +85,7 @@ export default class MyRents extends Component {
                                 <div >
                                     <img className="image" src={rent.product.imageUrl} alt={rent.product.name} />
                                 </div>
-                                <div className="flex-xl-fill">
+                                <div className="flex-fill">
                                     <div className="colum">
                                         <div className="contenido">
                                             <div className="product">
@@ -109,6 +109,7 @@ export default class MyRents extends Component {
                                         </div>
                                     </div>
                                     <div>
+                                        Rate:
                                         <Rater total={5} rating={rent.rating} interactive={this.canInteract(rent)} onRate={(rating) => { this.handleChange(rating, idx) }} />
                                     </div>
                                 </div>
@@ -118,7 +119,7 @@ export default class MyRents extends Component {
                 }
 
                 <div className="tittle">
-                    <h3>My Rental Requests</h3>
+                    <h3>My Requests</h3>
                 </div>
                 {
                     this.state.myRentsPending.map((rent, idx) => {
@@ -133,7 +134,7 @@ export default class MyRents extends Component {
                                                 <h5 className="card-title">{rent.product.name}</h5>
                                             </div>
                                             <div className="product">
-                                                <p className="card-text">{rent.product.price}</p>
+                                                <p className="card-text">{rent.product.price} €</p>
                                             </div>
                                             <div className="product">
                                                 <p className="card-text">{rent.category}</p>
