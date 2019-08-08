@@ -21,6 +21,7 @@ export default class MyRents extends Component {
         Promise
             .all([this.service.getMyRents(id), this.service.getMyRentsPending(id)])
             .then((rents) => {
+                console.log(rents)
                 this.setState({
                     ...this.state,
                     myRents: rents[0],
@@ -108,8 +109,10 @@ export default class MyRents extends Component {
                                             </div>
                                         </div>
                                     </div>
+
                                     <div>
-                                        Rate:
+                                   
+                                        Rate {rent.client.username} :
                                         <Rater total={5} rating={rent.rating} interactive={this.canInteract(rent)} onRate={(rating) => { this.handleChange(rating, idx) }} />
                                     </div>
                                 </div>
@@ -147,6 +150,9 @@ export default class MyRents extends Component {
                                             </div>
                                             <div className="product">
                                                 <p className="card-text">Status: {rent.status}</p>
+                                            </div>
+                                            <div className="product">
+                                                <p className="card-text">CLient: {rent.client.username}</p>
                                             </div>
                                         </div>
                                     </div>

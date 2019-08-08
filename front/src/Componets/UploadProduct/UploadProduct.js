@@ -25,7 +25,6 @@ export default class UploadProduct extends Component {
     }
 
     coordinates = (lat, lng) => {
-
         const newPosition = {
             lat: lat,
             lng: lng,

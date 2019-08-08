@@ -178,7 +178,7 @@ let products = [
         }
     },
     {
-        name: "Tabla Surf",
+        name: "Surf Table",
         owner: idNoe,
         imageUrl: "https://surf3.es/wp-content/uploads/2017/04/s_seb_1.jpg",
         category: "Sports",
