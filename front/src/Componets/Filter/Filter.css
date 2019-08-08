@@ -21,15 +21,20 @@
     user-select: none;
     cursor: pointer;
     border: none;
-  }
-  .menu-item-wrapper.active {
-    border: 1px blue solid;
-  }
-  .menu-item.active {
-    border: 1px green solid;
-  }
-   
-  .scroll-menu-arrow {
+}
+
+*:focus {
+    outline:none !important
+}
+
+.menu-item.active {
+    border: 1px #505e6c;
+    background: #ffed4f;
+    color: #505e6c;
+    border-radius: 4px;
+}
+
+.scroll-menu-arrow {
     padding: 20px;
     cursor: pointer;
-  }
+}

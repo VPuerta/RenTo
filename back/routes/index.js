@@ -168,13 +168,13 @@ router.post('/myrents', (req, res, next) => {
 router.post('/updateRating', (req, res, next) => {
   console.log("updateRating", req.body.id);
 
-  sendError = (err) => {
+  let sendError = (err) => {
     console.log("Could not update rating" + err);
 
     res.status(500).json({ message: 'Could not update rating' + err })
   };
 
-  updateProductWithRents = (rents) => {
+  let updateProductWithRents = (rents) => {
     console.log("updateProductWithRents", rents);
 
     if (rents.length === 0) {
@@ -193,7 +193,7 @@ router.post('/updateRating', (req, res, next) => {
         .catch(sendError)
   };
 
-  updateProduct = (rating) => {
+  let updateProduct = (rating) => {
     console.log("updateProduct", rating);
 
     Rent
@@ -249,31 +249,20 @@ router.post('/myRentsPending', (req, res, next) => {
       .catch(e => console.log(e))
 });
 
-router.post('/updateRent', (req, res, next) => {
-  console.log("updateRent", req.body.id);
+router.post('/updateStatus', (req, res, next) => {
+  console.log("updateStatus", req.body.id, req.body.status);
 
-  sendError = (err) => {
+  let sendError = (err) => {
     console.log("Could not update rent" + err);
 
     res.status(500).json({ message: 'Could not update rent' + err })
   };
 
-
-updateRent = (status) => {
-  console.log("updateRent", status);
-
   Rent
-      .find({ product: ObjectId(rating.product) })
-      .then(updateProductWithRents)
+      .findByIdAndUpdate(req.body.id,{ status: req.body.status })
+      .then(rent => res.json(rent))
       .catch(sendError)
-};
-
-Rent
-    .findByIdAndUpdate(req.body.id,{ status: req.body.status })
-    .then(updateRent)
-    .catch(sendError)
-
-  });
+});
 
 
 module.exports = router;

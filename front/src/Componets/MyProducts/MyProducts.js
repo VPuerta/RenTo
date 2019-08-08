@@ -166,8 +166,6 @@ export default class MyProducts extends Component {
                                     }
                                     <button id="button" className="btn btn-warning" onClick={() => this.deleteProductClicked(myProduct, idx)}>Delete</button>
                                 </div>
-
-
                             </div>
                         )
                     })

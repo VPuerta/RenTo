@@ -10,13 +10,9 @@ export default class MyRents extends Component {
 
         this.state = {
             myRents: [],
-            myRentsPending: [],
-            product: {
-                values: [],
-                average: null,
-                status:"pending",
-            }
-        }
+            myRentsPending: []
+        };
+
         this.service = new AuthServices();
     }
 
@@ -49,26 +45,17 @@ export default class MyRents extends Component {
             .catch(console.log)
     };
 
-    handleStatusYes =(status,idx)=>{
-        this.service.updateStatus(this.state.myRentsPending[idx].product._id,status)
-        .then( () =>{
-            this.setState({
-                ...this.state,
-                status: "confirmed"
-            })
-        })
-    }
+    handleStatus =(event, idx)=>{
+        let status = event.target.value;
 
-    handleStatusNo =(status,idx)=>{
-        
-        this.service.updateStatus(this.state.myRentsPending[idx].product._id,status)
+        this.service.updateStatus(this.state.myRentsPending[idx]._id, status)
         .then( () =>{
+            this.state.myRentsPending[idx].status = status;
             this.setState({
                 ...this.state,
-                status: "rejected"
             })
         })
-    }
+    };
 
 
     render() {
@@ -119,19 +106,19 @@ export default class MyRents extends Component {
                                     <div >
                                         <img className="image" src={myRentPending.product.imageUrl} alt={myRentPending.product.name} />
                                     </div>
-                                    <div className="contenido">
+                                    <div  className="colum">
+                                        <div className="product" >
+                                            <div  className="card-body">
+                                                <p>Owner : {myRentPending.owner.username}</p>
+                                            </div>
 
-                                        <div className="card-body">
-                                            {/* <p>Owner : {myRentPending.owner.username}</p> */}
-                                            <p>Client : {myRentPending.client.username}</p>
+                                            <div className="card-body">{myRentPending.firstDay}</div>
+                                            <div className="card-body">{myRentPending.lastDay}</div>
+                                            <div className="card-body"> Status: {myRentPending.status}</div>
                                         </div>
-
-                                        <div className="card-body" >{myRentPending.firstDay}</div>
-                                        <div  className="card-body">{myRentPending.lastDay}</div>
-
-                                        <div className="btn-edit">
-                                            <button id="button-chat" onClick={(e) => this.handleStatusYes(e)}>Yes</button>
-                                            <button id="button-chat" onClick={(e) => this.handleStatusNo(e)}>No</button>
+                                        <div>
+                                            <button id="button-chat" value={"confirmed"} hidden={myRentPending.status!=="pending"} onClick={ event => this.handleStatus(event, idx) }>Confirm</button>
+                                            <button id="button-chat" value={"rejected"} hidden={myRentPending.status!=="pending"} onClick={event => this.handleStatus(event, idx) }>Reject</button>
                                         </div>
                                     </div>
                                 </div>
@@ -139,7 +126,6 @@ export default class MyRents extends Component {
                         )
                     })
                 }
-
             </div>
         )
     }
