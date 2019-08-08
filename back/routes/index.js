@@ -214,21 +214,20 @@ router.post('/addRent', (req, res, next) => {
   const product = req.body.product;
   const owner = req.body.owner;
   const client = req.body.client;
-  const fristDay = req.body.fristDay;
+  const firstDay = req.body.firstDay;
   const lastDay = req.body.lastDay;
   const rating = 0;
-  const status= "peding";
+  const status= "pending";
  
 
   const newRent = new Rent({
     product,
     owner,
     client,
-    fristDay,
+    firstDay,
     lastDay,
     rating,
     status,
-
   });
 
   console.log("Trying to store Rent", newRent);
@@ -243,11 +242,38 @@ router.post('/myRentsPending', (req, res, next) => {
   console.log("myRentsPending", req.body.id);
   
   Rent
-      .find({ owner: req.body.id, status:"peding" })
+      .find({ owner: req.body.id })
       .populate("client")
       .populate("product")
       .then(myRentsPending => res.json(myRentsPending))
       .catch(e => console.log(e))
 });
+
+router.post('/updateRent', (req, res, next) => {
+  console.log("updateRent", req.body.id);
+
+  sendError = (err) => {
+    console.log("Could not update rent" + err);
+
+    res.status(500).json({ message: 'Could not update rent' + err })
+  };
+
+
+updateRent = (status) => {
+  console.log("updateRent", status);
+
+  Rent
+      .find({ product: ObjectId(rating.product) })
+      .then(updateProductWithRents)
+      .catch(sendError)
+};
+
+Rent
+    .findByIdAndUpdate(req.body.id,{ status: req.body.status })
+    .then(updateRent)
+    .catch(sendError)
+
+  });
+
 
 module.exports = router;

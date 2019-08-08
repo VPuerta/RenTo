@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import AuthServices from '../../Services/Services'
 import './Filter.css';
-import allcategories from '../Assets/allcategories.png'
 
 export default class FilterProducts extends Component {
     constructor(props) {
@@ -12,6 +11,7 @@ export default class FilterProducts extends Component {
         }
         this.service = new AuthServices();
     }
+   
 
     handleChange = (event) => {
         const { value } = event.target;
@@ -41,7 +41,6 @@ export default class FilterProducts extends Component {
                             <option className="dropdown-item" value="Other">Other</option>
                         </select>
                     </div> 
-                 <img src={allcategories} alt="All Categories" name="category" value="Books" onClick={ e => this.handleClick(e) }/>
             </div>
         )
     }

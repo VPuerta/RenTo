@@ -116,7 +116,8 @@ class App extends Component {
           <Route exact path='/products' render={() => {
             return <Listproducts getFilterQuery={() => { return this.state.filterQuery }} />
           }} />
-          <Route exact path='/product/:id' component={ProductDetail} />
+          <Route exact path='/product/:id' render={(props) => {
+            return <ProductDetail productId={props.match.params.id} loggedInUser={this.state.loggedInUser}/>
           }} />
             <Route exact path='/user/:id/products' component={ProductsOwner} />
           }} />

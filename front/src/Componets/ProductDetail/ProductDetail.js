@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import SimpleMap from '../Map/SimpleMap';
 import './ProductDetail.css'
 import AuthServices from '../../Services/Services';
-import UploadRent from '../UploadProduct/UploadRent/UploadRent';
+import UploadRent from '../UploadRent/UploadRent';
 
 
 export default class ProductDetail extends Component {
@@ -16,7 +16,8 @@ export default class ProductDetail extends Component {
                 owner: {},
                 position: [],
 
-            }
+            },
+          uploadRent:false,  
         }
         this.service = new AuthServices();
     }
@@ -26,8 +27,7 @@ export default class ProductDetail extends Component {
     }
 
     getSingleProduct = () => {
-        const { params } = this.props.match;
-        this.service.getProductDetail(params.id)
+        this.service.getProductDetail(this.props.productId)
             .then(response => {
                 // console.log(response.data)
                 const product = response;
@@ -42,15 +42,23 @@ export default class ProductDetail extends Component {
     }
 
     iWantIt = () =>{
-
+        // this.state.uploadRent != this.state.uploadRent,
+        // this.setState({
+        //     ...this.state,
+        //     uploadRent: uploadRent,
+        // })
     }
 
 
     render() {
         return (
             <div className="carousel-slide" data-ride="carousel">
-                
-                 <UploadRent></UploadRent>
+                {
+                    this.state.uploadRent &&
+                <UploadRent product = {this.state.product} loggedInUser={this.props.loggedInUser}></UploadRent>
+                }
+                <UploadRent product = {this.state.product} loggedInUser={this.props.loggedInUser}></UploadRent>
+
                 <div className="head-card">
                     <div className="name-onwer">
                          <Link to={"/user/" + this.state.product.owner._id + "/products"}>

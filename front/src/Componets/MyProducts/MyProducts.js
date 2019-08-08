@@ -41,15 +41,6 @@ export default class MyProducts extends Component {
         });
     };
 
-    getImageName = (product) => {
-        // let imgName;
-        // if (product.pictures.length !== 0) {
-        //     imgName = product.pictures[0].imageUrl
-        // } else {
-        //     imgName = placeholder2
-        // }
-        return product.imageUrl;
-    };
 
     deleteProductClicked = (product, idx) => {
         this.clearEditingIndexes(idx);
@@ -123,7 +114,7 @@ export default class MyProducts extends Component {
                         return (
                             <div className="drop3 cont" key={idx} >
                                 <div >
-                                    <img className="image" src={this.getImageName(myProduct)} alt={myProduct.name} />
+                                    <img className="image" src={myProduct.imageUrl} alt={myProduct.name} />
                                 </div>
                                 <div className="colum">
                                     <div className="contenido">

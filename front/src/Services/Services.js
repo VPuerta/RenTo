@@ -97,8 +97,8 @@ export default class AuthServices {
         .catch(err => err)
   }
 
-  addRent = (product, owner, client, category, fristDay, lastDay )=>{
-    return this.service.post('/addRent', { product, owner, client, category, fristDay, lastDay })
+  addRent = (product, owner, client, category, firstDay, lastDay )=>{
+    return this.service.post('/addRent', { product, owner, client, category, firstDay, lastDay })
     .then(response => response.data)
 };
 
@@ -107,6 +107,12 @@ getMyRentsPending = (id) => {
       .then(myRentsPending => myRentsPending.data)
       .catch(err => err)
 };
+
+updateStatus = (id,status) => {
+  return this.service.post('/updateStatus', { id, status })
+      .then(rent => rent.data)
+      .catch(err => err)
+}
 
   
 }

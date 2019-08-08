@@ -5,7 +5,7 @@ const rentSchema = new Schema({
   product : { type: Schema.Types.ObjectId, ref: "Product" },
   owner: { type: Schema.Types.ObjectId, ref: "User" },
   client: { type: Schema.Types.ObjectId, ref: "User" },
-  fristDay: Date,
+  firstDay: Date,
   lastDay: Date,
   rating: Number,
   status: {

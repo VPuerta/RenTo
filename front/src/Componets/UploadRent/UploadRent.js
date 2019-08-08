@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import AuthServices from '../../../Services/Services';
+import AuthServices from '../../Services/Services';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import './UploadRent.css';
 
 
 export default class UploadRent extends Component {
@@ -9,44 +10,45 @@ export default class UploadRent extends Component {
         super(props);
 
         this.state = {
-            product: this.props._id,
-            owner: this.props.owner,
-            client: "",
-            fristDay: new Date(),
+            firstDay: new Date(),
             lastDay: new Date(),
-            estatus: "pending"
         };
         this.service = new AuthServices();
 
-        this.handleChange = this.handleChange.bind(this);
+        this.handleChangeFirstDate = this.handleChangeFirstDate.bind(this);
+        this.handleChangeLastDate = this.handleChangeLastDate.bind(this);
     }
 
-    handleChange(date) {
+    handleChangeFirstDate(date) {
         this.setState({
-            fristDay: date,
-            lastDay: date,
+            firstDay: +date,
         });
     }
 
+    handleChangeLastDate(date) {
+        this.setState({
+            lastDay: +date,
+        });
+    }
+    
+
     handleSubmit = e => {
         e.preventDefault();
-        const product = this.props._id;
-        const owner = this.state.owner;
-        const client = this.state.client;
-        const fristDay = this.state.fristDay;
+        console.log("handleSubmit", this.props)
+        const product = this.props.product
+        const owner = this.props.product.owner;
+        const client = this.props.loggedInUser._id;
+        const firstDay = this.state.firstDay;
         const lastDay = this.state.lastDay;
 
-        this.service.addRent(product, owner, client, fristDay, lastDay)
+        this.service.addRent(product, owner, client, firstDay, lastDay)
             .then(res => {
                 console.log('added: ', res);
-
-                this.props.uploadProductDidAddProduct(res);
-                document.getElementById(this.image).value = "";
                 this.setState({
                     product,
                     owner,
                     client,
-                    fristDay,
+                    firstDay,
                     lastDay,
 
                 })
@@ -63,29 +65,31 @@ export default class UploadRent extends Component {
                 <React.Fragment>
 
 
-                    <div className="drop3">
-                        <div className="box">
+                    <div className="head-card">
+                        <div className="">
                             <form className="form1" onSubmit={this.handleFormSubmit}>
                                 <div>
-                                    <DatePicker
-                                    
-                                        selected={this.state.fristDay}
-                                        onChange={this.handleChange}
+                                From:
+                                    <DatePicker className="date"
+                                        
+                                        selected={this.state.firstDay}
+                                        onChange={this.handleChangeFirstDate}
                                         dateFormat="dd/MM/yyyy"
                                        
                                     />
 
                                 </div>
                                     <div>
-                                      <DatePicker
+                                   to:
+                                      <DatePicker className="date"
                                         selected={this.state.lastDay}
-                                        onChange={this.handleChange}
-                                        isClearable={true}
+                                        onChange={this.handleChangeLastDate}
+                                        dateFormat="dd/MM/yyyy"
                                     />
 
                                     </div>
                                 <div>
-                                    <button id="add" className="button" onClick={(e) => this.handleSubmit(e)}>Add</button>
+                                    <button  id="button-chat" onClick={(e) => this.handleSubmit(e)}>Apply For</button>
                                 </div>
                         </form>
                     </div>

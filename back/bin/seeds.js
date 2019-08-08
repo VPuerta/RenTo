@@ -76,17 +76,19 @@ let rents = [
         product : idProduct,
         owner: idVane,
         client: idNoe,
-        fristDay: new Date(),
+        firstDay: new Date(),
         lastDay: new Date(),
         rating: 5,
+        status:"pending"
     },
     {
         product : idProduct,
         owner: idMaria,
         client: idNoe,
-        fristDay: new Date(),
+        firstDay: new Date(),
         lastDay: new Date(),
         rating: 2,
+        status:"pending"
     }
 ];
 
