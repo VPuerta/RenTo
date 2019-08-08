@@ -50,7 +50,7 @@ export default class ProductDetail extends Component {
             <div className="carousel-slide" data-ride="carousel">
                 {
                     !this.isMyProduct() &&
-                    <UploadRent product = {this.state.product} loggedInUser={this.props.loggedInUser}/>
+                    <UploadRent history={this.props.history} product = {this.state.product} loggedInUser={this.props.loggedInUser}/>
                 }
 
                 <div className="box-detail">
@@ -60,9 +60,9 @@ export default class ProductDetail extends Component {
 
                     <div className="detail" >
                         <h5 className="card-title">{this.state.product.name}</h5>
-                        <h7 className="card-text">Price per day</h7>
+                        <h6 className="card-text">Price per day</h6>
                         <p className="card-text">{this.state.product.price} €</p>
-                        <h7 className="card-text">Description</h7>
+                        <h6 className="card-text">Description</h6>
                         <p className="card-text">{this.state.product.description}</p>
                     </div>
 

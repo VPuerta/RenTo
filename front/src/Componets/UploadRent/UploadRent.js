@@ -47,7 +47,7 @@ export default class UploadRent extends Component {
 
         this.service.addRent(product, owner, client, firstDay, lastDay)
             .then(res => {
-                // this.props.history.push('/dashboard')
+                this.props.history.push(`/user/${this.props.loggedInUser._id}/myrents`);
                 this.setState({
                     product,
                     owner,
