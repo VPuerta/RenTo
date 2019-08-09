@@ -112,7 +112,7 @@ export default class MyRents extends Component {
 
                                     <div>
                                    
-                                        Rate {rent.owner.username} :
+                                        Rate to {rent.owner.username} :
                                         <Rater total={5} rating={rent.rating} interactive={this.canInteract(rent)} onRate={(rating) => { this.handleChange(rating, idx) }} />
                                     </div>
                                 </div>
