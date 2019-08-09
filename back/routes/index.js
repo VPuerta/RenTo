@@ -244,6 +244,7 @@ router.post('/myRentsPending', (req, res, next) => {
       .find({ owner: req.body.id })
       .populate("client")
       .populate("product")
+      .populate('owner')
       .then(myRentsPending => res.json(myRentsPending))
       .catch(e => console.log(e))
 });

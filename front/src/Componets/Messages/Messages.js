@@ -7,6 +7,7 @@ import 'stream-chat-react/dist/css/index.css';
 
 export default class Messages extends Component {
     constructor(props) {
+        console.log(props)
         super(props);
 
         this.state = {

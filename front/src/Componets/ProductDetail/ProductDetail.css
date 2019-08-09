@@ -77,3 +77,9 @@ a{
     padding-top: 1rem;
     border-radius: 1%;
 }
+
+.up-box{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+}

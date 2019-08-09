@@ -87,7 +87,7 @@ export default class UploadRent extends Component {
                         </div>
                         <div className="button-container">
                             <button className="button-large" id="button-chat" onClick={(e) => this.handleSubmit(e)}>Request</button>
-                            <Link to={"/messages/" + this.props.product }>
+                            <Link to={"/messages/" + this.props.product._id }>
                                 <button className="button-large" id ="button-chat">Chat</button>
                             </Link>
                         </div>

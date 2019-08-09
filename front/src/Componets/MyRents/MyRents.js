@@ -112,7 +112,7 @@ export default class MyRents extends Component {
 
                                     <div>
                                    
-                                        Rate {rent.client.username} :
+                                        Rate {rent.owner.username} :
                                         <Rater total={5} rating={rent.rating} interactive={this.canInteract(rent)} onRate={(rating) => { this.handleChange(rating, idx) }} />
                                     </div>
                                 </div>
@@ -152,7 +152,7 @@ export default class MyRents extends Component {
                                                 <p className="card-text">Status: {rent.status}</p>
                                             </div>
                                             <div className="product">
-                                                <p className="card-text">CLient: {rent.client.username}</p>
+                                                <p className="card-text">Client: {rent.client.username}</p>
                                             </div>
                                         </div>
                                     </div>

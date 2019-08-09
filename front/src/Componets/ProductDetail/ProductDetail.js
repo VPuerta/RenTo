@@ -4,6 +4,8 @@ import SimpleMap from '../Map/SimpleMap';
 import './ProductDetail.css'
 import AuthServices from '../../Services/Services';
 import UploadRent from '../UploadRent/UploadRent';
+import Rater from 'react-rater'
+import 'react-rater/lib/react-rater.css';
 
 
 export default class ProductDetail extends Component {
@@ -54,6 +56,16 @@ export default class ProductDetail extends Component {
                 }
 
                 <div className="box-detail">
+                    <div className="up-box">
+                    <div className="detail" >
+                        <Link to={"/user/" + this.state.product.owner._id + "/products"}>
+                            <p>See other products of {this.state.product.owner.username}</p>
+                        </Link>
+                    </div>
+                    <div>
+                        <Rater total={this.state.product.rating} rating={this.state.product.rating} interactive={false}/>
+                    </div>
+                    </div>
                     <div className="image-detail" >
                         <img src={this.state.product.imageUrl} alt="" />
                     </div>
@@ -66,11 +78,6 @@ export default class ProductDetail extends Component {
                         <p className="card-text">{this.state.product.description}</p>
                     </div>
 
-                    <div className="detail" >
-                        <Link to={"/user/" + this.state.product.owner._id + "/products"}>
-                            <p>See other products of {this.state.product.owner.username}</p>
-                        </Link>
-                    </div>
 
                     <div  className="map-detail">
                         <SimpleMap API_KEY="AIzaSyAzGHDso1aXodTgAxYYmuTHdp9iVdxanhM" prod={this.state.product}/>
