@@ -72,7 +72,7 @@ export default class ProductDetail extends Component {
 
                     <div className="detail" >
                         <h5 className="card-title">{this.state.product.name}</h5>
-                        <h6 className="card-text">Price per day</h6>
+                        <h6 className="card-text">Price</h6>
                         <p className="card-text">{this.state.product.price} €</p>
                         <h6 className="card-text">Description</h6>
                         <p className="card-text">{this.state.product.description}</p>

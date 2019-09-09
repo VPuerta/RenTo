@@ -42,7 +42,7 @@ class Navbar extends Component {
 
                 <div className="nav-right-item">
                     <Link to={"/profile"}>
-                        <p>Profile</p>
+                        <p>Profile {this.props.loggedInUser.username}</p>
                         {/* <img src={this.props.loggedInUser.photo} style={{ height: "2.5rem"}} /> */}
                     </Link>
 
