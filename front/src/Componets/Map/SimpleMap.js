@@ -37,7 +37,7 @@ export default class SimpleMap extends Component {
         }else{
             myMap = <GoogleMapReact
             onClick= {(e)=> this.cli(e)}
-            bootstrapURLKeys={{ key: this.props.API_KEY }}  
+            bootstrapURLKeys={{ key: "AIzaSyBVykZZi6vtrnkxMIlU5VT8IPKAMMNEGbs"}}  
             defaultCenter={defaultProps.center}
             defaultZoom={defaultProps.zoom}
             onGoogleApiLoaded={({ map, maps }) => this.setMapProperties(map, maps)}

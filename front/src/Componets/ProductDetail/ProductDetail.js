@@ -11,7 +11,6 @@ import 'react-rater/lib/react-rater.css';
 export default class ProductDetail extends Component {
     constructor(props) {
         super(props);
-        console.log(props);
         this.state = {
             product: {
                 imageUrl: "",
@@ -80,7 +79,7 @@ export default class ProductDetail extends Component {
 
 
                     <div  className="map-detail">
-                        <SimpleMap API_KEY="AIzaSyAzGHDso1aXodTgAxYYmuTHdp9iVdxanhM" prod={this.state.product}/>
+                        <SimpleMap prod={this.state.product}/>
                     </div>
                 </div>
 
