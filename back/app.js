@@ -39,7 +39,7 @@ app.set('view engine', 'hbs');
 
 app.use(cors({
   credentials: true,
-  origin: ['http://localhost:3000, https://rentovpg.herokuapp.com/']
+  origin: ['http://localhost:3000']
 }));
 
 app.use(express.static(path.join(__dirname, 'public')));
