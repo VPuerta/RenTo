@@ -80,7 +80,6 @@ class App extends Component {
 
   render() {
     // If the user is not logged, just allow him to go to login and sing up.
-    console.log(this.state.loggedInUser)
     if (!this.state.loggedInUser) {
       return (
         <React.Fragment>
